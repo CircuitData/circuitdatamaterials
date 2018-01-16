@@ -1,5 +1,5 @@
 class ManufacturerSerializer < ActiveModel::Serializer
-  attributes :name, :verified :description, :location, :materials
+  attributes :name, :verified, :description, :location, :materials
   #has_many :materials, include: :name
 
   def materials
