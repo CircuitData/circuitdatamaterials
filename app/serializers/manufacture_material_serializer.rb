@@ -1,5 +1,5 @@
 class ManufactureMaterialSerializer < ActiveModel::Serializer
-  attributes :name, :style, :group, :flexible, :additional, :link, :remark, :ul_94, :accept_equivalent
+  attributes :name, :function, :group, :flexible, :additional, :link, :remark, :ul_94, :accept_equivalent
   #belongs_to :manufacturer, optional: true
   #has_many :material_attributes, include_nested_associations: true
 
