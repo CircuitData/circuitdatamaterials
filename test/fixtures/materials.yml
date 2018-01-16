@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  style: MyString
+  group: MyString
+  manufacturer: one
+  name: MyString
+  flexibel: false
+  ipc_sm_840_class: MyString
+  ipc_slash_sheet: MyString
+  tg_minimum: 1
+  td_minimum: 1
+  additional: MyString
+  link: 
+  remark: MyText
+
+two:
+  style: MyString
+  group: MyString
+  manufacturer: two
+  name: MyString
+  flexibel: false
+  ipc_sm_840_class: MyString
+  ipc_slash_sheet: MyString
+  tg_minimum: 1
+  td_minimum: 1
+  additional: MyString
+  link: 
+  remark: MyText
