@@ -22,7 +22,8 @@ gem 'puma', '~> 3.0'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'roo'
+gem 'rest-client'
 # Use serializer
 gem 'active_model_serializers', '~> 0.10.2'
 # Use Capistrano for deployment
