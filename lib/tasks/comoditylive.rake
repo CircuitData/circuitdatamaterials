@@ -80,7 +80,7 @@ namespace :commoditylive do
 
         specs.reject { |item| item.nil? || item == '' }.each do |spec|
           MaterialAttribute.find_or_create_by(name: spec["property"], material_id: mat.id)
-          ma = MaterialAttribute.find_by_name(spec["property"])
+          ma = MaterialAttribute.find_by(name: spec["property"], material_id: mat.id)
           MaterialAttributeValue.find_or_create_by(material_attribute_id: ma.id).update(value: spec["value"])
         end
       end
