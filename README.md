@@ -337,10 +337,10 @@ The Material and all it's elements including the manufacrurer and the material a
 #### circuitdata_version
 The version of the circuit data.
 
-|  | Generic product | Stackup | Profile defaults | Profile enforced | Profile restricted | Capabilities |
-|-:|:---------------:|:-------:|:----------------:|:----------------:|:------------------:|:------------:|
-| **Use in:** | Allowed | Allowed | Allowed | Allowed | Allowed | Allowed | 
-|**Format:** |  |  |  |  | Array of s | Array of s |
+| Type | Possible values | Comment |
+|:---------------:|:----------------:|:----------------:|
+| String | 1.0 | Reflect the version of CircuitData | 
+
 
 #### id
 The id of the material. Only visbile in the list of materials and is used to retreive each desired material
