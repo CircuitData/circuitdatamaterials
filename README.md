@@ -337,132 +337,92 @@ The Material and all it's elements including the manufacrurer and the material a
 |  | Type | Default value | Visible element | Values allowed | Comment |
 |-:|:---------------:|:-------:|:----------------:|:----------------:|:------------------:|
 | **circuitdata_version** | string | 1.0 | Yes | 1.0 | Reflect the version of CircuitData |
-| **id:** | uuid |  | Only in list |  | Unique identifier used to extract one material |
-| **name:** | string |  | Yes |  | Name of material |
-| **verified:** | boolean | false | Yes | true, false | Indicates if the Material is officially verified|
-| **function:** |string |  | Yes | "conductive", "dielectric", "soldermask", "stiffener", "final_finish" | Function of the material |
-| **group:** | string |  | Yes | "FR1", "FR2", "FR3", "FR4", "FR5", "G-10", "G-11", "CEM-1", "CEM-2", "CEM-3", "CEM-4", "CEM-5", "ceramic", "polyimide", "aramid", "acrylic", "LCP", "PEN", "PET", "LPISM", "DFISM", "LDISM", "stainless_steel", "copper", "aluminum", "silver", "gold", "carbon", "silver_platinum", "silver_paladium", "gold_platinum", "platinum", "c_bare_copper", "isn", "iag", "enig", "enepig", "osp", "ht_osp", "g", "GS", "t_fused", "tlu_unfused", "dig", "gwb-1_ultrasonic", "gwb-2-thermosonic", "s_hasl", "b1_lfhasl" | The group of the material |
-| **link:** | string |  | Yes |  | Link to the datahseet of similar |
-| **remark:** | text |  | Yes |  | Any remarks about the material |
-| **flexible:** | boolean | false | Yes | true, false | If the material is flexible |
-| **ul_94:** | string |  | Yes |  | Link to the datahseet of similar |
-| **additional:** | array |  | Yes | "halogen_free", "ul", "rw_en45545_2_2013", "rw_nf_f_16_101", "rw_uni_cei_11170_3" and "rw_nfpa_130" | Additional information |
-| **accept_equivalent:** | boolean |  | Yes | true, false  | If it is acceptable with an equal material |
-| **source:** | string |  | Yes |  | The sorce the data is captured from |
-| **manufacturer_id:** | uuid |  | No |  | The relation to the manufacturer |
-| **created_at:** | datetime |  | No |  | When the material was created |
-| **updated_at:** | datetime |  | No |  | When the material was updated |
+| **id** | uuid |  | Only in list |  | Unique identifier used to extract one material |
+| **name** | string |  | Yes |  | Name of material |
+| **verified** | boolean | false | Yes | true, false | Indicates if the Material is officially verified|
+| **function** |string |  | Yes | "conductive", "dielectric", "soldermask", "stiffener", "final_finish" | Function of the material |
+| **group** | string |  | Yes | "FR1", "FR2", "FR3", "FR4", "FR5", "G-10", "G-11", "CEM-1", "CEM-2", "CEM-3", "CEM-4", "CEM-5", "ceramic", "polyimide", "aramid", "acrylic", "LCP", "PEN", "PET", "LPISM", "DFISM", "LDISM", "stainless_steel", "copper", "aluminum", "silver", "gold", "carbon", "silver_platinum", "silver_paladium", "gold_platinum", "platinum", "c_bare_copper", "isn", "iag", "enig", "enepig", "osp", "ht_osp", "g", "GS", "t_fused", "tlu_unfused", "dig", "gwb-1_ultrasonic", "gwb-2-thermosonic", "s_hasl", "b1_lfhasl" | The group of the material |
+| **link** | string |  | Yes |  | Link to the datahseet of similar |
+| **remark** | text |  | Yes |  | Any remarks about the material |
+| **flexible** | boolean | false | Yes | true, false | If the material is flexible |
+| **ul_94** | string |  | Yes | "v-0", "v-1", "hb" | The type of ul-94 |
+| **additional** | array |  | Yes | "halogen_free", "ul", "rw_en45545_2_2013", "rw_nf_f_16_101", "rw_uni_cei_11170_3" and "rw_nfpa_130" | Additional information |
+| **accept_equivalent** | boolean |  | Yes | true, false  | If it is acceptable with an equal material |
+| **source** | string |  | Yes |  | The sorce the data is captured from |
+| **manufacturer_id** | uuid |  | No |  | The relation to the manufacturer |
+| **created_at** | datetime |  | No |  | When the material was created |
+| **updated_at** | datetime |  | No |  | When the material was updated |
 
-#### circuitdata_version
-The version of the circuit data.
-
-| Type | Values | Default | Visible | Comment |
-|:---------------:|:----------------:|:----------------:|
-| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
-
-
-#### id
-The id of the material. Only visbile in the list of materials and is used to retreive each desired material
-
-
-| Type | Values | Default | Visible | Comment |
-|:---------------:|:----------------:|:----------------:|
-| Uuid |  |  | Yes | The uniqe identifier | 
-
-#### name
-Name of the Material
-
-
-| Type | Values | Default | Visible | Comment |
-|:---------------:|:----------------:|:----------------:|
-| String |  |  | Yes | Name of the material | 
 
 ### matereial_attributes
 
-#### name
-The name or property of the attribute.
+|  | Type | Default value | Visible element | Values allowed | Comment |
+|-:|:---------------:|:-------:|:----------------:|:----------------:|:------------------:|
+| **id** | uuid |  | No |  | Unique identifier |
+| **name** | string |  | Yes | [See list of Property Values](#property_values) | Name of the material attribute |
+| **material_id** | uuid |  | No |  | The relation to the material |
 
-| Type | Values | Default | Visible | Comment |
-|:---------------:|:----------------:|:----------------:|
-| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
-
-#### material_attribute_values
-The list of values for the material attribute.
-
-| Type | Values | Default | Visible | Comment |
-|:---------------:|:----------------:|:----------------:|
-| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
 
 ### material_attribute_values
 
-#### value
-The value representing the material attribute.
+|  | Type | Default value | Visible element | Values allowed | Comment |
+|-:|:---------------:|:-------:|:----------------:|:----------------:|:------------------:|
+| **id** | uuid |  | No |  | Unique identifier |
+| **value** | string |  | Yes | [See list of Property Values](#property_values) | Value of the material attribute |
+| **value_type** | string |  | Yes | string, number, float, array, boolean | The type of format the value has |
+| **material_attribute_id** | uuid |  | No |  | The relation to the material attribute |
+| **created_at** | datetime |  | No |  | When the value was created |
+| **updated_at** | datetime |  | No |  | When the value was updated |
 
-| Type | Values | Default | Visible | Comment |
-|:---------------:|:----------------:|:----------------:|
-| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
-
-#### value_type
-The format type for the value. The formats are explained earlier
-
-| Type | Values | Default | Visible | Comment |
-|:---------------:|:----------------:|:----------------:|
-| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
 
 ### manufacturer
-Te manufacuterer of the material
+The manufacuterer of the material
 
-#### id
-The id of the manufacturer. Only visbile in the list of manufacturers and is used to retreive each desired material.
+|  | Type | Default value | Visible element | Values allowed | Comment |
+|-:|:---------------:|:-------:|:----------------:|:----------------:|:------------------:|
+| **id** | uuid |  | No |  | Unique identifier |
+| **name** | string |  | Yes | [See list of Property Values](#property_values) | Value of the material attribute |
+| **verified** | boolean | false | Yes | true, false | Indicates if the Manufacturer is officially verified|
+| **description** | string |  | Yes |  | The description of the Manufacturer |
+| **location** | string |  | yes |  | Where the Manufacturer is located |
+| **ul** | string |  | yes |  | The E-number of the Manufacturer |
+| **ul_c** | string |  | yes |  | The E-number of the Manufacturer (Canada) |
+| **created_at** | datetime |  | No |  | When the value was created |
+| **updated_at** | datetime |  | No |  | When the value was updated |
 
-| Type | Values | Default | Visible | Comment |
-|:---------------:|:----------------:|:----------------:|
-| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
 
-#### name
-The name of the manfacturer
+### property_values
+The possible properties and values used as material attributes and values.
 
-| Type | Values | Default | Visible | Comment |
-|:---------------:|:----------------:|:----------------:|
-| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
+| Property | Possible Values | Value type | Comment |
+|:---------------:|:-------:|:----------------:|:----------------:|
+| ipc_slash_sheet |  | array of integers |  | 
+| tg_min |  | integer | UoM Celsius | 
+| td_min |  | integer | UoM Celsius | 
+| resin | "epoxy", "bt", "cyanate_ester", "phenolic", "polyester", "polyimide", "ppe", "hydrocarbon", "ptfe", "thermoplastic" | string |  | 
+| resin_content |  | number | UoM Percent | 
+| flame_retardent | "phosphor", "red_phosphor", "bromine", "chlorine", "antimony_oxide", "rohs_compliant_bromine" | string | UoM Celsius | 
+| woven_reinforcement |  | boolean |  | 
+| filler | ["ceramic", "kaolin", "organic", "inorganic", "glass"] | array |  | 
+| reinforcement | "e-glass", "s-glass", "ne-glass", "l-glass", "quartz", "aramid", "paper" | string |  | 
+| thickness |  | number | UoM Micrometer | 
+| dk |  | number |  | 
+| cti |  | number |  | 
+| frequency |  | number | UoM Gigahertz | 
+| df |  | number | UoM Minutes | 
+| t260 |  | number | UoM Minutes |  
+| t280 |  | number | UoM Minutes | 
+| t300 |  | number | UoM Minutes | 
+| mot |  | number | UoM Celcius | 
+| z_cte |  | number | UoM Percent | 
+| z_cte_before_tg |  | number | UoM Percent | 
+| z_cte_after_tg |  | number | UoM Percent | 
+| dielectric_breakdown |  | number | UoM kV | 
+| water_absorption |  | number | UoM Percent | 
+| thermal_conductivity |  | number | UoM W/mK | 
+| volume_resistivity |  | number | UoM megaOhm/centimeter | 
+| electric_strength |  | number | UoM W/mK | 
+| foil_roughness | S, L, V | string |  | 
+| ipc_sm_840_class | "T", "H", TF, HF | string | For soldermask | 
+| finish | matte, glossy, semi_glossy | string | For soldermask | 
 
-#### verified
-Indicates if it is a verified/official manufacturer.
-
-| Type | Values | Default | Visible | Comment |
-|:---------------:|:----------------:|:----------------:|
-| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
-
-#### description
-The description of the manufacturer.
-
-| Type | Values | Default | Visible | Comment |
-|:---------------:|:----------------:|:----------------:|
-| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
-
-#### location
-The description of the manufacturer.
-
-| Type | Values | Default | Visible | Comment |
-|:---------------:|:----------------:|:----------------:|
-| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
-
-#### ul
-The E-number of the manufacturer.
-
-| Type | Values | Default | Visible | Comment |
-|:---------------:|:----------------:|:----------------:|
-| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
-#### ul_c
-The (Canadian) E-number of the manufacturer
-
-| Type | Values | Default | Visible | Comment |
-|:---------------:|:----------------:|:----------------:|
-| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
-
-#### materials
-The list of materials the manufacterer is registered with.
-
-| Type | Values | Default | Visible | Comment |
-|:---------------:|:----------------:|:----------------:|
-| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
