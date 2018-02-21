@@ -297,40 +297,6 @@ We really appreciate all involvement. If you feel that there are additions (such
 ## Database Elements
 ====================
 
-### material [link](#material)
-* circuitdata_version
-* id
-* name
-* verified
-* source
-* function
-* group
-* flexible
-* additional
-* link
-* remark
-* ul_94
-* accept_equivalent
-* manufacturer
-* material_attributes
-
-### material_attributes [link](#material_attributes)
-* name
-* material_attribute_values
-
-### material_attribute_values [link](#material_attribute_values)
-* value
-* value_type
-
-### manufacturer [link](#manufacturer)
-* id
-* name
-* verified
-* description
-* location
-* ul
-* ul_c
-
 ### material
 The Material and all it's elements including the manufacrurer and the material attributes.
 
