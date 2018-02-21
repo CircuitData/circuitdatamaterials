@@ -292,9 +292,9 @@ Under each element and subelement, you'll find the type that is expected there. 
 * **boolean** - either `true` or `false`
 
 ## Contributing to the project
-We really appreciate all involvement. If you feel that there are additions or changes needed to the language, please start out by raising the issue in the [CircuitData Forum](https://www.circuitdata.org/). Then clone this repo and branch out before you make your changes. Please use a branch name that explains what you want to add. When you are done and have tested it, make a Pull Request in this GitHub project. It is the board of CircuitData that decided when code is to merged with the master and thus become part of the language.
+We really appreciate all involvement. If you feel that there are additions (such as other sources) or changes needed to the material database, please start out by raising the issue in the [CircuitData Forum](https://www.circuitdata.org/). Then clone this repo and branch out before you make your changes. Please use a branch name that explains what you want to add. When you are done and have tested it, make a Pull Request in this GitHub project. It is the board of CircuitData that decided when code is to merged with the master and thus become part of the application.
 
-## Elements and tags
+## Database Elements
 ====================
 
 ### material [link](#material)
@@ -334,69 +334,80 @@ We really appreciate all involvement. If you feel that there are additions or ch
 ### material
 The Material and all it's elements including the manufacrurer and the material attributes.
 
+|  | Type | Default value | Visible element | Values allowed | Comment |
+|-:|:---------------:|:-------:|:----------------:|:----------------:|:------------------:|
+| **circuitdata_version** | string | 1.0 | Yes | 1.0 | Reflect the version of CircuitData |
+| **id:** | uuid |  | Only in list |  | Unique identifier used to extract one material |
+| **name:** | string |  | Yes |  | Name of material |
+| **verified:** | boolean | false | Yes | true, false | Indicates if the Material is officially verified|
+| **function:** |string |  | Yes | "conductive", "dielectric", "soldermask", "stiffener", "final_finish" | Function of the material |
+| **group:** | string |  | Yes | "FR1", "FR2", "FR3", "FR4", "FR5", "G-10", "G-11", "CEM-1", "CEM-2", "CEM-3", "CEM-4", "CEM-5", "ceramic", "polyimide", "aramid", "acrylic", "LCP", "PEN", "PET", "LPISM", "DFISM", "LDISM", "stainless_steel", "copper", "aluminum", "silver", "gold", "carbon", "silver_platinum", "silver_paladium", "gold_platinum", "platinum", "c_bare_copper", "isn", "iag", "enig", "enepig", "osp", "ht_osp", "g", "GS", "t_fused", "tlu_unfused", "dig", "gwb-1_ultrasonic", "gwb-2-thermosonic", "s_hasl", "b1_lfhasl" | The group of the material |
+| **link:** | string |  | Yes |  | Link to the datahseet of similar |
+| **remark:** | text |  | Yes |  | Any remarks about the material |
+| **flexible:** | boolean | false | Yes | true, false | If the material is flexible |
+| **ul_94:** | string |  | Yes |  | Link to the datahseet of similar |
+| **additional:** | array |  | Yes | "halogen_free", "ul", "rw_en45545_2_2013", "rw_nf_f_16_101", "rw_uni_cei_11170_3" and "rw_nfpa_130" | Additional information |
+| **accept_equivalent:** | boolean |  | Yes | true, false  | If it is acceptable with an equal material |
+| **source:** | string |  | Yes |  | The sorce the data is captured from |
+| **manufacturer_id:** | uuid |  | No |  | The relation to the manufacturer |
+| **created_at:** | datetime |  | No |  | When the material was created |
+| **updated_at:** | datetime |  | No |  | When the material was updated |
+
 #### circuitdata_version
 The version of the circuit data.
 
-| Type | Possible values | Comment |
+| Type | Values | Default | Visible | Comment |
 |:---------------:|:----------------:|:----------------:|
-| String | 1.0 | Reflect the version of CircuitData | 
+| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
 
 
 #### id
 The id of the material. Only visbile in the list of materials and is used to retreive each desired material
 
-|  | Generic product | Stackup | Profile defaults | Profile enforced | Profile restricted | Capabilities |
-|-:|:---------------:|:-------:|:----------------:|:----------------:|:------------------:|:------------:|
-| **Use in:** | Allowed | Allowed | Allowed | Allowed | Allowed | Allowed | 
-|**Format:** |  |  |  |  | Array of s | Array of s |
+
+| Type | Values | Default | Visible | Comment |
+|:---------------:|:----------------:|:----------------:|
+| Uuid |  |  | Yes | The uniqe identifier | 
 
 #### name
 Name of the Material
 
-|  | Generic product | Stackup | Profile defaults | Profile enforced | Profile restricted | Capabilities |
-|-:|:---------------:|:-------:|:----------------:|:----------------:|:------------------:|:------------:|
-| **Use in:** | Allowed | Allowed | Allowed | Allowed | Allowed | Allowed | 
-|**Format:** |  |  |  |  | Array of s | Array of s |
+
+| Type | Values | Default | Visible | Comment |
+|:---------------:|:----------------:|:----------------:|
+| String |  |  | Yes | Name of the material | 
 
 ### matereial_attributes
 
 #### name
 The name or property of the attribute.
 
-|  | Generic product | Stackup | Profile defaults | Profile enforced | Profile restricted | Capabilities |
-|-:|:---------------:|:-------:|:----------------:|:----------------:|:------------------:|:------------:|
-| **Use in:** | Allowed | Allowed | Allowed | Allowed | Allowed | Allowed | 
-|**Format:** | number | number | number | number | Array of numbers | Array of numbers |
-|**Min value:** | 1 | 1 | 1 | 1 | Each item: 1 | Each item: 1 |
-|**Max value:** | 100 | 100 | 100 | 100 | Each item  : 100 | Each item: 100 |
+| Type | Values | Default | Visible | Comment |
+|:---------------:|:----------------:|:----------------:|
+| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
 
 #### material_attribute_values
 The list of values for the material attribute.
 
-|  | Generic product | Stackup | Profile defaults | Profile enforced | Profile restricted | Capabilities |
-|-:|:---------------:|:-------:|:----------------:|:----------------:|:------------------:|:------------:|
-| **Use in:** | Allowed | Allowed | Allowed | Allowed | Allowed | Allowed | 
-|**Format:** | number | number | number | number | Array of numbers | Array of numbers |
+| Type | Values | Default | Visible | Comment |
+|:---------------:|:----------------:|:----------------:|
+| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
 
 ### material_attribute_values
 
 #### value
 The value representing the material attribute.
 
-|  | Generic product | Stackup | Profile defaults | Profile enforced | Profile restricted | Capabilities |
-|-:|:---------------:|:-------:|:----------------:|:----------------:|:------------------:|:------------:|
-| **Use in:** | Allowed | Allowed | Allowed | Allowed | Allowed | Allowed | 
-|**Format:** | number | number | number | number | Array of numbers | Array of numbers |
-|**Min value:** | 1 | 1 | 1 | 1 | Each item: 1 | Each item: 1 |
-|**Max value:** | 100 | 100 | 100 | 100 | Each item  : 100 | Each item: 100 |
+| Type | Values | Default | Visible | Comment |
+|:---------------:|:----------------:|:----------------:|
+| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
 
 #### value_type
 The format type for the value. The formats are explained earlier
 
-|  | Generic product | Stackup | Profile defaults | Profile enforced | Profile restricted | Capabilities |
-|-:|:---------------:|:-------:|:----------------:|:----------------:|:------------------:|:------------:|
-| **Use in:** | Allowed | Allowed | Allowed | Allowed | Allowed | Allowed | 
-|**Format:** | number | number | number | number | Array of numbers | Array of numbers |
+| Type | Values | Default | Visible | Comment |
+|:---------------:|:----------------:|:----------------:|
+| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
 
 ### manufacturer
 Te manufacuterer of the material
@@ -404,69 +415,54 @@ Te manufacuterer of the material
 #### id
 The id of the manufacturer. Only visbile in the list of manufacturers and is used to retreive each desired material.
 
-|  | Generic product | Stackup | Profile defaults | Profile enforced | Profile restricted | Capabilities |
-|-:|:---------------:|:-------:|:----------------:|:----------------:|:------------------:|:------------:|
-| **Use in:** | Allowed | Allowed | Allowed | Allowed | Allowed | Allowed | 
-|**Format:** | string | string | string | string | Array of strings | Array of strings |
+| Type | Values | Default | Visible | Comment |
+|:---------------:|:----------------:|:----------------:|
+| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
 
 #### name
 The name of the manfacturer
 
-|  | Generic product | Stackup | Profile defaults | Profile enforced | Profile restricted | Capabilities |
-|-:|:---------------:|:-------:|:----------------:|:----------------:|:------------------:|:------------:|
-| **Use in:** | Allowed | Allowed | Allowed | Allowed | Allowed | Allowed | 
-|**Format:** | number | number | number | number | Array of numbers | Array of numbers |
+| Type | Values | Default | Visible | Comment |
+|:---------------:|:----------------:|:----------------:|
+| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
 
 #### verified
 Indicates if it is a verified/official manufacturer.
 
-|  | Generic product | Stackup | Profile defaults | Profile enforced | Profile restricted | Capabilities |
-|-:|:---------------:|:-------:|:----------------:|:----------------:|:------------------:|:------------:|
-| **Use in:** | Allowed | Allowed | Allowed | Allowed | Allowed | Allowed | 
-|**Format:** | number | number | number | number | Array of numbers | Array of numbers |
+| Type | Values | Default | Visible | Comment |
+|:---------------:|:----------------:|:----------------:|
+| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
 
 #### description
 The description of the manufacturer.
 
-
-|  | Generic product | Stackup | Profile defaults | Profile enforced | Profile restricted | Capabilities |
-|-:|:---------------:|:-------:|:----------------:|:----------------:|:------------------:|:------------:|
-| **Use in:** | Allowed | Allowed | Allowed | Allowed | Allowed | Allowed | 
-|**Format:** | number | number | number | number | Array of numbers | Array of numbers |
+| Type | Values | Default | Visible | Comment |
+|:---------------:|:----------------:|:----------------:|
+| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
 
 #### location
 The description of the manufacturer.
 
-
-|  | Generic product | Stackup | Profile defaults | Profile enforced | Profile restricted | Capabilities |
-|-:|:---------------:|:-------:|:----------------:|:----------------:|:------------------:|:------------:|
-| **Use in:** | Allowed | Allowed | Allowed | Allowed | Allowed | Allowed | 
-|**Format:** | number | number | number | number | Array of numbers | Array of numbers |
+| Type | Values | Default | Visible | Comment |
+|:---------------:|:----------------:|:----------------:|
+| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
 
 #### ul
 The E-number of the manufacturer.
 
-
-|  | Generic product | Stackup | Profile defaults | Profile enforced | Profile restricted | Capabilities |
-|-:|:---------------:|:-------:|:----------------:|:----------------:|:------------------:|:------------:|
-| **Use in:** | Allowed | Allowed | Allowed | Allowed | Allowed | Allowed | 
-|**Format:** | number | number | number | number | Array of numbers | Array of numbers |
-
+| Type | Values | Default | Visible | Comment |
+|:---------------:|:----------------:|:----------------:|
+| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
 #### ul_c
 The (Canadian) E-number of the manufacturer
 
-
-|  | Generic product | Stackup | Profile defaults | Profile enforced | Profile restricted | Capabilities |
-|-:|:---------------:|:-------:|:----------------:|:----------------:|:------------------:|:------------:|
-| **Use in:** | Allowed | Allowed | Allowed | Allowed | Allowed | Allowed | 
-|**Format:** | number | number | number | number | Array of numbers | Array of numbers |
+| Type | Values | Default | Visible | Comment |
+|:---------------:|:----------------:|:----------------:|
+| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
 
 #### materials
 The list of materials the manufacterer is registered with.
 
-
-|  | Generic product | Stackup | Profile defaults | Profile enforced | Profile restricted | Capabilities |
-|-:|:---------------:|:-------:|:----------------:|:----------------:|:------------------:|:------------:|
-| **Use in:** | Allowed | Allowed | Allowed | Allowed | Allowed | Allowed | 
-|**Format:** | number | number | number | number | Array of numbers | Array of numbers |
-
+| Type | Values | Default | Visible | Comment |
+|:---------------:|:----------------:|:----------------:|
+| String | 1.0 | 1.0 | Yes | Reflect the version of CircuitData | 
