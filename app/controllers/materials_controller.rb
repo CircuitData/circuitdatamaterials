@@ -6,7 +6,7 @@ class MaterialsController < ApplicationController
       @materials = Material.all
     end
     if @materials.present?
-      render json: @materials, status: :ok
+      paginate json: @materials, status: :ok
     else
       raise ActiveRecord::RecordNotFound,"Material with function: " + params[:function] + ", not found"
     end

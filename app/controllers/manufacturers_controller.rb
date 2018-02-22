@@ -1,9 +1,9 @@
 class ManufacturersController < ApplicationController
   def index
     @manufacturers = Manufacturer.all
-    render json: @manufacturers
+    paginate json: @manufacturers
   end
-  
+
   def show
     @manufacturer = Manufacturer.find(params[:id])
     render json: @manufacturer#, include: 'materials'

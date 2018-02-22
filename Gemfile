@@ -24,6 +24,8 @@ gem 'puma', '~> 3.0'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'roo'
 gem 'rest-client'
+gem 'will_paginate', '~> 3.1.0'
+gem 'api-pagination'
 # Use serializer
 gem 'active_model_serializers', '~> 0.10.2'
 # Use Capistrano for deployment
