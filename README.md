@@ -23,9 +23,14 @@ It is possible to extract data based on a set of parameters with the intention o
 
 The JSON response will be in format that is compatible with the CircuitData language.
 
-### Possible extracts
+### Possible additonal extracts
 - A list of all materials based on their function (dielectric, soldermask etc. )
 - A list of all materials based on their group (FR4, etc. )
+
+### Pagination
+The Material Databse will contain a substanial amount of data. Therefore there we have included pagination to the list extracts. That means that all list will retrieve a default of 30 records (Materials or Manufacturers). By providing a ```per_page``` parameter the amount of data retreived for one page can be altered. To recieve the specific pages, one and add the parameter ```page```. An example of this could be ```https://circuitdatamaterials.herokuapp.com/materials?per_page=10&page=2```
+
+In the header record on the return we will include the records for per page and total.
 
 ### Hosted environment
 [CircuitDataMaterials API](https://circuitdatamaterials.herokuapp.com/) 
