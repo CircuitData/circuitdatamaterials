@@ -24,16 +24,18 @@ namespace :commoditylive do
     @com_ids.each do |com_id|
     success, response = commoditylive.get_material(com_id)
     if success
-      puts response
+      #puts response
       response = JSON.parse(response)
       manufacturer = Manufacturer.find_or_create_by(name: response["data"]["attributes"]["brand"]["name"]).update(
-        description: response["data"]["attributes"]["description"],
-        location: response["data"]["attributes"]["location"]
+        description: response["data"]["attributes"]["brand"]["description"],
+        location: response["data"]["attributes"]["brand"]["location"],
+        verified: response["data"]["attributes"]["brand"]["official"]
         )
-      puts manufacturer
+      #puts manufacturer
       manu = Manufacturer.find_by_name(response["data"]["attributes"]["brand"]["name"])
-      puts manu
+      #puts manu
       material = Material.find_or_create_by(name: response["data"]["attributes"]["name"], manufacturer_id: manu.id).update(
+        circuitdata_version: "1.0", 
         function: "dielectric", 
         group: (response.dig("data", "attributes", "specifications").find{|spec| spec["property"] == 'group'}.dig("value") rescue nil),
         manufacturer_id: manu.id,

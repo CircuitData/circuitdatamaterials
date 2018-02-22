@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180220145049) do
+ActiveRecord::Schema.define(version: 20180222201114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,14 +49,15 @@ ActiveRecord::Schema.define(version: 20180220145049) do
     t.string   "name"
     t.string   "link"
     t.text     "remark"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.boolean  "flexible"
-    t.string   "additional",        default: [],              array: true
+    t.string   "additional",          default: [],              array: true
     t.string   "ul_94"
     t.boolean  "accept_equivalent"
     t.boolean  "verified"
     t.string   "source"
+    t.string   "circuitdata_version"
     t.index ["manufacturer_id"], name: "index_materials_on_manufacturer_id", using: :btree
   end
 
