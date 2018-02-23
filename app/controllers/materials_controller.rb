@@ -1,16 +1,27 @@
 class MaterialsController < ApplicationController
   def index
-  	if params[:function]
-  	  @materials = Material.where(function: params[:function].downcase)
-    else
-      @materials = Material.all
+  	@materials = Material.all
+  	if params.keys.count > 2
+  	  unless (Material.attribute_names & params.keys).empty?
+  	    params.each do |k,v|
+  	      if Material.attribute_names.include? k
+  	        @materials = @materials.where(k => v)
+  	        unless @materials.present?
+  	        	raise ActiveRecord::RecordNotFound,"Material did not match: " + k + ": " + v
+  	        end
+  	      end
+  	    end
+  	  else
+  	    raise ActiveRecord::RecordNotFound,"No matching parameters: " + params.keys.to_s
+  	  end
     end
     if @materials.present?
       paginate json: @materials, status: :ok
     else
-      raise ActiveRecord::RecordNotFound,"Material with function: " + params[:function] + ", not found"
+      raise ActiveRecord::RecordNotFound,"Material did not match: " + params.to_s
     end
   end
+
   def show
     @material = Material.find(params[:id])
     render json: @material, status: :ok
