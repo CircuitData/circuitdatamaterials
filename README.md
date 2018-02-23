@@ -33,8 +33,8 @@ The Material Databse will contain a substanial amount of data. Therefore there w
 In the header record on the return we will include the records for per page and total.
 
 ### Hosted environment
-[CircuitDataMaterials API](https://circuitdatamaterials.herokuapp.com/) 
-[Documentation on the usage of the API](https://restless-rocket-4633.postman.co/collections/2082658-be97e341-a76a-3f01-4d97-509adf66a6c9)
+- [CircuitDataMaterials API](https://circuitdatamaterials.herokuapp.com/) 
+- [Documentation on the usage of the API](https://documenter.getpostman.com/view/2082658/RVg298ef)
 
 ## Basic example
 This example shows how the material is structured when pulled from the Material Database through our API.
