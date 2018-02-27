@@ -24,8 +24,13 @@ It is possible to extract data based on a set of parameters with the intention o
 The JSON response will be in format that is compatible with the CircuitData language.
 
 ### Possible additonal extracts
-- A list of all materials based on their function (dielectric, soldermask etc. )
-- A list of all materials based on their group (FR4, etc. )
+By using parameters that are in sync with the Material and Manufacturer models, you will be able to limit the extract as desired. Each parameter will limit the result, so if you provide 3 parameters all three are considered. If you pass a paratemeter where the value does not match the one in the database, no records will be returned. If you pass the wrong parameter, that parameter is simply ignored. The vaule of parameter ```name``` is made fuzzy, that means it will not care if it is upper or lower case and we look in the model for any records that have part of the string passed as value.
+
+#### Example
+Say you want a list of all materials with the function dielectric that belongs to the group FR1, you would pass the parameters function and group with the values dielectric and FR1.
+```https://circuitdatamaterials.herokuapp.com?function=dielectric&group=FR1```
+
+A list of possible elements is prvoided under the section for [material](#material) and [manufacturer](#manufacturer).
 
 ### Pagination
 The Material Databse will contain a substanial amount of data. Therefore there we have included pagination to the list extracts. That means that all list will retrieve a default of 30 records (Materials or Manufacturers). By providing a ```per_page``` parameter the amount of data retreived for one page can be altered. To recieve the specific pages, one and add the parameter ```page```. An example of this could be ```https://circuitdatamaterials.herokuapp.com/materials?per_page=10&page=2```
@@ -40,6 +45,7 @@ In the header record on the return we will include the records for per page and 
 This example shows how the material is structured when pulled from the Material Database through our API.
 ```
 {
+    "circuitdata_version": "1.0",
     "name": "TU-865",
     "verified": null,
     "id": "5acad4c0-162e-41fb-8698-893e09fc8f7f",
@@ -56,7 +62,9 @@ This example shows how the material is structured when pulled from the Material 
         "name": "TUC",
         "verified": null,
         "description": null,
-        "location": null
+        "location": null,
+        "ul": E189572,
+        "ul_c": null
     },
     "material_attributes": [
         {

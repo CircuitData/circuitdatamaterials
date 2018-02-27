@@ -1,11 +1,15 @@
 class MaterialsController < ApplicationController
   def index
-  	@materials = Material.all
+  	@materials = Material.all  	
   	if params.keys.count > 2
   	  unless (Material.attribute_names & params.keys).empty?
   	    params.each do |k,v|
   	      if Material.attribute_names.include? k
-  	        @materials = @materials.where(k => v)
+ 	      	if k == 'name'
+  	          @materials = @materials.where('name ilike ?', "%#{v}%")
+  	        else
+              @materials = @materials.where(k => v)
+            end
   	        unless @materials.present?
   	        	raise ActiveRecord::RecordNotFound,"Material did not match: " + k + ": " + v
   	        end
