@@ -16,7 +16,9 @@ class MaterialsController < ApplicationController
   	      end
   	    end
   	  else
-  	    raise ActiveRecord::RecordNotFound,"No matching parameters: " + params.keys.to_s
+  	  	unless params[:page] or params[:per_page]
+  	      raise ActiveRecord::RecordNotFound,"No matching parameters: " + params.keys.to_s
+        end
   	  end
     end
     if @materials.present?
