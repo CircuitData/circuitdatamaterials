@@ -22,14 +22,12 @@ namespace :commoditylive do
     @com_ids.uniq!
     puts 'Updating ' + @com_ids.count.to_s + ' Materials'
     @com_ids.each do |com_id|
-    puts '----'  
     success, response = commoditylive.get_material(com_id)
     if success
       #puts response
       response = JSON.parse(response)
-      manufacturer = Manufacturer.find_or_create_by(name: response["data"]["attributes"]["brand"]["name"]).update(
+      manufacturer = Manufacturer.find_or_create_by(source_id: response["data"]["relationships"]["brand"]["data"]["id"]).update(
         source: "COMMODITY.LIVE",
-        source_id: response["data"]["relationships"]["brand"]["data"]["id"],
         description: response["data"]["attributes"]["brand"]["description"],
         location: response["data"]["attributes"]["brand"]["location"],
         verified: response["data"]["attributes"]["brand"]["official"]
@@ -37,9 +35,8 @@ namespace :commoditylive do
       #puts manufacturer
       manu = Manufacturer.find_by_name(response["data"]["attributes"]["brand"]["name"])
       #puts manu
-      material = Material.find_or_create_by(name: response["data"]["attributes"]["name"], manufacturer_id: manu.id).update(
+      material = Material.find_or_create_by(source_id: com_id).update(
         source: "COMMODITY.LIVE",
-        source_id: com_id,
         circuitdata_version: "1.0", 
         function: "dielectric", 
         group: (response.dig("data", "attributes", "specifications").find{|spec| spec["property"] == 'group'}.dig("value") rescue nil),
@@ -52,7 +49,7 @@ namespace :commoditylive do
         accept_equivalent: (response.dig("data", "attributes", "specifications").find{|spec| spec["property"] == 'accept_equivalent'}.dig("value") rescue nil) ,
         verified: (response.dig("data", "attributes", "specifications").find{|spec| spec["property"] == 'verified'}.dig("value") rescue nil) 
         )
-        mat = Material.find_by_name(response["data"]["attributes"]["name"])
+        mat = Material.find_by_source_id(com_id)
         # Gather list of possible Material Attributes (Specifications like ipc_slash_sheet)
         specs = []
         specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "ipc_slash_sheet" }[0]
