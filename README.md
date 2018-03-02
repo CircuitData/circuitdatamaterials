@@ -28,17 +28,17 @@ By using parameters that are in sync with the Material and Manufacturer models, 
 
 #### Example
 Say you want a list of all materials with the function dielectric that belongs to the group FR1, you would pass the parameters function and group with the values dielectric and FR1.
-```https://circuitdatamaterials.herokuapp.com?function=dielectric&group=FR1```
+```http://materials.circuitdata.org/materials?function=dielectric&group=FR1```
 
 A list of possible elements is prvoided under the section for [material](#material) and [manufacturer](#manufacturer).
 
 ### Pagination
-The Material Databse will contain a substanial amount of data. Therefore there we have included pagination to the list extracts. That means that all list will retrieve a default of 30 records (Materials or Manufacturers). By providing a ```per_page``` parameter the amount of data retreived for one page can be altered. To recieve the specific pages, one and add the parameter ```page```. An example of this could be ```https://circuitdatamaterials.herokuapp.com/materials?per_page=10&page=2```
+The Material Databse will contain a substanial amount of data. Therefore there we have included pagination to the list extracts. That means that all list will retrieve a default of 30 records (Materials or Manufacturers). By providing a ```per_page``` parameter the amount of data retreived for one page can be altered. To recieve the specific pages, one and add the parameter ```page```. An example of this could be to get the 10 records on each page and capture the second page ```http://materials.circuitdata.org/materials?per_page=10&page=2```
 
 In the header record on the return we will include the records for per page and total.
 
 ### Hosted environment
-- [CircuitDataMaterials API](https://circuitdatamaterials.herokuapp.com/) 
+- [CircuitDataMaterials API](http://materials.circuitdata.org/) 
 - [Documentation on the usage of the API](https://documenter.getpostman.com/view/2082658/RVg298ef)
 
 ## Basic example

@@ -24,7 +24,6 @@ class Commoditylive
     @cl_headers = {'refresh-token' => @cl_usertoken, 'email-address' => @cl_emailaddress, 'Team' => @cl_teamtoken, 'Content-Type' => 'application/json', 'X-Key-Inflection' => 'dash'}
     @cl_token_expire = Time.now.to_i
     authenticated = self.authenticate()
-    puts authenticated
   end
 
   def execute(method, url, payload=nil)

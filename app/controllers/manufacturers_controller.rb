@@ -16,8 +16,10 @@ class ManufacturersController < ApplicationController
   	      end
   	    end
   	  else
-  	    raise ActiveRecord::RecordNotFound,"No matching parameters: " + params.keys.to_s
-  	  end
+  	  	unless params[:page] or params[:per_page]
+  	      raise ActiveRecord::RecordNotFound,"No matching parameters: " + params.keys.reject { |k| k == 'controller' or k == 'action'}.to_s
+        end
+      end
     end
     if @manufacturers.present?
       paginate json: @manufacturers, status: :ok

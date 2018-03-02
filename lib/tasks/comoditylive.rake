@@ -20,13 +20,16 @@ namespace :commoditylive do
       end
     end
     @com_ids.uniq!
-    puts @com_ids.count
+    puts 'Updating ' + @com_ids.count.to_s + ' Materials'
     @com_ids.each do |com_id|
+    puts '----'  
     success, response = commoditylive.get_material(com_id)
     if success
       #puts response
       response = JSON.parse(response)
       manufacturer = Manufacturer.find_or_create_by(name: response["data"]["attributes"]["brand"]["name"]).update(
+        source: "COMMODITY.LIVE",
+        source_id: response["data"]["relationships"]["brand"]["data"]["id"],
         description: response["data"]["attributes"]["brand"]["description"],
         location: response["data"]["attributes"]["brand"]["location"],
         verified: response["data"]["attributes"]["brand"]["official"]
@@ -35,6 +38,8 @@ namespace :commoditylive do
       manu = Manufacturer.find_by_name(response["data"]["attributes"]["brand"]["name"])
       #puts manu
       material = Material.find_or_create_by(name: response["data"]["attributes"]["name"], manufacturer_id: manu.id).update(
+        source: "COMMODITY.LIVE",
+        source_id: com_id,
         circuitdata_version: "1.0", 
         function: "dielectric", 
         group: (response.dig("data", "attributes", "specifications").find{|spec| spec["property"] == 'group'}.dig("value") rescue nil),
