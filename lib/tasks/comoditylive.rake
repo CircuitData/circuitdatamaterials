@@ -40,7 +40,7 @@ namespace :commoditylive do
       material = Material.find_or_create_by(source_id: com_id).update(
         name: response["data"]["attributes"]["name"],
         source: "COMMODITY.LIVE",
-        circuitdata_version: "1.0", 
+        version: "1.0", 
         function: "dielectric", 
         group: (response.dig("data", "attributes", "specifications").find{|spec| spec["property"] == 'group'}.dig("value") rescue nil),
         manufacturer_id: manu.id ,
@@ -88,10 +88,11 @@ namespace :commoditylive do
         specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "finish" }[0]
 
         specs.reject { |item| item.nil? || item == '' }.each do |spec|
-            puts spec
           MaterialAttribute.find_or_create_by(name: spec["property"], material_id: mat.id)
           ma = MaterialAttribute.find_by(name: spec["property"], material_id: mat.id)
-          MaterialAttributeValue.find_or_create_by(material_attribute_id: ma.id).update(value: spec["value"], value_type: spec["format_name"])
+          ma.material_attribute_values.each do |mav|
+            MaterialAttributeValue.find_or_create_by(id: mav.id).update(value: spec["value"], value_type: spec["format_name"])
+          end
         end
       end
     end
