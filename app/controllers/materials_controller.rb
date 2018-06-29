@@ -12,7 +12,7 @@ class MaterialsController < ApplicationController
     page = params[:page].present? ? params[:page].to_i : 1
     per_page = params[:per_page].present? ? params[:per_page].to_i : 40
     @first = true
-    materials = Material.find_by_sql("SELECT m.circuitdata_version, m.name, m.verified, m.id, m.source, m.source_id, m.function, m.group, m.flexible, m.additional, m.link, m.remark, m.ul_94, m.accept_equivalent, m.ipc_standard, m.manufacturer_id, mf.name AS manufacturer
+    materials = Material.find_by_sql("SELECT m.version, m.name, m.verified, m.id, m.source, m.source_id, m.function, m.group, m.flexible, m.additional, m.link, m.remark, m.ul_94, m.accept_equivalent, m.ipc_standard, m.manufacturer_id, mf.name AS manufacturer
       FROM materials AS m
       LEFT JOIN manufacturers AS mf ON m.manufacturer_id = mf.id
       #{gen_search('materials')}
