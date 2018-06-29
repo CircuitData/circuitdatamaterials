@@ -73,7 +73,7 @@ class MaterialsController < ApplicationController
     	    elsif k.to_s == 'version' and v
     	      new_material << {k => v.to_f}  	      
     	    else  
-    		  new_material << {k => v} unless v == nil or k.to_s == 'manufacturer_id' or k.to_s == 'additional' or k.to_s == 'verified'
+    		  new_material << {k => v} unless v == nil or k.to_s == 'manufacturer_id' or k.to_s == 'additional' or k.to_s == 'verified' or k.to_s == 'source' or k.to_s == 'soruce_id' or k.to_s == 'ipc_standard'
     	      #puts 'intserted key: ' + k.to_s  
     	    end
     	  end
