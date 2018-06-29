@@ -58,7 +58,7 @@ class MaterialsController < ApplicationController
     	      	elsif av['values'].first['value_type'] == 'Numeric'
     	      	  val = av['values'].first['value'].to_i rescue av['values'].first['value']
     	      	elsif av['values'].first['value_type'] == 'Drop-down list'
-    	      	  val = av['values'].first['value'].to_a rescue av['values'].first['value']
+    	      	  val = JSON.parse(av['values'].first['value']) rescue av['values'].first['value']
                 else
     	      	  val = av['values'].first['value']
     	      		#puts 'this is the val: ' + val
@@ -69,7 +69,9 @@ class MaterialsController < ApplicationController
     	    elsif k.to_s == 'id' and v
     	      new_material << {'circuitdata_material_db_id' => v}
     	    elsif k.to_s == 'ul_94' and v
-    	      new_material << {'ul94' => v}    	      
+    	      new_material << {'ul94' => v}  	      
+    	    elsif k.to_s == 'version' and v
+    	      new_material << {k => v.to_f}  	      
     	    else  
     		  new_material << {k => v} unless v == nil or k.to_s == 'manufacturer_id' or k.to_s == 'additional' or k.to_s == 'verified'
     	      #puts 'intserted key: ' + k.to_s  
