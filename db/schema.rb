@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180302074242) do
+ActiveRecord::Schema.define(version: 20180523142205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20180302074242) do
     t.string   "source"
     t.string   "circuitdata_version"
     t.string   "source_id"
+    t.string   "ipc_standard"
     t.index ["manufacturer_id"], name: "index_materials_on_manufacturer_id", using: :btree
   end
 

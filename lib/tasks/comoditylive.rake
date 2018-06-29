@@ -11,7 +11,7 @@ namespace :commoditylive do
     $starttime = Time.now()
 
     commoditylive = Commoditylive.new('live')
-    clas_id =  "017adf82-c93c-4ba7-8bf0-2274208399a4"
+    clas_id =  "ab2c0959-c9d1-4406-9824-7c0d49c8bf73" #"017adf82-c93c-4ba7-8bf0-2274208399a4"
     @com_ids = []
     success, response = commoditylive.get_all_materials(clas_id)
     if success
@@ -27,32 +27,37 @@ namespace :commoditylive do
       #puts response
       response = JSON.parse(response)
       manufacturer = Manufacturer.find_or_create_by(source_id: response["data"]["relationships"]["brand"]["data"]["id"]).update(
+        name: response["data"]["attributes"]["brand"]["name"],
         source: "COMMODITY.LIVE",
         description: response["data"]["attributes"]["brand"]["description"],
         location: response["data"]["attributes"]["brand"]["location"],
         verified: response["data"]["attributes"]["brand"]["official"]
         )
-      #puts manufacturer
+      puts manufacturer
       manu = Manufacturer.find_by_name(response["data"]["attributes"]["brand"]["name"])
-      #puts manu
+      puts manu
+      puts response
       material = Material.find_or_create_by(source_id: com_id).update(
+        name: response["data"]["attributes"]["name"],
         source: "COMMODITY.LIVE",
         circuitdata_version: "1.0", 
         function: "dielectric", 
         group: (response.dig("data", "attributes", "specifications").find{|spec| spec["property"] == 'group'}.dig("value") rescue nil),
-        manufacturer_id: manu.id,
-        link: (response.dig("data", "attributes", "links").first.dig("url") rescue nil) ,
+        manufacturer_id: manu.id ,
+        link: (response.dig("data", "attributes", "links").first.dig("url") rescue nil),
         remark: (response.dig("data", "attributes", "specifications").find{|spec| spec["property"] == 'remark'}.dig("value") rescue nil) ,
         additional: (response.dig("data", "attributes", "specifications").find{|spec| spec["property"] == 'additional'}.dig("value") rescue nil) ,
         flexible: (response.dig("data", "attributes", "specifications").find{|spec| spec["property"] == 'flexible'}.dig("value") rescue nil),
-        ul_94: (response.dig("data", "attributes", "specifications").find{|spec| spec["property"] == 'ul_94'}.dig("value") rescue nil) ,
-        accept_equivalent: (response.dig("data", "attributes", "specifications").find{|spec| spec["property"] == 'accept_equivalent'}.dig("value") rescue nil) ,
-        verified: (response.dig("data", "attributes", "specifications").find{|spec| spec["property"] == 'verified'}.dig("value") rescue nil) 
+        ul_94: (response.dig("data", "attributes", "specifications").find{|spec| spec["property"] == 'ul_94'}.dig("value") rescue nil),
+        accept_equivalent: (response.dig("data", "attributes", "specifications").find{|spec| spec["property"] == 'accept_equivalent'}.dig("value") rescue nil),
+        verified: (response.dig("data", "attributes", "specifications").find{|spec| spec["property"] == 'verified'}.dig("value") rescue nil),
+        ipc_standard: (response.dig("data", "attributes", "standards").first.dig("code") rescue nil)
         )
+
         mat = Material.find_by_source_id(com_id)
         # Gather list of possible Material Attributes (Specifications like ipc_slash_sheet)
         specs = []
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "ipc_slash_sheet" }[0]
+        specs << (response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "ipc_slash_sheet" }[0].gsub(/\"/, "") rescue nil)
         specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "tg_min" }[0]
         specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "td_min" }[0]
         specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "resin" }[0]
@@ -83,9 +88,10 @@ namespace :commoditylive do
         specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "finish" }[0]
 
         specs.reject { |item| item.nil? || item == '' }.each do |spec|
+            puts spec
           MaterialAttribute.find_or_create_by(name: spec["property"], material_id: mat.id)
           ma = MaterialAttribute.find_by(name: spec["property"], material_id: mat.id)
-          MaterialAttributeValue.find_or_create_by(material_attribute_id: ma.id).update(value: spec["value"])
+          MaterialAttributeValue.find_or_create_by(material_attribute_id: ma.id).update(value: spec["value"], value_type: spec["format_name"])
         end
       end
     end
