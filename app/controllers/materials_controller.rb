@@ -7,7 +7,7 @@ class MaterialsController < ApplicationController
 
   def index
 
-    params.permit(:name, :group, :link, :circuitdata_version, :verified, :source, :function, :flexible, :additional, :remark, :ul_94, :accept_equivalent, :ipc_standard, :manufacturer)
+    params.permit(:name, :group, :link, :version, :verified, :source, :function, :flexible, :additional, :remark, :ul_94, :accept_equivalent, :ipc_standard, :manufacturer)
   
     page = params[:page].present? ? params[:page].to_i : 1
     per_page = params[:per_page].present? ? params[:per_page].to_i : 40
