@@ -4,10 +4,10 @@ class Commoditylive
   require 'time'
 
 
-  $live_uri = 'http://127.0.0.1:3000/api/v1'#'https://commodity.live/api/v1'
-  $live_usertoken = '36pJHrwJI47PexW5srEXzFnTNKgxnDh71cb3FQY-dgcrN' #Rails.application.secrets.live_usertoken
-  $live_teamtoken = '7a4c442f-ee93-45fb-9b5a-464157d2246e' #Rails.application.secrets.live_teamtoken
-  $live_emailaddress = 'fredrik.holst@elmatica.com' #Rails.application.secrets.live_emailaddress
+  $live_uri = 'https://commodity.live/api/v1'
+  $live_usertoken = Rails.application.secrets.live_usertoken
+  $live_teamtoken = Rails.application.secrets.live_teamtoken
+  $live_emailaddress = Rails.application.secrets.live_emailaddress
 
   def initialize(mode)
     if mode == 'live'

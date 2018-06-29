@@ -11,7 +11,7 @@ namespace :commoditylive do
     $starttime = Time.now()
 
     commoditylive = Commoditylive.new('live')
-    clas_id =  "ab2c0959-c9d1-4406-9824-7c0d49c8bf73" #"017adf82-c93c-4ba7-8bf0-2274208399a4"
+    clas_id =  "017adf82-c93c-4ba7-8bf0-2274208399a4"
     @com_ids = []
     success, response = commoditylive.get_all_materials(clas_id)
     if success
