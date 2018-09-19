@@ -7,14 +7,16 @@ class MaterialsController < ApplicationController
 
   def index
 
-    params.permit(:name, :group, :link, :version, :verified, :source, :function, :flexible, :additional, :remark, :ul_94, :accept_equivalent, :ipc_standard, :manufacturer)
+    params.permit(:name, :group, :link, :version, :verified, :source, :function, :flexible, :additional, :remark, :ul_94, :accept_equivalent, :ipc_standard, :manufacturer, :function)
   
     page = params[:page].present? ? params[:page].to_i : 1
     per_page = params[:per_page].present? ? params[:per_page].to_i : 40
     @first = true
-    materials = Material.find_by_sql("SELECT m.version, m.name, m.verified, m.id, m.source, m.source_id, m.function, m.group, m.flexible, m.additional, m.link, m.remark, m.ul_94, m.accept_equivalent, m.ipc_standard, m.manufacturer_id, mf.name AS manufacturer
+    materials = Material.find_by_sql("SELECT m.version, m.name, m.verified, m.id, m.function_id, f.name AS function_name, m.group_id, g.name AS group_name, m.source, m.source_id, m.flexible, m.additional, m.link, m.remark, m.ul_94, m.accept_equivalent, m.ipc_standard, m.manufacturer_id, mf.name AS manufacturer
       FROM materials AS m
       LEFT JOIN manufacturers AS mf ON m.manufacturer_id = mf.id
+      LEFT JOIN functions as f on m.function_id = f.id
+      LEFT JOIN groups as g on m.group_id = g.id
       #{gen_search('materials')}
       LIMIT #{per_page} OFFSET #{(page-1)*per_page};");
     materials = materials.as_json
@@ -71,22 +73,63 @@ class MaterialsController < ApplicationController
     	    elsif k.to_s == 'ul_94' and v
     	      new_material << {'ul94' => v}  	      
     	    elsif k.to_s == 'version' and v
-    	      new_material << {k => v.to_f}  	      
+    	      new_material << {k => v.to_f} 
+    	    elsif k.to_s == 'function_name' and v
+    	      new_material << {'function' => v} 
+    	    elsif k.to_s == 'group_name' and v
+    	      new_material << {'group' => v} 	      
     	    else  
-    		  new_material << {k => v} unless v == nil or k.to_s == 'manufacturer_id' or k.to_s == 'additional' or k.to_s == 'verified' or k.to_s == 'source' or k.to_s == 'soruce_id' or k.to_s == 'ipc_standard'
+    		  new_material << {k => v} unless v == nil or k.to_s == 'manufacturer_id' or k.to_s == 'function_id' or k.to_s == 'group_id' or k.to_s == 'additional' or k.to_s == 'verified' or k.to_s == 'source' or k.to_s == 'source_id' or k.to_s == 'ipc_standard'
     	      #puts 'intserted key: ' + k.to_s  
     	    end
     	  end
     	  new_materials << new_material.reduce({}, :merge)
     	end
-        (new_materials.uniq {|e| e[:name] }).each do |n|
-          if n["manufacturer"]
-          	puts 'by'
-            n["name"] = n["name"] + ' by ' + n["manufacturer"]
-          else
-        	n["name"] = n["name"] + '-1' 
-          end
+puts 'uniqe new materials'
+   # 	puts (new_materials.uniq {|e| e[:name] }).count
+   # 	puts new_materials
+   # 	if (new_materials.uniq {|e| e[:name] }).count > 1
+   # 		puts (new_materials.uniq {|e| e[:name] })
+   #     (new_materials.uniq {|e| e[:name] }).each do |n|
+
+        u = new_materials.uniq {|e| e["name"] }
+        puts u.count
+        puts u
+        new_materials = new_materials - u
+        u2 = new_materials
+        if new_materials
+        	new_materials.each do |a|
+            if a['manufacturer']
+        #  	  puts 'by'
+              a["name"] = a["name"] + ' by ' + a["manufacturer"]
+            else
+        	  a["name"] = a["name"] + '-1' 
+            end
+            end
         end
+new_materials = new_materials + u
+        #u = new_materials.group_by {|x| x[:name]}.values.select {|x| x.size > 1}
+        #puts u.count
+        #puts u
+        #puts new_materials.count
+        #new_materials = new_materials - u.first
+        #puts new_materials.count
+        #if u
+        #  u.each do |a|
+        #  	puts 'before if'
+        #  	#puts a.keys
+        #  	puts a['manufacturer']
+        #    if a['manufacturer']
+        #  	  puts 'by'
+        #      a["name"] = a["name"] + ' by ' + a["manufacturer"]
+        #    else
+        #	  a["name"] = a["name"] + '-1' 
+        #    end
+        #    new_materials << a
+        #  end
+        #end
+  #    end
+  #      end
 
         render json: new_materials, status: :ok
       else
@@ -104,6 +147,8 @@ class MaterialsController < ApplicationController
   def columns
     # the exclude tell us which query to exclude
     [
+        {name: 'group_name', table_name: 'name', allow: ['materials'], table: 'g.'},
+        {name: 'function_name', table_name: 'name', allow: ['materials'], table: 'f.'},
         {name: 'manufacturer_name', table_name: 'name', allow: ['materials'], table: 'mf.'},
         {name: 'attribute_name', table_name: 'name', allow: ['attributes'], table: 'ma.'},
         {name: 'name', allow: ['materials'], table: 'm.'},

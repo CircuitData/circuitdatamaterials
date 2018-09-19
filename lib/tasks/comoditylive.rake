@@ -23,27 +23,35 @@ namespace :commoditylive do
     puts 'Updating ' + @com_ids.count.to_s + ' Materials'
     @com_ids.each do |com_id|
     success, response = commoditylive.get_material(com_id)
+    puts com_id
     if success
       #puts response
       response = JSON.parse(response)
-      manufacturer = Manufacturer.find_or_create_by(source_id: response["data"]["relationships"]["brand"]["data"]["id"]).update(
-        name: response["data"]["attributes"]["brand"]["name"],
-        source: "COMMODITY.LIVE",
-        description: response["data"]["attributes"]["brand"]["description"],
-        location: response["data"]["attributes"]["brand"]["location"],
-        verified: response["data"]["attributes"]["brand"]["official"]
-        )
-      puts manufacturer
-      manu = Manufacturer.find_by_name(response["data"]["attributes"]["brand"]["name"])
-      puts manu
-      puts response
+      puts response["data"]["attributes"]["name"]
+      unless response["data"]["relationships"]["brand"]["data"] == nil
+        puts "inside if"
+        puts response["data"]["relationships"]["brand"]["data"]
+        manufacturer = Manufacturer.find_or_create_by(source_id: response["data"]["relationships"]["brand"]["data"]["id"]).update(
+          name: response["data"]["attributes"]["brand"]["name"],
+          source: "COMMODITY.LIVE",
+          description: response["data"]["attributes"]["brand"]["description"],
+          location: response["data"]["attributes"]["brand"]["location"],
+          verified: response["data"]["attributes"]["brand"]["official"]
+          )
+        puts manufacturer
+        manu = Manufacturer.find_by_name(response["data"]["attributes"]["brand"]["name"])
+        puts manu
+#        puts response
+      else
+        manu = nil
+      end
       material = Material.find_or_create_by(source_id: com_id).update(
         name: response["data"]["attributes"]["name"],
         source: "COMMODITY.LIVE",
         version: "1.0", 
         function: "dielectric", 
         group: (response.dig("data", "attributes", "specifications").find{|spec| spec["property"] == 'group'}.dig("value") rescue nil),
-        manufacturer_id: manu.id ,
+        manufacturer_id: manu.nil? ? nil : manu.id,
         link: (response.dig("data", "attributes", "links").first.dig("url") rescue nil),
         remark: (response.dig("data", "attributes", "specifications").find{|spec| spec["property"] == 'remark'}.dig("value") rescue nil) ,
         additional: (response.dig("data", "attributes", "specifications").find{|spec| spec["property"] == 'additional'}.dig("value") rescue nil) ,
@@ -55,44 +63,54 @@ namespace :commoditylive do
         )
 
         mat = Material.find_by_source_id(com_id)
+        puts mat
         # Gather list of possible Material Attributes (Specifications like ipc_slash_sheet)
         specs = []
-        specs << (response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "ipc_slash_sheet" }[0].gsub(/\"/, "") rescue nil)
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "tg_min" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "td_min" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "resin" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "resin_content" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "flame_retardant" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "woven_reinforcement" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "filler" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "reinforcement" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "thickness" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "dk" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "cti" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "frequency" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "df" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "t260" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "t280" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "t300" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "mot" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "z_cte" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "z_cte_before_tg" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "z_cte_after_tg" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "dielectric_breakdown" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "water_absorption" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "thermal_conductivity" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "volume_resistivity" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "electric_strength" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "foil_roughness" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "ipc_sm_840_class" }[0]
-        specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "finish" }[0]
-
+        response["data"]["attributes"]["specifications"].each do |s|
+            puts s["property"]
+            puts 'next'
+          specs << s unless ['group', 'remark', 'additional', 'flexible', 'ul_94', 'accept_equivalent', 'verified'].include?(s["property"]) 
+        end   
+        puts specs.class
+        puts specs.count
+        #specs << (response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "ipc_slash_sheet" }[0].gsub(/\"/, "") rescue nil)
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "tg_min" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "td_min" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "resin" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "resin_content" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "flame_retardant" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "woven_reinforcement" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "filler" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "reinforcement" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "thickness" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "dk" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "cti" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "frequency" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "df" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "t260" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "t280" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "t300" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "mot" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "z_cte" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "z_cte_before_tg" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "z_cte_after_tg" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "dielectric_breakdown" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "water_absorption" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "thermal_conductivity" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "volume_resistivity" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "electric_strength" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "foil_roughness" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "ipc_sm_840_class" }[0]
+        #specs << response["data"]["attributes"]["specifications"].select {|specification| specification["property"] == "finish" }[0]
+#puts specs
         specs.reject { |item| item.nil? || item == '' }.each do |spec|
+            puts 'inside spec'
+            puts spec
           MaterialAttribute.find_or_create_by(name: spec["property"], material_id: mat.id)
           ma = MaterialAttribute.find_by(name: spec["property"], material_id: mat.id)
-          ma.material_attribute_values.each do |mav|
-            MaterialAttributeValue.find_or_create_by(id: mav.id).update(value: spec["value"], value_type: spec["format_name"])
-          end
+          #ma.material_attribute_values.each do |mav|
+            MaterialAttributeValue.find_or_create_by(material_attribute_id: ma.id).update(value: spec["value"], value_type: spec["format_name"])
+          #end
         end
       end
     end

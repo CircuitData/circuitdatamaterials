@@ -10,11 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180629090415) do
+ActiveRecord::Schema.define(version: 20180911080944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "functions", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "groups", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "manufacturers", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "name"
@@ -62,10 +76,16 @@ ActiveRecord::Schema.define(version: 20180629090415) do
     t.string   "version"
     t.string   "source_id"
     t.string   "ipc_standard"
+    t.uuid     "group_id"
+    t.uuid     "function_id"
+    t.index ["function_id"], name: "index_materials_on_function_id", using: :btree
+    t.index ["group_id"], name: "index_materials_on_group_id", using: :btree
     t.index ["manufacturer_id"], name: "index_materials_on_manufacturer_id", using: :btree
   end
 
   add_foreign_key "material_attribute_values", "material_attributes"
   add_foreign_key "material_attributes", "materials"
+  add_foreign_key "materials", "functions"
+  add_foreign_key "materials", "groups"
   add_foreign_key "materials", "manufacturers"
 end
