@@ -60,12 +60,19 @@ class MaterialsController < ApplicationController
     	      	elsif av['values'].first['value_type'] == 'Numeric'
     	      	  val = av['values'].first['value'].to_i rescue av['values'].first['value']
     	      	elsif av['values'].first['value_type'] == 'Drop-down list'
-    	      	  val = JSON.parse(av['values'].first['value']) rescue av['values'].first['value']
+    	      	  val = JSON.parse(av['values'].first['value']) rescue av['values'].first['value'] 
+
+    	      	  if av['name'] == 'ipc_slash_sheet'
+    	      	  		val = val.reject(&:empty?).map(&:to_i) rescue av['values'].first['value'].to_i
+    	      	  		if val == 0
+    	      	  			val = "incorrect_value" #nil #av['values'].first['value']
+    	      	  		end
+    	      	  	end
                 else
     	      	  val = av['values'].first['value']
     	      		#puts 'this is the val: ' + val
                 end
-    	      	att << {av['name'] => val} unless av['values'].first['value'] == nil
+    	      	att << {av['name'] => val} unless av['values'].first['value'] == nil or val == "incorrect_value"
     	      end
     	      new_material << {'attributes' => att.reduce({}, :merge)}
     	    elsif k.to_s == 'id' and v
@@ -85,51 +92,19 @@ class MaterialsController < ApplicationController
     	  end
     	  new_materials << new_material.reduce({}, :merge)
     	end
-puts 'uniqe new materials'
-   # 	puts (new_materials.uniq {|e| e[:name] }).count
-   # 	puts new_materials
-   # 	if (new_materials.uniq {|e| e[:name] }).count > 1
-   # 		puts (new_materials.uniq {|e| e[:name] })
-   #     (new_materials.uniq {|e| e[:name] }).each do |n|
 
         u = new_materials.uniq {|e| e["name"] }
-        puts u.count
-        puts u
         new_materials = new_materials - u
-        u2 = new_materials
         if new_materials
-        	new_materials.each do |a|
+          new_materials.each do |a|
             if a['manufacturer']
-        #  	  puts 'by'
               a["name"] = a["name"] + ' by ' + a["manufacturer"]
             else
         	  a["name"] = a["name"] + '-1' 
             end
-            end
+          end
         end
-new_materials = new_materials + u
-        #u = new_materials.group_by {|x| x[:name]}.values.select {|x| x.size > 1}
-        #puts u.count
-        #puts u
-        #puts new_materials.count
-        #new_materials = new_materials - u.first
-        #puts new_materials.count
-        #if u
-        #  u.each do |a|
-        #  	puts 'before if'
-        #  	#puts a.keys
-        #  	puts a['manufacturer']
-        #    if a['manufacturer']
-        #  	  puts 'by'
-        #      a["name"] = a["name"] + ' by ' + a["manufacturer"]
-        #    else
-        #	  a["name"] = a["name"] + '-1' 
-        #    end
-        #    new_materials << a
-        #  end
-        #end
-  #    end
-  #      end
+        new_materials = new_materials + u
 
         render json: new_materials, status: :ok
       else
