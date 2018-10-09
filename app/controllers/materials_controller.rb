@@ -64,9 +64,14 @@ class MaterialsController < ApplicationController
 
     	      	  if av['name'] == 'ipc_slash_sheet'
     	      	  		val = val.reject(&:empty?).map(&:to_i) rescue av['values'].first['value'].to_i
-    	      	  		if val == 0
+    	      	  		if val.kind_of?(Array)
+    	      	  			val = val
+    	      	  		elsif val == 0
     	      	  			val = "incorrect_value" #nil #av['values'].first['value']
+    	      	  		else
+    	      	  			val = [val]
     	      	  		end
+
     	      	  	end
                 else
     	      	  val = av['values'].first['value']
