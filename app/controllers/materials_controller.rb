@@ -49,6 +49,7 @@ class MaterialsController < ApplicationController
     	new_materials = []
     	materials.each do |m|
           m.each do |k,v|
+          	#if k == 'name' and ['gold', 'copper'].include? v
     	    puts k.to_s + ' value:  ' + v.to_s
     	    if k == 'manufacturer' and v
     	      new_material << {k => v.name}
@@ -77,7 +78,7 @@ class MaterialsController < ApplicationController
     	      	  val = av['values'].first['value']
     	      		#puts 'this is the val: ' + val
                 end
-    	      	att << {av['name'] => val} unless av['values'].first['value'] == nil or val == "incorrect_value"
+    	      	att << {av['name'] => val} unless av['values'].first['value'] == nil or val == "incorrect_value" or ['gold', 'copper'].include?(m['name'].downcase)
     	      end
     	      new_material << {'attributes' => att.reduce({}, :merge)}
     	    elsif k.to_s == 'id' and v
