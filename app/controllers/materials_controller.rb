@@ -45,10 +45,15 @@ class MaterialsController < ApplicationController
   end
     if materials.count > 0
       if params[:endpoint] == 'cdp'
-    	new_material = []
     	new_materials = []
     	materials.each do |m|
+    	new_material = []
+    		
           m.each do |k,v|
+        #  	if k == 'name' and ['Gold', 'copper'].include? v
+         # 		puts 'THIS IS GOLD'
+         # 		puts m
+         # 	end
           	#if k == 'name' and ['gold', 'copper'].include? v
     	    puts k.to_s + ' value:  ' + v.to_s
     	    if k == 'manufacturer' and v
@@ -90,7 +95,7 @@ class MaterialsController < ApplicationController
     	    elsif k.to_s == 'function_name' and v
     	      new_material << {'function' => v} 
     	    elsif k.to_s == 'group_name' and v
-    	      new_material << {'group' => v} 	      
+    	      new_material << {'group' => v}
     	    else  
     		  new_material << {k => v} unless v == nil or k.to_s == 'manufacturer_id' or k.to_s == 'function_id' or k.to_s == 'group_id' or k.to_s == 'additional' or k.to_s == 'verified' or k.to_s == 'source' or k.to_s == 'source_id' or k.to_s == 'ipc_standard'
     	      #puts 'intserted key: ' + k.to_s  
