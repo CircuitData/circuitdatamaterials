@@ -51,7 +51,7 @@ class MaterialsController < ApplicationController
     		
           m.each do |k,v|
         #  	if k == 'name' and ['Gold', 'copper'].include? v
-         # 		puts 'THIS IS GOLD'
+         # 		puts 'THIS IS GOLD '
          # 		puts m
          # 	end
           	#if k == 'name' and ['gold', 'copper'].include? v
