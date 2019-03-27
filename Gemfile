@@ -4,7 +4,7 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-ruby '2.3.0'
+ruby '2.6.2'
 # Use Rack attack for throttling the API calls
 gem 'rack-attack'
 
