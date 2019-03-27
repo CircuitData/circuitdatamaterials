@@ -22,6 +22,7 @@ gem 'puma', '~> 3.0'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'bootsnap'
 gem 'roo'
 gem 'rest-client'
 gem 'will_paginate', '~> 3.1.0'
