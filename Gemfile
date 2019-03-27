@@ -9,7 +9,7 @@ ruby '2.6.2'
 gem 'rack-attack'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.6'
+gem 'rails', '~> 5.2.2'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 # Use PostGresql to be compliant with Heroku
@@ -22,6 +22,7 @@ gem 'puma', '~> 3.0'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'bootsnap'
 gem 'roo'
 gem 'rest-client'
 gem 'will_paginate', '~> 3.1.0'
