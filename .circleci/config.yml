@@ -47,10 +47,6 @@ jobs:
           command: bin/rails db:schema:load --trace
 
       - run:
-          name: Run yarn test
-          command: yarn test
-
-      - run:
           name: Run rspec
           command: |
             bundle exec rspec --profile 10 \
