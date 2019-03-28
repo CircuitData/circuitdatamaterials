@@ -1,5 +1,4 @@
 class FunctionsController < ApplicationController
-
   def index
     @functions = Function.all
     paginate json: @functions

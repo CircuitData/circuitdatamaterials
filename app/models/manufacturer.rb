@@ -1,3 +1,3 @@
 class Manufacturer < ApplicationRecord
-	has_many :materials
+  has_many :materials
 end

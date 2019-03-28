@@ -3,8 +3,7 @@ class MaterialSerializer < ActiveModel::Serializer
 
   def manufacturer
     if object.manufacturer
-     ManuSerializer.new(object.manufacturer, scope: scope, root: true, material: object)
+      ManuSerializer.new(object.manufacturer, scope: scope, root: true, material: object)
     end
   end
-
 end
