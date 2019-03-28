@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :material_attribute do
-    name {'color'}
+    name { "color" }
     material
   end
 end
