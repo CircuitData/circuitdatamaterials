@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_11_080944) do
+ActiveRecord::Schema.define(version: 2019_03_28_102149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,22 +71,21 @@ ActiveRecord::Schema.define(version: 2018_09_11_080944) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "flexible"
-    t.string "additional", default: [], array: true
     t.string "ul_94"
     t.boolean "accept_equivalent"
     t.boolean "verified"
     t.string "source"
     t.string "version"
     t.string "source_id"
-    t.string "ipc_standard"
+    t.integer "ipc_standard"
     t.uuid "group_id"
     t.uuid "function_id"
+    t.text "additional"
     t.index ["function_id"], name: "index_materials_on_function_id"
     t.index ["group_id"], name: "index_materials_on_group_id"
     t.index ["manufacturer_id"], name: "index_materials_on_manufacturer_id"
   end
 
-  add_foreign_key "material_attribute_values", "material_attributes"
   add_foreign_key "material_attributes", "materials"
   add_foreign_key "materials", "functions"
   add_foreign_key "materials", "groups"
