@@ -27,10 +27,6 @@ class ManufacturersController < ApplicationController
       raise ActiveRecord::RecordNotFound,"Manufacturer did not match: " + params.to_s
     end
   end
-#  def index
-#    @manufacturers = Manufacturer.all
-#    paginate json: @manufacturers
-#  end
 
   def show
     @manufacturer = Manufacturer.find(params[:id])

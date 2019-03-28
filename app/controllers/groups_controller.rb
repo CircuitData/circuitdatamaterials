@@ -7,6 +7,6 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    render json: @group#, include: 'materials'
+    render json: @group
   end
 end

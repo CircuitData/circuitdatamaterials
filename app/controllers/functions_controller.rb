@@ -7,6 +7,6 @@ class FunctionsController < ApplicationController
 
   def show
     @function = Function.find(params[:id])
-    render json: @function#, include: 'materials'
+    render json: @function
   end
 end

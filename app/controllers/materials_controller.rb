@@ -8,7 +8,7 @@ class MaterialsController < ApplicationController
   def index
 
     params.permit(:name, :group, :link, :version, :verified, :source, :function, :flexible, :additional, :remark, :ul_94, :accept_equivalent, :ipc_standard, :manufacturer, :function)
-  
+
     page = params[:page].present? ? params[:page].to_i : 1
     per_page = params[:per_page].present? ? params[:per_page].to_i : 40
     @first = true
@@ -32,8 +32,6 @@ class MaterialsController < ApplicationController
        values = MaterialAttributeValue.find_by_sql("SELECT mav.id, mav.value, mav.value_type
          FROM material_attribute_values AS mav
          WHERE '#{attribute["id"]}' = mav.material_attribute_id");
-         # need to add {gen_search('attributes')}
-       # add the attributes into material
        attribute[:values] = values.as_json
        test_attributes << attribute
 
@@ -48,17 +46,11 @@ class MaterialsController < ApplicationController
     	new_materials = []
     	materials.each do |m|
     	new_material = []
-    		
+
           m.each do |k,v|
-        #  	if k == 'name' and ['Gold', 'copper'].include? v
-         # 		puts 'THIS IS GOLD'
-         # 		puts m
-         # 	end
-          	#if k == 'name' and ['gold', 'copper'].include? v
-    	    puts k.to_s + ' value:  ' + v.to_s
     	    if k == 'manufacturer' and v
     	      new_material << {k => v.name}
-    	    elsif k.to_s == 'material_attributes' and v 
+    	    elsif k.to_s == 'material_attributes' and v
     	      att = []
     	      v.each do |av|
     	      	if av['values'].first['value_type'] == 'Decimal'
@@ -66,14 +58,14 @@ class MaterialsController < ApplicationController
     	      	elsif av['values'].first['value_type'] == 'Numeric'
     	      	  val = av['values'].first['value'].to_i rescue av['values'].first['value']
     	      	elsif av['values'].first['value_type'] == 'Drop-down list'
-    	      	  val = JSON.parse(av['values'].first['value']) rescue av['values'].first['value'] 
+    	      	  val = JSON.parse(av['values'].first['value']) rescue av['values'].first['value']
 
     	      	  if av['name'] == 'ipc_slash_sheet'
     	      	  		val = val.reject(&:empty?).map(&:to_i) rescue av['values'].first['value'].to_i
     	      	  		if val.kind_of?(Array)
     	      	  			val = val
     	      	  		elsif val == 0
-    	      	  			val = "incorrect_value" #nil #av['values'].first['value']
+    	      	  			val = "incorrect_value"
     	      	  		else
     	      	  			val = [val]
     	      	  		end
@@ -81,7 +73,6 @@ class MaterialsController < ApplicationController
     	      	  	end
                 else
     	      	  val = av['values'].first['value']
-    	      		#puts 'this is the val: ' + val
                 end
     	      	att << {av['name'] => val} unless av['values'].first['value'] == nil or val == "incorrect_value" or ['gold', 'copper'].include?(m['name'].downcase)
     	      end
@@ -89,16 +80,15 @@ class MaterialsController < ApplicationController
     	    elsif k.to_s == 'id' and v
     	      new_material << {'circuitdata_material_db_id' => v}
     	    elsif k.to_s == 'ul_94' and v
-    	      new_material << {'ul94' => v}  	      
+    	      new_material << {'ul94' => v}
     	    elsif k.to_s == 'version' and v
-    	      new_material << {k => v.to_f} 
+    	      new_material << {k => v.to_f}
     	    elsif k.to_s == 'function_name' and v
-    	      new_material << {'function' => v} 
+    	      new_material << {'function' => v}
     	    elsif k.to_s == 'group_name' and v
     	      new_material << {'group' => v}
-    	    else  
+    	    else
     		  new_material << {k => v} unless v == nil or k.to_s == 'manufacturer_id' or k.to_s == 'function_id' or k.to_s == 'group_id' or k.to_s == 'additional' or k.to_s == 'verified' or k.to_s == 'source' or k.to_s == 'source_id' or k.to_s == 'ipc_standard'
-    	      #puts 'intserted key: ' + k.to_s  
     	    end
     	  end
     	  new_materials << new_material.reduce({}, :merge)
@@ -111,7 +101,7 @@ class MaterialsController < ApplicationController
             if a['manufacturer']
               a["name"] = a["name"] + ' by ' + a["manufacturer"]
             else
-        	  a["name"] = a["name"] + '-1' 
+        	  a["name"] = a["name"] + '-1'
             end
           end
         end
@@ -131,14 +121,12 @@ class MaterialsController < ApplicationController
     params.permit(:name, :link)
   end
   def columns
-    # the exclude tell us which query to exclude
     [
         {name: 'group_name', table_name: 'name', allow: ['materials'], table: 'g.'},
         {name: 'function_name', table_name: 'name', allow: ['materials'], table: 'f.'},
         {name: 'manufacturer_name', table_name: 'name', allow: ['materials'], table: 'mf.'},
         {name: 'attribute_name', table_name: 'name', allow: ['attributes'], table: 'ma.'},
         {name: 'name', allow: ['materials'], table: 'm.'},
-        #{name: 'name', allow: ['materials'], table: {materials: 'mf.'}},
         {name: 'function', allow: ['materials'], table: 'm.'},
         {name: 'group', allow: ['materials'], table: 'm.'},
         {name: 'circuitdata_version', allow: ['materials'], table: 'm.'},
@@ -158,22 +146,17 @@ class MaterialsController < ApplicationController
 
   def gen_search(type)
     cols = columns.select{|c| c[:allow].include?(type)}
-    # if_search = cols.each{|c| params[c[:name].to_sym].present?}
     if_search = cols.each{|c| params[c[:name].to_sym].present?}
     if if_search
       query, first = "#{type == 'materials' ? 'WHERE' : ''} (", true
       cols.each{|c|
-        # name, table = c[:name], cols.first.dig(:table, type.to_sym)
         name, table = c[:name], c[:table]
-        # if params[name.to_sym].present?
         if params[c[:name].to_sym].present?
           query += (first ? '' : ' AND ') + "#{table if table.present?}#{c[:table_name].present? ? c[:table_name] : name} ILIKE '%#{params[name.to_sym]}%'"
-        #  binding.pry if table.present?
           first = false # should change on the first loop
         end
       }
       query += ')'
-      #binding.pry 
       query[-2,2] == '()' ? '' : query;
     else
       ''
