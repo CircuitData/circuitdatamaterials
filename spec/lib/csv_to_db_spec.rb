@@ -27,7 +27,7 @@ RSpec.describe CsvToDb do
       frequency: 22.0,
       function: "final_finish",
       group: "FR2",
-      ipc_slash_sheet: ["1", "2"],
+      ipc_slash_sheet: [1, 2],
       ipc_sm_840_class: "TF",
       ipc_standard: 12,
       link: "cheezyLink",
@@ -62,6 +62,23 @@ RSpec.describe CsvToDb do
     it "converts the data into hashes" do
       row = subject.materials.map(&:to_hash).first.symbolize_keys
       expect(row).to eql(material_data.merge(manufacturer: manufacturer))
+    end
+  end
+
+  describe "#load_into_db" do
+    it "creates the material in the DB" do
+      expect { subject.load_into_db }.to change { Material.count }.by(1)
+    end
+
+    it "populates the attributes correctly" do
+      subject.load_into_db
+      mat = Material.first
+
+      expect(mat.manufacturer).to eql(manufacturer)
+      attrs = mat.attributes.symbolize_keys.except(
+        :manufacturer_id, :created_at, :updated_at, :source, :source_id
+      )
+      expect(attrs).to include(material_data)
     end
   end
 end

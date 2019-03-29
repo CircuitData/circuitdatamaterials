@@ -60,6 +60,12 @@ class CsvToDb
     @materials ||= convert_rows
   end
 
+  def load_into_db
+    materials.each do |attrs|
+      Material.create!(attrs)
+    end
+  end
+
   private
 
   attr_reader :csv
