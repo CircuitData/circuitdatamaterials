@@ -31,5 +31,6 @@ class AddColumnsToMaterials < ActiveRecord::Migration[5.2]
       t.string :reinforcement
       t.string :resin
     end
+    MigrateDataToMaterials.run(Material.all)
   end
 end
