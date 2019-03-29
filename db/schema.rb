@@ -10,14 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_28_102149) do
+ActiveRecord::Schema.define(version: 2019_03_29_061022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
-
-  create_table "account", primary_key: "user_id", id: :serial, force: :cascade do |t|
-  end
 
   create_table "functions", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string "name"
@@ -56,7 +53,10 @@ ActiveRecord::Schema.define(version: 2019_03_28_102149) do
   end
 
   create_table "material_attributes", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string "type"
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.uuid "material_id"
     t.index ["material_id"], name: "index_material_attributes_on_material_id"
   end
@@ -81,11 +81,41 @@ ActiveRecord::Schema.define(version: 2019_03_28_102149) do
     t.uuid "group_id"
     t.uuid "function_id"
     t.text "additional"
+    t.boolean "woven_reinforcement"
+    t.decimal "cti"
+    t.decimal "df"
+    t.decimal "dielectric_breakdown"
+    t.decimal "dk"
+    t.decimal "electric_strength"
+    t.decimal "frequency"
+    t.decimal "mot"
+    t.decimal "resin_content"
+    t.decimal "t260"
+    t.decimal "t280"
+    t.decimal "t300"
+    t.decimal "td_min"
+    t.decimal "tg_min"
+    t.decimal "thermal_conductivity"
+    t.decimal "thickness"
+    t.decimal "volume_resistivity"
+    t.decimal "water_absorption"
+    t.decimal "z_cte"
+    t.decimal "z_cte_after_tg"
+    t.decimal "z_cte_before_tg"
+    t.integer "ipc_slash_sheet", array: true
+    t.string "filler", array: true
+    t.string "finish"
+    t.string "flame_retardant"
+    t.string "foil_roughness"
+    t.string "ipc_sm_840_class"
+    t.string "reinforcement"
+    t.string "resin"
     t.index ["function_id"], name: "index_materials_on_function_id"
     t.index ["group_id"], name: "index_materials_on_group_id"
     t.index ["manufacturer_id"], name: "index_materials_on_manufacturer_id"
   end
 
+  add_foreign_key "material_attribute_values", "material_attributes"
   add_foreign_key "material_attributes", "materials"
   add_foreign_key "materials", "functions"
   add_foreign_key "materials", "groups"
