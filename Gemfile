@@ -17,6 +17,7 @@ gem "will_paginate", "~> 3.1.0"
 gem "api-pagination"
 gem "active_model_serializers", "~> 0.10.2"
 gem "rack-attack"
+gem "circuitdata"
 
 group :development, :test do
   gem "byebug", platform: :mri
