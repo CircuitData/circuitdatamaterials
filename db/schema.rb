@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_29_120438) do
+ActiveRecord::Schema.define(version: 2019_03_29_125008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,24 +43,6 @@ ActiveRecord::Schema.define(version: 2019_03_29_120438) do
     t.string "source_id"
   end
 
-  create_table "material_attribute_values", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.string "value"
-    t.uuid "material_attribute_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "value_type"
-    t.index ["material_attribute_id"], name: "index_material_attribute_values_on_material_attribute_id"
-  end
-
-  create_table "material_attributes", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.string "type"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.uuid "material_id"
-    t.index ["material_id"], name: "index_material_attributes_on_material_id"
-  end
-
   create_table "materials", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string "function"
     t.string "group"
@@ -78,8 +60,6 @@ ActiveRecord::Schema.define(version: 2019_03_29_120438) do
     t.string "version"
     t.string "source_id"
     t.integer "ipc_standard"
-    t.uuid "group_id"
-    t.uuid "function_id"
     t.text "additional"
     t.boolean "woven_reinforcement"
     t.decimal "cti"
@@ -110,14 +90,8 @@ ActiveRecord::Schema.define(version: 2019_03_29_120438) do
     t.string "ipc_sm_840_class"
     t.string "reinforcement"
     t.string "resin"
-    t.index ["function_id"], name: "index_materials_on_function_id"
-    t.index ["group_id"], name: "index_materials_on_group_id"
     t.index ["manufacturer_id"], name: "index_materials_on_manufacturer_id"
   end
 
-  add_foreign_key "material_attribute_values", "material_attributes"
-  add_foreign_key "material_attributes", "materials"
-  add_foreign_key "materials", "functions"
-  add_foreign_key "materials", "groups"
   add_foreign_key "materials", "manufacturers"
 end
