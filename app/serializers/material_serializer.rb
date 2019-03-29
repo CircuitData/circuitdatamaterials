@@ -1,13 +1,18 @@
 class MaterialSerializer < ActiveModel::Serializer
   attributes(
+    :version,
     :circuitdata_material_db_id,
+    :function,
+    :group,
     :manufacturer,
     :name,
-    :remark,
-    :ul94,
-    :link,
     :flexible,
+    :link,
+    :remark,
+    :additional,
+    :verified,
     :accept_equivalent,
+    :ul94,
   )
 
   attribute :attrs, key: :attributes
@@ -26,5 +31,9 @@ class MaterialSerializer < ActiveModel::Serializer
 
   def attrs
     MaterialAttributeSerializer.new(object)
+  end
+
+  def version
+    1.0
   end
 end

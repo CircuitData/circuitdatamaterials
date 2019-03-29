@@ -1,11 +1,5 @@
 class MaterialAttributeSerializer < ActiveModel::Serializer
   attributes(
-    :function,
-    :group,
-    :flexible,
-    :additional,
-    :ul_94,
-    :verified,
     :ipc_standard,
     :cti,
     :df,
@@ -80,14 +74,6 @@ class MaterialAttributeSerializer < ActiveModel::Serializer
 
   def t300
     object.t300.to_f
-  end
-
-  def td_min
-    object.td_min.to_f
-  end
-
-  def tg_min
-    object.tg_min.to_f
   end
 
   def thermal_conductivity
