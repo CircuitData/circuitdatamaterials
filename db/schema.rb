@@ -16,9 +16,6 @@ ActiveRecord::Schema.define(version: 2019_03_29_061022) do
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
-  create_table "account", primary_key: "user_id", id: :serial, force: :cascade do |t|
-  end
-
   create_table "functions", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -56,7 +53,10 @@ ActiveRecord::Schema.define(version: 2019_03_29_061022) do
   end
 
   create_table "material_attributes", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string "type"
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.uuid "material_id"
     t.index ["material_id"], name: "index_material_attributes_on_material_id"
   end
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 2019_03_29_061022) do
     t.index ["manufacturer_id"], name: "index_materials_on_manufacturer_id"
   end
 
+  add_foreign_key "material_attribute_values", "material_attributes"
   add_foreign_key "material_attributes", "materials"
   add_foreign_key "materials", "functions"
   add_foreign_key "materials", "groups"

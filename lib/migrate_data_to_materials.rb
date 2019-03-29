@@ -11,6 +11,7 @@ class MigrateDataToMaterials
     materials.each do |material|
       migrate_material(material)
     end
+    error_map
   end
 
   private
@@ -18,7 +19,7 @@ class MigrateDataToMaterials
   attr_reader :materials
 
   def migrate_material(material)
-    material.update(attributes_from_other_tables(material))
+    material.update!(attributes_from_other_tables(material))
   end
 
   def attributes_from_other_tables(material)
@@ -38,7 +39,7 @@ class MigrateDataToMaterials
       thickness: first_number(material, "thickness"),
       volume_resistivity: first_number(material, "volume_resistivity"),
       water_absorption: first_number(material, "water_absorption"),
-      woven_reinforcement: "t" == first_value(material, "woven_reinforcement"),
+      woven_reinforcement: boolean(material, "woven_reinforcement"),
       electric_strength: first_number(material, "electric_strength"),
       frequency: first_number(material, "frequency"),
       dk: first_number(material, "dk"),
@@ -55,9 +56,24 @@ class MigrateDataToMaterials
     }
   end
 
+  def boolean(material, attr)
+    val = first_value(material, attr)
+    return if val.nil?
+    val == "t"
+  end
+
   def first_number(material, attr)
     val = first_value(material, attr)
-    val.nil? ? nil : val.to_i
+
+    return nil if val.nil?
+
+    number = val.to_f
+    if number.to_s != val && (val.to_i.to_s != val)
+      error_map[material] ||= []
+      error_map[material] << attr
+      return nil
+    end
+    number
   end
 
   def first_value(material, attr)
@@ -65,6 +81,15 @@ class MigrateDataToMaterials
   end
 
   def values(material, attr)
-    material.material_attributes.find_by_name(attr)&.material_attribute_values&.pluck(:value)
+    values = material.material_attributes.find_by_name(attr)&.material_attribute_values&.pluck(:value)&.compact
+    if values.present? && !values.empty?
+      return values
+    else
+      nil
+    end
+  end
+
+  def error_map
+    @error_map ||= {}
   end
 end

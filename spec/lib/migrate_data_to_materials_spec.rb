@@ -372,4 +372,65 @@ RSpec.describe MigrateDataToMaterials do
       z_cte_before_tg: 50,
     )
   end
+
+  context "when filler has only a nil value" do
+    let!(:filler) {
+      create(
+        :material_attribute,
+        material: material,
+        name: "filler",
+        material_attribute_values: [
+          build(:material_attribute_value, value_type: "string", value: nil),
+        ],
+      )
+    }
+
+    it "is converted to nil" do
+      subject.run([material])
+      material.reload
+
+      expect(material.filler).to eql(nil)
+    end
+  end
+
+  context "when numeric value does not convert to integer" do
+    let!(:dk) {
+      create(
+        :material_attribute,
+        material: material,
+        name: "dk",
+        material_attribute_values: [
+          build(:material_attribute_value, value_type: "number", value: "-"),
+        ],
+      )
+    }
+
+    it "is converted to nil" do
+      result = subject.run([material])
+      material.reload
+
+      expect(material.dk).to eql(nil)
+      expect(result[material]).to eql(["dk"])
+    end
+  end
+
+  context "when numeric value is a decimal" do
+    let!(:dk) {
+      create(
+        :material_attribute,
+        material: material,
+        name: "dk",
+        material_attribute_values: [
+          build(:material_attribute_value, value_type: "number", value: "3.5"),
+        ],
+      )
+    }
+
+    it "is converted to a decimal" do
+      subject.run([material])
+      material.reload
+
+      expect(material.dk).to eql(3.5)
+    end
+  end
 end
