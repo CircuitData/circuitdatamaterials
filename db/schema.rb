@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_29_061022) do
+ActiveRecord::Schema.define(version: 2019_03_29_120438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,8 +93,8 @@ ActiveRecord::Schema.define(version: 2019_03_29_061022) do
     t.decimal "t260"
     t.decimal "t280"
     t.decimal "t300"
-    t.decimal "td_min"
-    t.decimal "tg_min"
+    t.integer "td_min"
+    t.integer "tg_min"
     t.decimal "thermal_conductivity"
     t.decimal "thickness"
     t.decimal "volume_resistivity"
