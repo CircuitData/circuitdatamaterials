@@ -2,9 +2,9 @@ namespace :db do
   desc "This is to migrate old data to be compatible with the new functionalities"
   task add_function_and_group: :environment do
     # Code here
-    Function.where(name: "conductive",description: "Type of material that allows the flow of an electrical current in one or more directions. Materials made of metal are common electrical conductors. Examples are Copper, Gold").first_or_create
+    Function.where(name: "conductive", description: "Type of material that allows the flow of an electrical current in one or more directions. Materials made of metal are common electrical conductors. Examples are Copper, Gold").first_or_create
     Function.where(name: "dielectric", description: "A dielectric (or dielectric material) is an electrical insulator that can be polarized by an applied electric field.").first_or_create
-    Function.where(name: "soldermask", description: "Solder mask or solder stop mask or solder resist is a thin lacquer-like layer of polymer that is usually applied to the copper traces of a printed circuit board (PCB) for protection against oxidation and to prevent solder bridges from forming between closely spaced solder pads.").first_or_create 
+    Function.where(name: "soldermask", description: "Solder mask or solder stop mask or solder resist is a thin lacquer-like layer of polymer that is usually applied to the copper traces of a printed circuit board (PCB) for protection against oxidation and to prevent solder bridges from forming between closely spaced solder pads.").first_or_create
     Function.where(name: "stiffener", description: "Stiffeners are materials added to a flex circuit to rigidize particular areas.").first_or_create
     Function.where(name: "final_finish", description: "To save good solderability of PCBs, flatness of the surface, solid montage of electronic components and solder connections of PCB it is necessary to protect cooper pads with final finish.").first_or_create
     Group.where(name: "FR1", description: "FR-1 is a hard, flat material that consists of a thin layer of copper over a non- conductive phenolic resin.").first_or_create
@@ -56,18 +56,19 @@ namespace :db do
     Group.where(name: "IMS", description: "IMS placeholder until further clarification.").first_or_create
     # Update exiting materials and add group_id and function_id
     Material.all.each do |m|
-    #if m.group_id == nil and m.function_id == nil
+      #if m.group_id == nil and m.function_id == nil
       if m.attributes["group"] and m.attributes["function"]
-      	puts m.id
-      	puts m.function
+        puts m.id
+        puts m.function
         m.update(group_id: Group.find_by_name(m.attributes["group"]).id, function_id: Function.find_by_name(m.attributes["function"]).id)
       elsif m.group
         m.update(group_id: Group.find_by_name(m.attributes["group"]).id)
       elsif m.function
         m.update(function_id: Function.find_by_name(m.attributes["function"]).id)
       end
-  #end
+      #end
     end
   end
+
   private
 end

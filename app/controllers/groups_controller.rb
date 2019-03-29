@@ -1,5 +1,4 @@
 class GroupsController < ApplicationController
-
   def index
     @groups = Group.all
     paginate json: @groups
@@ -7,6 +6,6 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    render json: @group#, include: 'materials'
+    render json: @group
   end
 end

@@ -1,3 +1,3 @@
 class Function < ApplicationRecord
-	has_many :materials
+  has_many :materials
 end
