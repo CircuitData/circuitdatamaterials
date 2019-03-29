@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe DbToCsv do
-  include FactoryBot::Syntax::Methods
   subject { described_class.new }
   let!(:manufacturer) { create(:manufacturer, name: "Big Cheese") }
   let!(:material) {
