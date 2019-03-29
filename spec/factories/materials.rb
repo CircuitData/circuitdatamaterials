@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :material do
     manufacturer
-    function
-    group
+    function { "dielectric" }
+    group { "FR4" }
   end
 end

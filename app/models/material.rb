@@ -14,15 +14,15 @@ class Material < ApplicationRecord
   IPC_840 = ["T", "H", "TF", "HF"]
   FINISH = ["matte", "glossy", "semi_glossy"]
 
-  validates :function, inclusion: { in: FUNCTIONS }
-  validates :group, inclusion: { in: GROUPS }
-  validates :ul_94, inclusion: { in: UL }
-  validates :resin, inclusion: { in: RESIN }
-  validates :flame_retardant, inclusion: { in: RETARDANT }
-  validates :reinforcement, inclusion: { in: REINFORCEMENT }
-  validates :foil_roughness, inclusion: { in: FOIL_ROUGHNESS }
-  validates :ipc_sm_840_class, inclusion: { in: IPC_840 }
-  validates :finish, inclusion: { in: FINISH }
+  validates :function, inclusion: { in: FUNCTIONS }, allow_nil: true
+  validates :group, inclusion: { in: GROUPS }, allow_nil: true
+  validates :ul_94, inclusion: { in: UL }, allow_nil: true
+  validates :resin, inclusion: { in: RESIN }, allow_nil: true
+  validates :flame_retardant, inclusion: { in: RETARDANT }, allow_nil: true
+  validates :reinforcement, inclusion: { in: REINFORCEMENT }, allow_nil: true
+  validates :foil_roughness, inclusion: { in: FOIL_ROUGHNESS }, allow_nil: true
+  validates :ipc_sm_840_class, inclusion: { in: IPC_840 }, allow_nil: true
+  validates :finish, inclusion: { in: FINISH }, allow_nil: true
   validate :filler_values
 
   belongs_to :manufacturer, optional: true
