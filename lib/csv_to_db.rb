@@ -64,7 +64,12 @@ class CsvToDb
 
   def load_into_db
     materials.each do |attrs|
-      Material.upsert!(attrs)
+      begin
+        Material.upsert!(attrs)
+      rescue => e
+        Rails.logger.error("Material #{attrs[:id]} is invalid: #{e.message}")
+        raise e
+      end
     end
   end
 

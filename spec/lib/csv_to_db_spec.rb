@@ -2,9 +2,12 @@ require "rails_helper"
 
 RSpec.describe CsvToDb do
   subject { described_class.new(csv) }
+  let(:headers) {
+    "circuitdata_material_db_id,manufacturer,filler,ul94,ipc_slash_sheet,accept_equivalent,additional,cti,df,dielectric_breakdown,dk,electric_strength,finish,flame_retardant,flexible,foil_roughness,frequency,function,group,ipc_sm_840_class,ipc_standard,link,mot,name,reinforcement,remark,resin,resin_content,t260,t280,t300,td_min,tg_min,thermal_conductivity,thickness,verified,volume_resistivity,water_absorption,woven_reinforcement,z_cte,z_cte_after_tg,z_cte_before_tg"
+  }
   let(:csv) {
     <<~CSV
-      circuitdata_material_db_id,manufacturer,filler,ul94,ipc_slash_sheet,accept_equivalent,additional,cti,df,dielectric_breakdown,dk,electric_strength,finish,flame_retardant,flexible,foil_roughness,frequency,function,group,ipc_sm_840_class,ipc_standard,link,mot,name,reinforcement,remark,resin,resin_content,t260,t280,t300,td_min,tg_min,thermal_conductivity,thickness,verified,volume_resistivity,water_absorption,woven_reinforcement,z_cte,z_cte_after_tg,z_cte_before_tg
+      #{headers}
       987d89e6-8d31-4b3a-b313-d56a22fb2f71,Big Cheese,organic|kaolin,hb,1|2,false,addedCheese,12.0,14.0,16.0,18.0,20.0,semi_glossy,red_phosphor,true,V,22.0,final_finish,FR2,TF,12,cheezyLink,24.0,Cheese,ne-glass,cheezyRemark,cyanate_ester,26.0,28.0,30.0,32.0,34,36,38.0,40.0,true,42.0,44.0,true,46.0,48.0,50.0
     CSV
   }
@@ -118,6 +121,34 @@ RSpec.describe CsvToDb do
 
       it "updates the manufacturer to nil" do
         expect { subject.load_into_db }.to change { material.reload.manufacturer }.to(nil)
+      end
+    end
+
+    context "the material is invalid" do
+      before do
+        csv.sub!("organic", "chips")
+      end
+
+      it "raises and logs the error" do
+        expect(Rails.logger).to receive(:error).with(
+          "Material 987d89e6-8d31-4b3a-b313-d56a22fb2f71 is invalid: " \
+          "Validation failed: Filler is not included in the list"
+        )
+        expect {
+          subject.load_into_db
+        }.to raise_error(ActiveRecord::RecordInvalid)
+      end
+    end
+
+    context "has minimal data" do
+      let(:csv) {
+        <<~CSV
+          #{headers}
+          1587901d-254c-47a1-9294-ea16c653b14d,"","","","","","","","","","","","","","","","",conductive,copper,"","","","",Copper,"","","","","","","","","","","","","","","","",""
+        CSV
+      }
+      it "imports the material" do
+        expect { subject.load_into_db }.to change { Material.count }.by(1)
       end
     end
   end
