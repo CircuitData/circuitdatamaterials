@@ -1,6 +1,8 @@
 require "csv"
 
 class CsvToDb
+  class ManufacturerNotFound < StandardError; end
+
   STRINGS = [
     :function,
     :group,
@@ -87,13 +89,22 @@ class CsvToDb
         ul_94: hash["ul94"],
         filler: convert_array(hash["filler"]),
         ipc_slash_sheet: convert_array(hash["ipc_slash_sheet"]).map(&:to_i),
-        manufacturer: Manufacturer.find_by_name(hash["manufacturer"]),
+        manufacturer: find_manufacturer(hash["manufacturer"]),
       }
         .merge(hash.slice(*strings))
         .merge(convert_booleans(hash.slice(*booleans)))
         .merge(convert_floats(hash.slice(*floats)))
         .merge(convert_integers(hash.slice(*integers)))
     end
+  end
+
+  def find_manufacturer(name)
+    return nil if name.blank?
+    m = Manufacturer.find_by_name(name)
+    if m.nil?
+      raise ManufacturerNotFound, "Unable to find #{name}"
+    end
+    m
   end
 
   def convert_booleans(attrs)

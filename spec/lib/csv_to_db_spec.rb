@@ -96,5 +96,29 @@ RSpec.describe CsvToDb do
         expect(material.reload.additional).to eql("gravy")
       end
     end
+
+    context "the manufacturer does not exist" do
+      before do
+        csv.sub!("Big Cheese", "Little Cheese")
+      end
+
+      it "raises an error" do
+        expect { subject.load_into_db }.to raise_error(CsvToDb::ManufacturerNotFound, /Little Cheese/)
+      end
+    end
+
+    context "the manufacturer is blank" do
+      let!(:material) {
+        Material.create!(material_data.merge(manufacturer: manufacturer))
+      }
+
+      before do
+        csv.sub!("Big Cheese", "")
+      end
+
+      it "updates the manufacturer to nil" do
+        expect { subject.load_into_db }.to change { material.reload.manufacturer }.to(nil)
+      end
+    end
   end
 end
