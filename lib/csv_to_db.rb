@@ -86,7 +86,7 @@ class CsvToDb
         id: hash["circuitdata_material_db_id"],
         ul_94: hash["ul94"],
         filler: convert_array(hash["filler"]),
-        ipc_slash_sheet: convert_array(hash["ipc_slash_sheet"]),
+        ipc_slash_sheet: convert_array(hash["ipc_slash_sheet"]).map(&:to_i),
         manufacturer: Manufacturer.find_by_name(hash["manufacturer"]),
       }
         .merge(hash.slice(*strings))
