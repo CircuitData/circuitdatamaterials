@@ -33,7 +33,7 @@ class Material < ApplicationRecord
 
   def normalize_blank_values
     attributes.each do |column, value|
-      unless self[column].present?
+      if value.is_a?(String) && value.blank?
         self[column] = nil
       end
     end

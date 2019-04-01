@@ -79,7 +79,7 @@ RSpec.describe CsvToDb do
 
       expect(mat.manufacturer).to eql(manufacturer)
       attrs = mat.attributes.symbolize_keys.except(
-        :manufacturer_id, :created_at, :updated_at, :source, :source_id
+        :manufacturer_id, :created_at, :updated_at, :source, :source_id, :version
       )
       expect(attrs).to include(material_data)
     end
