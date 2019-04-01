@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_29_125008) do
+ActiveRecord::Schema.define(version: 2019_04_01_090125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 2019_03_29_125008) do
     t.string "ipc_sm_840_class"
     t.string "reinforcement"
     t.string "resin"
+    t.index ["manufacturer_id", "name"], name: "index_materials_on_manufacturer_id_and_name", unique: true
     t.index ["manufacturer_id"], name: "index_materials_on_manufacturer_id"
   end
 
