@@ -117,11 +117,11 @@ class CsvToDb
   end
 
   def convert_floats(attrs)
-    attrs.transform_values { |v| v.to_f }
+    attrs.transform_values { |v| v.blank? ? nil : v.to_f }
   end
 
   def convert_integers(attrs)
-    attrs.transform_values { |v| v.to_i }
+    attrs.transform_values { |v| v.blank? ? nil : v.to_i }
   end
 
   def convert_array(value)

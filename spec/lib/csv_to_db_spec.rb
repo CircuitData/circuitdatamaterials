@@ -150,6 +150,13 @@ RSpec.describe CsvToDb do
       it "imports the material" do
         expect { subject.load_into_db }.to change { Material.count }.by(1)
       end
+
+      it "does not convert empty fields to zeros" do
+        subject.load_into_db
+        mat = Material.first
+        expect(mat.cti).to be(nil)
+        expect(mat.td_min).to be(nil)
+      end
     end
   end
 end
