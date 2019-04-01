@@ -71,7 +71,7 @@ class DbToCsv
 
   def build_body
     attr_names = SIMPLE_ATTRS.map(&:to_s)
-    Material.all.map do |material|
+    materials.map do |material|
       {
         circuitdata_material_db_id: material.id,
         manufacturer: material.manufacturer&.name,
@@ -80,6 +80,12 @@ class DbToCsv
         ipc_slash_sheet: values(material, "ipc_slash_sheet"),
       }.merge(material.attributes.slice(*attr_names)).transform_values(&:to_s)
     end
+  end
+
+  def materials
+    Material.joins(:manufacturer)
+      .includes(:manufacturer)
+      .order("manufacturers.name", :name)
   end
 
   def values(material, attr)
