@@ -62,7 +62,7 @@ class CsvToDb
 
   def load_into_db
     materials.each do |attrs|
-      Material.create!(attrs)
+      Material.upsert!(attrs)
     end
   end
 

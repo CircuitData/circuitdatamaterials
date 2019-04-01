@@ -5,7 +5,7 @@ RSpec.describe CsvToDb do
   let(:csv) {
     <<~CSV
       circuitdata_material_db_id,manufacturer,filler,ul94,ipc_slash_sheet,accept_equivalent,additional,cti,df,dielectric_breakdown,dk,electric_strength,finish,flame_retardant,flexible,foil_roughness,frequency,function,group,ipc_sm_840_class,ipc_standard,link,mot,name,reinforcement,remark,resin,resin_content,t260,t280,t300,td_min,tg_min,thermal_conductivity,thickness,verified,volume_resistivity,water_absorption,woven_reinforcement,z_cte,z_cte_after_tg,z_cte_before_tg
-      987d89e6-8d31-4b3a-b313-d56a22fb2f71,Big Cheese,organic|kaolin,hb,1|2,false,adddedCheese,12.0,14.0,16.0,18.0,20.0,semi_glossy,red_phosphor,true,V,22.0,final_finish,FR2,TF,12,cheezyLink,24.0,Cheese,ne-glass,cheezyRemark,cyanate_ester,26.0,28.0,30.0,32.0,34,36,38.0,40.0,true,42.0,44.0,true,46.0,48.0,50.0
+      987d89e6-8d31-4b3a-b313-d56a22fb2f71,Big Cheese,organic|kaolin,hb,1|2,false,addedCheese,12.0,14.0,16.0,18.0,20.0,semi_glossy,red_phosphor,true,V,22.0,final_finish,FR2,TF,12,cheezyLink,24.0,Cheese,ne-glass,cheezyRemark,cyanate_ester,26.0,28.0,30.0,32.0,34,36,38.0,40.0,true,42.0,44.0,true,46.0,48.0,50.0
     CSV
   }
   let!(:manufacturer) { create(:manufacturer, name: "Big Cheese") }
@@ -13,7 +13,7 @@ RSpec.describe CsvToDb do
     {
       id: "987d89e6-8d31-4b3a-b313-d56a22fb2f71",
       accept_equivalent: false,
-      additional: "adddedCheese",
+      additional: "addedCheese",
       cti: 12.0,
       df: 14.0,
       dielectric_breakdown: 16.0,
@@ -79,6 +79,22 @@ RSpec.describe CsvToDb do
         :manufacturer_id, :created_at, :updated_at, :source, :source_id
       )
       expect(attrs).to include(material_data)
+    end
+
+    context "material already exists" do
+      let!(:material) {
+        Material.create!(material_data.merge(manufacturer: manufacturer))
+      }
+
+      before do
+        csv.sub!("addedCheese", "gravy")
+      end
+
+      it "updates the existing material" do
+        expect { subject.load_into_db }.not_to change { Material.count }
+
+        expect(material.reload.additional).to eql("gravy")
+      end
     end
   end
 end
