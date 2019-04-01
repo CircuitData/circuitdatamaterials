@@ -33,74 +33,74 @@ class MaterialAttributeSerializer < ActiveModel::Serializer
   )
 
   def cti
-    object.cti.to_f
+    object.cti&.to_f
   end
 
   def df
-    object.df.to_f
+    object.df&.to_f
   end
 
   def dielectric_breakdown
-    object.dielectric_breakdown.to_f
+    object.dielectric_breakdown&.to_f
   end
 
   def dk
-    object.dk.to_f
+    object.dk&.to_f
   end
 
   def electric_strength
-    object.electric_strength.to_f
+    object.electric_strength&.to_f
   end
 
   def frequency
-    object.frequency.to_f
+    object.frequency&.to_f
   end
 
   def mot
-    object.mot.to_f
+    object.mot&.to_f
   end
 
   def resin_content
-    object.resin_content.to_f
+    object.resin_content&.to_f
   end
 
   def t260
-    object.t260.to_f
+    object.t260&.to_f
   end
 
   def t280
-    object.t280.to_f
+    object.t280&.to_f
   end
 
   def t300
-    object.t300.to_f
+    object.t300&.to_f
   end
 
   def thermal_conductivity
-    object.thermal_conductivity.to_f
+    object.thermal_conductivity&.to_f
   end
 
   def thickness
-    object.thickness.to_f
+    object.thickness&.to_f
   end
 
   def volume_resistivity
-    object.volume_resistivity.to_f
+    object.volume_resistivity&.to_f
   end
 
   def water_absorption
-    object.water_absorption.to_f
+    object.water_absorption&.to_f
   end
 
   def z_cte
-    object.z_cte.to_f
+    object.z_cte&.to_f
   end
 
   def z_cte_after_tg
-    object.z_cte_after_tg.to_f
+    object.z_cte_after_tg&.to_f
   end
 
   def z_cte_before_tg
-    object.z_cte_before_tg.to_f
+    object.z_cte_before_tg&.to_f
   end
 end
