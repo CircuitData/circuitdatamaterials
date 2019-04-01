@@ -83,8 +83,7 @@ class DbToCsv
   end
 
   def materials
-    Material.joins(:manufacturer)
-      .includes(:manufacturer)
+    Material.includes(:manufacturer)
       .order("manufacturers.name", :name)
   end
 
