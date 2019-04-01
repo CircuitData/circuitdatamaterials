@@ -14,6 +14,8 @@ class Material < ApplicationRecord
   IPC_840 = ["T", "H", "TF", "HF"]
   FINISH = ["matte", "glossy", "semi_glossy"]
 
+  belongs_to :manufacturer, optional: true
+
   validates :function, inclusion: { in: FUNCTIONS }, allow_nil: true
   validates :group, inclusion: { in: GROUPS }, allow_nil: true
   validates :ul_94, inclusion: { in: UL }, allow_nil: true
@@ -25,12 +27,22 @@ class Material < ApplicationRecord
   validates :finish, inclusion: { in: FINISH }, allow_nil: true
   validate :filler_values
 
-  belongs_to :manufacturer, optional: true
+  before_validation :normalize_blank_values
+
+  private
+
+  def normalize_blank_values
+    attributes.each do |column, value|
+      if value.is_a?(String) && value.blank?
+        self[column] = nil
+      end
+    end
+  end
 
   def filler_values
     return if filler.nil?
     unless filler.all? { |f| FILLER.include?(f) }
-      errors.add(:filler, :not_included_in_list)
+      errors.add(:filler, :inclusion)
     end
   end
 end

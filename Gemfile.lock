@@ -29,6 +29,10 @@ GEM
       activemodel (>= 4.1, < 6)
       case_transform (>= 0.2)
       jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
+    active_record_upsert (0.9.4)
+      activerecord (>= 5.0, < 6.0)
+      arel (> 7.0, < 10.0)
+      pg (>= 0.18, < 2.0)
     activejob (5.2.3)
       activesupport (= 5.2.3)
       globalid (>= 0.3.6)
@@ -206,6 +210,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.2)
+  active_record_upsert
   api-pagination
   bootsnap
   byebug
