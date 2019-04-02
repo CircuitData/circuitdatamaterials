@@ -29,6 +29,8 @@ class Material < ApplicationRecord
 
   before_validation :normalize_blank_values
 
+  delegate :name, to: :manufacturer, prefix: true, allow_nil: true
+
   private
 
   def normalize_blank_values

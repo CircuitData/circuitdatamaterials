@@ -22,7 +22,7 @@ class MaterialSerializer < ActiveModel::Serializer
   end
 
   def manufacturer
-    object.manufacturer&.name
+    object.manufacturer_name
   end
 
   def ul94
