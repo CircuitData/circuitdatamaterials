@@ -100,6 +100,6 @@ RSpec.describe "Importing csv into db" do
 
   it "dumps into the same content" do
     CsvToDb.new(data).load_into_db
-    expect(DbToCsv.new.to_csv)
+    expect(DbToCsv.new.to_csv).to eql(data)
   end
 end
