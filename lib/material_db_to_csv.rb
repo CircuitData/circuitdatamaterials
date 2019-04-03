@@ -1,6 +1,6 @@
 require "csv"
 
-class DbToCsv
+class MaterialDbToCsv
   SIMPLE_ATTRS = [
     :circuitdata_material_db_id,
     :accept_equivalent,
