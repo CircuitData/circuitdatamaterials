@@ -63,6 +63,8 @@ class CsvToDb
   end
 
   def load_into_db
+    Material.delete_all
+
     materials.each do |attrs|
       begin
         Material.upsert!(attrs)
