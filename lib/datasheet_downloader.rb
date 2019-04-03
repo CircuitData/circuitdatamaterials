@@ -25,6 +25,8 @@ class DatasheetDownloader
     save_file(material, response)
   rescue RestClient::Exception => e
     puts "Failed downloading: #{material.name} #{material.manufacturer_name} #{e.http_code}"
+  rescue => e
+    puts "Failed downloading: #{material.name} #{material.manufacturer_name} #{e.message}"
   end
 
   def save_file(material, response)
