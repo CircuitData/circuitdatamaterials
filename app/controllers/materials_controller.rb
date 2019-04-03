@@ -12,7 +12,22 @@ class MaterialsController < ApplicationController
     render json: materials
   end
 
+  def datasheet
+    @material = Material.find(params[:id])
+    sheet = @material.datasheet
+    return send_sheet(sheet) if sheet.exist?
+  end
+
   private
+
+  def send_sheet(sheet)
+    send_data(
+      sheet.contents.read,
+      filename: sheet.filename,
+      type: "application/pdf",
+      disposition: "inline",
+    )
+  end
 
   def search_params
     params.permit(:name, :link)

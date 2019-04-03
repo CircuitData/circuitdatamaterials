@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::API
+class ApplicationController < ActionController::Base
   rescue_from ActionController::UnpermittedParameters, with: :unpermitted_parameters_rescue
 
   def unpermitted_parameters_rescue(exception)

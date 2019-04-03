@@ -1,0 +1,5 @@
+<h1>No datasheet available.</h1>
+<% if @material.link.present? %>
+<p>It may be available at: <%= link_to @material.link, @material.link %></p>
+<% end %>
+<p>If the datasheet is available let us know!</p>
