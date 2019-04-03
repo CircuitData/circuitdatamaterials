@@ -4,7 +4,7 @@ class Datasheet
   end
 
   def exist?
-    File.exist?(file_path)
+    material.manufacturer_name.present? && File.exist?(file_path)
   end
 
   def file_path
@@ -12,8 +12,16 @@ class Datasheet
       "lib",
       "datasheets",
       clean(material.manufacturer_name),
-      "#{clean(material.name)}.pdf"
+      filename
     )
+  end
+
+  def contents
+    File.open(file_path, "rb")
+  end
+
+  def filename
+    @filename ||= "#{clean(material.name)}.pdf"
   end
 
   private
