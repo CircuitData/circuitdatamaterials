@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe DbToCsv do
+RSpec.describe MaterialDbToCsv do
   subject { described_class.new }
   let!(:manufacturer) { create(:manufacturer, name: "Big Cheese") }
   let!(:material) {
