@@ -2,6 +2,7 @@ require "csv"
 
 class MaterialCsvToDb
   class ManufacturerNotFound < StandardError; end
+  class InvalidRowError < StandardError; end
 
   STRINGS = [
     :function,
@@ -69,8 +70,7 @@ class MaterialCsvToDb
       begin
         Material.upsert!(attrs)
       rescue => e
-        Rails.logger.error("Material #{attrs[:id]} is invalid: #{e.message}")
-        raise e
+        raise InvalidRowError, "Material #{attrs[:id]} is invalid: #{e.message}"
       end
     end
   end
