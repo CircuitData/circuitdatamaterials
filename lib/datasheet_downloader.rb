@@ -23,8 +23,8 @@ class DatasheetDownloader
     return unless content.include?("application/pdf")
 
     save_file(material, response)
-  rescue RestClient::ExceptionWithResponse => e
-    puts "Failed downloading: #{material.name} #{material.manufacturer_name} #{e.code}"
+  rescue RestClient::Exception => e
+    puts "Failed downloading: #{material.name} #{material.manufacturer_name} #{e.http_code}"
   end
 
   def save_file(material, response)
