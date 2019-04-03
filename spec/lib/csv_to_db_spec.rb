@@ -158,5 +158,16 @@ RSpec.describe CsvToDb do
         expect(mat.td_min).to be(nil)
       end
     end
+    context "materials exist that are not in the CSV" do
+      let!(:other_material) { create(:material) }
+
+      it "removes the material not present" do
+        expect(Material.count).to eql(1)
+
+        subject.load_into_db
+        expect(Material.count).to eql(1)
+        expect(Material.first).not_to eql(other_material)
+      end
+    end
   end
 end
