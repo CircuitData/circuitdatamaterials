@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_01_114235) do
+ActiveRecord::Schema.define(version: 2019_04_03_061539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 2019_04_01_114235) do
     t.string "resin"
     t.index ["manufacturer_id", "name"], name: "index_materials_on_manufacturer_id_and_name", unique: true
     t.index ["manufacturer_id"], name: "index_materials_on_manufacturer_id"
+    t.index ["name"], name: "index_materials_on_name", unique: true, where: "(manufacturer_id IS NULL)"
   end
 
   add_foreign_key "materials", "manufacturers"
