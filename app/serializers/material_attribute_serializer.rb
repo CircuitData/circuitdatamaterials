@@ -1,4 +1,4 @@
-class MaterialAttributeSerializer < ActiveModel::Serializer
+class MaterialAttributeSerializer < ApplicationSerializer
   attributes(
     :ipc_standard,
     :cti,

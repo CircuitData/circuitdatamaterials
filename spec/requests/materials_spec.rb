@@ -113,4 +113,16 @@ RSpec.describe "/materials" do
     validator.valid?
     expect(validator.errors).to eql([])
   end
+
+  context "material has minimal attributes" do
+    let!(:material) { create(:material) }
+    it "returns valid circuitdata materials" do
+      get "/materials"
+
+      parsed_data = JSON.parse(response.body, symbolize_names: true)
+      validator = Circuitdata::MaterialValidator.new(parsed_data.first)
+      validator.valid?
+      expect(validator.errors).to eql([])
+    end
+  end
 end
