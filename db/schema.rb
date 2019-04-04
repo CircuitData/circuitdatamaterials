@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_03_061539) do
+ActiveRecord::Schema.define(version: 2019_04_04_095620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
   create_table "manufacturers", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "description"
     t.string "location"
     t.datetime "created_at", null: false
@@ -30,10 +30,10 @@ ActiveRecord::Schema.define(version: 2019_04_03_061539) do
   end
 
   create_table "materials", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.string "function"
+    t.string "function", null: false
     t.string "group"
     t.uuid "manufacturer_id"
-    t.string "name"
+    t.string "name", null: false
     t.string "link"
     t.text "remark"
     t.datetime "created_at", null: false

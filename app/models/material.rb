@@ -16,7 +16,8 @@ class Material < ApplicationRecord
 
   belongs_to :manufacturer, optional: true
 
-  validates :function, inclusion: { in: FUNCTIONS }, allow_nil: true
+  validates :name, presence: true
+  validates :function, inclusion: { in: FUNCTIONS }
   validates :group, inclusion: { in: GROUPS }, allow_nil: true
   validates :ul_94, inclusion: { in: UL }, allow_nil: true
   validates :resin, inclusion: { in: RESIN }, allow_nil: true
