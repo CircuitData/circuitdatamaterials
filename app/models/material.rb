@@ -25,6 +25,7 @@ class Material < ApplicationRecord
   validates :foil_roughness, inclusion: { in: FOIL_ROUGHNESS }, allow_nil: true
   validates :ipc_sm_840_class, inclusion: { in: IPC_840 }, allow_nil: true
   validates :finish, inclusion: { in: FINISH }, allow_nil: true
+  validates :link, http_uri: true, if: -> { link.present? }
   validate :filler_values
 
   before_validation :normalize_blank_values

@@ -8,7 +8,7 @@ RSpec.describe MaterialCsvToDb do
   let(:csv) {
     <<~CSV
       #{headers}
-      987d89e6-8d31-4b3a-b313-d56a22fb2f71,Big Cheese,organic|kaolin,hb,1|2,false,addedCheese,12.0,14.0,16.0,18.0,20.0,semi_glossy,red_phosphor,true,V,22.0,final_finish,FR2,TF,12,cheezyLink,24.0,Cheese,ne-glass,cheezyRemark,cyanate_ester,26.0,28.0,30.0,32.0,34,36,38.0,40.0,true,42.0,44.0,true,46.0,48.0,50.0
+      987d89e6-8d31-4b3a-b313-d56a22fb2f71,Big Cheese,organic|kaolin,hb,1|2,false,addedCheese,12.0,14.0,16.0,18.0,20.0,semi_glossy,red_phosphor,true,V,22.0,final_finish,FR2,TF,12,http://example.com/cheesyLink,24.0,Cheese,ne-glass,cheezyRemark,cyanate_ester,26.0,28.0,30.0,32.0,34,36,38.0,40.0,true,42.0,44.0,true,46.0,48.0,50.0
     CSV
   }
   let!(:manufacturer) { create(:manufacturer, name: "Big Cheese") }
@@ -33,7 +33,7 @@ RSpec.describe MaterialCsvToDb do
       ipc_slash_sheet: [1, 2],
       ipc_sm_840_class: "TF",
       ipc_standard: 12,
-      link: "cheezyLink",
+      link: "http://example.com/cheesyLink",
       mot: 24.0,
       name: "Cheese",
       reinforcement: "ne-glass",
@@ -132,13 +132,11 @@ RSpec.describe MaterialCsvToDb do
       end
 
       it "raises and logs the error" do
-        expect(Rails.logger).to receive(:error).with(
-          "Material 987d89e6-8d31-4b3a-b313-d56a22fb2f71 is invalid: " \
-          "Validation failed: Filler is not included in the list"
-        )
+        expected_message = "Material 987d89e6-8d31-4b3a-b313-d56a22fb2f71 is invalid: " \
+        "Validation failed: Filler is not included in the list"
         expect {
           subject.load_into_db
-        }.to raise_error(ActiveRecord::RecordInvalid)
+        }.to raise_error(MaterialCsvToDb::InvalidRowError, expected_message)
       end
     end
 
