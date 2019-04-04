@@ -12,4 +12,4 @@ if [ "$RUN_CSV_DURING_RELEASE" == "true" ]; then
   bundle exec rails csv:load
 fi
 
-echo "Done running release-tasks.sh"
+echo "Done running release-tasks"
