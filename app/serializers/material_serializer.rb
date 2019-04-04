@@ -1,4 +1,4 @@
-class MaterialSerializer < ActiveModel::Serializer
+class MaterialSerializer < ApplicationSerializer
   attributes(
     :version,
     :circuitdata_material_db_id,

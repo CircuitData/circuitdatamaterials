@@ -5,6 +5,6 @@ RSpec.describe MaterialAttributeSerializer do
   let(:material) { create(:material, cti: nil) }
 
   it "does not convert cti to zero" do
-    expect(subject.as_json.fetch(:cti)).to be(nil)
+    expect(subject.as_json).not_to have_key(:cti)
   end
 end

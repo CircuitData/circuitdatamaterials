@@ -1,4 +1,4 @@
-class ManufacturerSerializer < ActiveModel::Serializer
+class ManufacturerSerializer < ApplicationSerializer
   attributes :name, :verified, :source, :source_id, :description, :location, :ul, :ul_c, :materials
 
   def materials
