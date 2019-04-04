@@ -1,3 +1,2 @@
-release: bundle exec rails db:migrate
-release: bundle exec rails csv:load
+release: release-tasks
 web: bundle exec puma -C config/puma.rb
