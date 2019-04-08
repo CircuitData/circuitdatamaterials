@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "/materials" do
+RSpec.describe "/api/v1/materials" do
   let!(:manufacturer) { create(:manufacturer, name: "Big Cheese") }
   let!(:material) {
     create(
@@ -37,7 +37,7 @@ RSpec.describe "/materials" do
   }
 
   it "returns the materials in the DB" do
-    get "/materials"
+    get "/api/v1/materials"
     expect(response).to have_http_status(200)
 
     parsed_data = JSON.parse(response.body, symbolize_names: true)
@@ -80,7 +80,7 @@ RSpec.describe "/materials" do
   end
 
   it "returns valid circuitdata materials" do
-    get "/materials"
+    get "/api/v1/materials"
 
     parsed_data = JSON.parse(response.body, symbolize_names: true)
     validator = Circuitdata::MaterialValidator.new(parsed_data.first)
@@ -91,7 +91,7 @@ RSpec.describe "/materials" do
   context "material has minimal attributes" do
     let!(:material) { create(:material) }
     it "returns valid circuitdata materials" do
-      get "/materials"
+      get "/api/v1/materials"
 
       parsed_data = JSON.parse(response.body, symbolize_names: true)
       validator = Circuitdata::MaterialValidator.new(parsed_data.first)
