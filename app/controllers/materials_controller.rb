@@ -1,15 +1,6 @@
 class MaterialsController < ApplicationController
   def show
     @material = Material.find(params[:id])
-    render json: @material, status: :ok
-  end
-
-  def index
-    page = params[:page].present? ? params[:page].to_i : 1
-    per_page = params[:per_page].present? ? params[:per_page].to_i : 40
-    materials = Material.offset((page - 1) * per_page)
-      .limit(per_page)
-    render json: materials
   end
 
   def datasheet
