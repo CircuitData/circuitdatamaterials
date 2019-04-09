@@ -3,18 +3,14 @@ require "csv"
 class MaterialDbToCsv
   SIMPLE_ATTRS = [
     :circuitdata_material_db_id,
-    :accept_equivalent,
-    :additional,
     :cti,
     :df,
     :dielectric_breakdown,
     :dk,
     :electric_strength,
     :finish,
-    :flame_retardant,
     :flexible,
     :foil_roughness,
-    :frequency,
     :function,
     :group,
     :ipc_sm_840_class,
@@ -22,21 +18,13 @@ class MaterialDbToCsv
     :link,
     :mot,
     :name,
-    :reinforcement,
-    :remark,
-    :resin,
-    :resin_content,
     :t260,
     :t280,
     :t300,
     :td_min,
     :tg_min,
     :thermal_conductivity,
-    :thickness,
-    :verified,
-    :volume_resistivity,
     :water_absorption,
-    :woven_reinforcement,
     :z_cte,
     :z_cte_after_tg,
     :z_cte_before_tg,
@@ -44,7 +32,6 @@ class MaterialDbToCsv
 
   COLUMNS = SIMPLE_ATTRS + [
     :manufacturer,
-    :filler,
     :ipc_slash_sheet,
     :ul94,
   ]
@@ -75,7 +62,6 @@ class MaterialDbToCsv
       {
         circuitdata_material_db_id: material.id,
         manufacturer: material.manufacturer&.name,
-        filler: values(material, "filler"),
         ul94: material.ul_94,
         ipc_slash_sheet: values(material, "ipc_slash_sheet"),
       }.merge(material.attributes.slice(*attr_names)).transform_values(&:to_s)

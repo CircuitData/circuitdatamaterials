@@ -7,27 +7,18 @@ class MaterialCsvToDb
   STRINGS = [
     :function,
     :group,
-    :additional,
     :finish,
-    :flame_retardant,
     :foil_roughness,
     :ipc_sm_840_class,
     :link,
     :name,
-    :reinforcement,
-    :remark,
-    :resin,
-    :woven_reinforcement,
   ]
   FLOATS = [
-    :frequency,
-    :volume_resistivity,
     :water_absorption,
     :t260,
     :t280,
     :t300,
     :thermal_conductivity,
-    :thickness,
     :z_cte,
     :z_cte_after_tg,
     :z_cte_before_tg,
@@ -36,7 +27,6 @@ class MaterialCsvToDb
     :dielectric_breakdown,
     :dk,
     :electric_strength,
-    :resin_content,
     :mot,
   ]
   INTEGERS = [
@@ -46,9 +36,6 @@ class MaterialCsvToDb
   ]
   BOOLEANS = [
     :flexible,
-    :verified,
-    :woven_reinforcement,
-    :accept_equivalent,
   ]
   BOOL_MAP = {
     "true" => true,
@@ -90,7 +77,6 @@ class MaterialCsvToDb
       {
         id: hash["circuitdata_material_db_id"],
         ul_94: hash["ul94"],
-        filler: convert_array(hash["filler"]),
         ipc_slash_sheet: convert_array(hash["ipc_slash_sheet"]).map(&:to_i),
         manufacturer: find_manufacturer(hash["manufacturer"]),
       }

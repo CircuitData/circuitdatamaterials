@@ -8,10 +8,6 @@ class MaterialSerializer < ApplicationSerializer
     :name,
     :flexible,
     :link,
-    :remark,
-    :additional,
-    :verified,
-    :accept_equivalent,
     :ul94,
   )
 

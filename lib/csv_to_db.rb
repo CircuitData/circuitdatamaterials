@@ -6,27 +6,18 @@ class CsvToDb
   STRINGS = [
     :function,
     :group,
-    :additional,
     :finish,
-    :flame_retardant,
     :foil_roughness,
     :ipc_sm_840_class,
     :link,
     :name,
-    :reinforcement,
-    :remark,
-    :resin,
-    :woven_reinforcement,
   ]
   FLOATS = [
-    :frequency,
-    :volume_resistivity,
     :water_absorption,
     :t260,
     :t280,
     :t300,
     :thermal_conductivity,
-    :thickness,
     :z_cte,
     :z_cte_after_tg,
     :z_cte_before_tg,
@@ -35,7 +26,6 @@ class CsvToDb
     :dielectric_breakdown,
     :dk,
     :electric_strength,
-    :resin_content,
     :mot,
   ]
   INTEGERS = [
@@ -45,9 +35,6 @@ class CsvToDb
   ]
   BOOLEANS = [
     :flexible,
-    :verified,
-    :woven_reinforcement,
-    :accept_equivalent,
   ]
   BOOL_MAP = {
     "true" => true,
