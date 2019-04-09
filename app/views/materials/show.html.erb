@@ -6,7 +6,7 @@
 <% end %>
 
 <% if @material.datasheet.exist? %>
-<p><%= link_to "View datasheet", datasheet_material_path(@material) %></p>
+<p><%= link_to "View datasheet", datasheet_material_path(@material), data: { turbolinks: false } %></p>
 <% else %>
 <p>No datasheet present.</p>
 <% end %>
