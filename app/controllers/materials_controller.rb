@@ -1,6 +1,9 @@
 class MaterialsController < ApplicationController
   def show
     @material = Material.find(params[:id])
+    @attributes = @material.attributes.except(
+      "name", "manufacturer_id", "created_at", "updated_at"
+    )
   end
 
   def datasheet
