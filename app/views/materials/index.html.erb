@@ -4,7 +4,7 @@
   <%= submit_tag "Search" %>
 </form>
 
-<% if @results.present? && @results.empty? %>
+<% if !@results.nil? && @results.empty? %>
   <p>No results</p>
 <% elsif @results.present? %>
 <table class="table table-striped">
