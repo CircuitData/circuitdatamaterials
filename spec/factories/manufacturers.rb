@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :manufacturer do
-    name { "Big Pizza" }
+    sequence(:name) { |n| "Big Pizza-#{n}" }
   end
 end

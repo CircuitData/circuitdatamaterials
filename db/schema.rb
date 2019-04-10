@@ -13,11 +13,12 @@
 ActiveRecord::Schema.define(version: 2019_04_09_110633) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "citext"
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
   create_table "manufacturers", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.string "name", null: false
+    t.citext "name", null: false
     t.string "description"
     t.string "location"
     t.datetime "created_at", null: false
@@ -27,6 +28,7 @@ ActiveRecord::Schema.define(version: 2019_04_09_110633) do
     t.string "ul_c"
     t.string "source"
     t.string "source_id"
+    t.index ["name"], name: "index_manufacturers_on_name", unique: true
   end
 
   create_table "materials", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
