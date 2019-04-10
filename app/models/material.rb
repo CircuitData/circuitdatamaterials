@@ -40,11 +40,4 @@ class Material < ApplicationRecord
       end
     end
   end
-
-  def filler_values
-    return if filler.nil?
-    unless filler.all? { |f| FILLER.include?(f) }
-      errors.add(:filler, :inclusion)
-    end
-  end
 end
