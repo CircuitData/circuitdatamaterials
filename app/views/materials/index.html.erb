@@ -20,6 +20,7 @@
     <tr>
       <th>Name</th>
       <th>Manufacturer</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -27,6 +28,7 @@
     <tr>
       <td><%= material.name %></td>
       <td><%= material.manufacturer_name %></td>
+      <td><%= link_to "More", material_path(material) %></td>
     </tr>
     <% end %>
   </tbody>

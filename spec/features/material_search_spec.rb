@@ -18,6 +18,7 @@ RSpec.describe "Searching for a material" do
 
     expect(page).to have_content("Cheese")
     expect(page).to have_content("Big Pizza")
+    expect(page).to have_link("More")
   end
 
   scenario "Searching with non matching name" do
