@@ -13,6 +13,11 @@ RSpec.describe MaterialSearch do
       it { is_expected.to have_valid_params }
     end
 
+    context "manufacturer_id is present" do
+      let(:params) { { manufacturer_id: "present" } }
+      it { is_expected.to have_valid_params }
+    end
+
     context "only numerical filter is present" do
       let(:params) { { numerical_filter: "dk" } }
       it { is_expected.not_to have_valid_params }
@@ -78,6 +83,11 @@ RSpec.describe MaterialSearch do
 
       r = results(numerical_filter: "dk", min: "21", max: "22")
       expect(r).to match([])
+    end
+
+    it "returns results with correct manufacturers" do
+      r = results(manufacturer_id: material_1.manufacturer.id)
+      expect(r).to match([material_1])
     end
   end
 
