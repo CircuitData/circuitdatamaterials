@@ -1,0 +1,30 @@
+<h1>Material: <%= @material.name %></h1>
+<% if @material.manufacturer.present? %>
+<p>Manufacturered by: <%= @material.manufacturer_name %></p>
+<% else %>
+<p>This is a generic material with no specific manufacturer.</p>
+<% end %>
+
+<% if @material.datasheet.exist? %>
+<p><%= link_to "View datasheet", datasheet_material_path(@material), data: { turbolinks: false } %></p>
+<% else %>
+<p>No datasheet present.</p>
+<% end %>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @attributes.each do |attr, value| %>
+    <tr>
+      <td><%= attr.humanize %></td>
+      <td><%= value %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,9 +1,15 @@
-class MaterialsController < ApplicationController
+class Api::V1::MaterialsController < ApplicationController
   def show
     @material = Material.find(params[:id])
-    @attributes = @material.attributes.except(
-      "name", "manufacturer_id", "created_at", "updated_at"
-    )
+    render json: @material, status: :ok
+  end
+
+  def index
+    page = params[:page].present? ? params[:page].to_i : 1
+    per_page = params[:per_page].present? ? params[:per_page].to_i : 40
+    materials = Material.offset((page - 1) * per_page)
+      .limit(per_page)
+    render json: materials
   end
 
   def datasheet

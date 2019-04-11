@@ -19,6 +19,9 @@ gem "active_model_serializers", "~> 0.10.2"
 gem "rack-attack"
 gem "circuitdata"
 gem "active_record_upsert"
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
+gem 'turbolinks', '~> 5.2.0'
 
 group :development, :test do
   gem "byebug", platform: :mri
