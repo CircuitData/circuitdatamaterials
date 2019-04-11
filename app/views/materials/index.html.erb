@@ -1,6 +1,14 @@
 <form>
   <%= label_tag :material_name %>
   <%= search_field nil, :material_name %>
+  <%= label_tag :numerical_filter %>
+  <%= select_tag :numerical_filter,
+    options_for_select(Material.numerical_columns),
+    prompt: 'Select attribute' %>
+  <%= label_tag :min %>
+  <%= text_field nil, :min %>
+  <%= label_tag :max %>
+  <%= text_field nil, :max %>
   <%= submit_tag "Search" %>
 </form>
 

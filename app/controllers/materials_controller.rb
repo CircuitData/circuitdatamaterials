@@ -1,7 +1,8 @@
 class MaterialsController < ApplicationController
   def index
-    if has_search_params?
-      @results = search_scope.limit(50)
+    query = MaterialSearch.new(search_params.to_h)
+    if query.has_valid_params?
+      @results = query.results.limit(50)
     end
   end
 
@@ -29,11 +30,7 @@ class MaterialsController < ApplicationController
     )
   end
 
-  def has_search_params?
-    params.has_key?(:material_name)
-  end
-
-  def search_scope
-    Material.where("name ilike :name", name: "%#{params[:material_name]}%")
+  def search_params
+    params.permit(:material_name, :numerical_filter, :min, :max)
   end
 end
