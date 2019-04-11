@@ -20,6 +20,9 @@
     <tr>
       <th>Name</th>
       <th>Manufacturer</th>
+      <% if params[:numerical_filter].present? %>
+      <th><%= params[:numerical_filter] %></th>
+      <% end %>
       <th></th>
     </tr>
   </thead>
@@ -28,6 +31,9 @@
     <tr>
       <td><%= material.name %></td>
       <td><%= material.manufacturer_name %></td>
+      <% if params[:numerical_filter].present? %>
+      <td><%= material[params[:numerical_filter]] %></td>
+      <% end %>
       <td><%= link_to "More", material_path(material) %></td>
     </tr>
     <% end %>

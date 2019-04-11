@@ -39,6 +39,8 @@ RSpec.describe "Searching for a material" do
     click_on "Search"
 
     expect(page).to have_content("Cheese")
+    expect(page).to have_content("dk")
+    expect(page).to have_content("100")
   end
 
   scenario "attribute does not match on numerical range" do
