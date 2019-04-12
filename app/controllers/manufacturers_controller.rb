@@ -1,6 +1,7 @@
 class ManufacturersController < ApplicationController
   def index
-    @manufacturers = Manufacturer.all.group_by { |m| m.name.downcase.first }
+    @manufacturer_count = Manufacturer.count
+    @manufacturers = Manufacturer.all.group_by { |m| m.name.upcase.first }
   end
 
   def show

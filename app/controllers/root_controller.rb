@@ -1,7 +1,7 @@
 class RootController < ApplicationController
   def index
-    @material_count = Material.count
+    @generic_material_count = Material.generic.count
+    @manufacturer_material_count = Material.with_manufacturer.count
     @manufacturer_count = Manufacturer.count
-    @manufacturers = Manufacturer.all.group_by { |m| m.name.downcase.first }
   end
 end
