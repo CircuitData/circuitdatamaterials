@@ -1,49 +1,70 @@
-<h1>About</h1>
+<div class="jumbotron">
+  <h1>About</h1>
+  <p>
+    The CircuitData Material DB is an open source system for information related
+    to the materials used in the production of PCBs.
+    It is available via an API in a format that adheres to the
+    <%= link_to "CircuitData Language", "https://github.com/CircuitData/CircuitData-Language" %>.
+  </p>
+  <p>
+    Currently the database has <%= @manufacturer_material_count %> materials from
+    <%= @manufacturer_count %> manufacturers
+    as well as <%= @generic_material_count %> generic materials.
+  </p>
+</div>
 
-<p>
-  The CircuitData Material DB is an open source system for information related
-  to the materials used in the production of PCBs.
-  It is available via an API in a format that adheres to the
-  <%= link_to "CircuitData Language", "https://github.com/CircuitData/CircuitData-Language" %>.
-</p>
+<div class="row">
+  <div class="col-md-12">
+    <h2>Updates</h2>
+    <p>To add or correct information in the database:</p>
+    <ol>
+      <li>Download the database. It is available as a CSV.</li>
+      <li>Make any changes using Excel or Numbers.</li>
+      <li>Send the updated file to <%= link_to "it@elmatica.com", "mailto:it@elmatica.com" %>.</li>
+    </ol>
+  </div>
+</div>
 
-<p>
-  Currently the database has <%= @manufacturer_material_count %> materials from
-  <%= @manufacturer_count %> manufacturers
-  as well as <%= @generic_material_count %> generic materials.
-</p>
+<div class="row mt-4">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="mb-0">API</h3>
+      </div>
+      <div class="card-body">
+        <p>
+          To access the information in the format compatible with the CircuitData
+          Language an Application Programming Interface or API is available. Using this
+          API is <strong>recommended</strong> over the CSV file which is used to populate the data as the
+          format of the CSV will change over time but the API will be more stable.
+        </p>
+        <p>The API is available over HTTP and uses the JSON format.</p>
+      </div>
+    </div>
+  </div>
 
-<h2>Updates</h2>
-<p>To add or correct information in the database:</p>
-<ol>
-  <li>Download the database. It is available as a CSV.</li>
-  <li>Make any changes using Excel or Numbers.</li>
-  <li>Send the updated file to <%= link_to "it@elmatica.com", "mailto:it@elmatica.com" %>.</li>
-</ol>
-
-<h2>API</h2>
-<p>
-  To access the information in the format compatible with the CircuitData
-  Language an Application Programming Interface or API is available. Using this
-  API is <strong>recommended</strong> over the CSV file which is used to populate the data as the
-  format of the CSV will change over time but the API will be more stable.
-</p>
-<p>The API is available over HTTP and uses the JSON format.</p>
-
-<h3>Materials API</h3>
-<p>
-  To access information about all materials the URL:
-  <%= link_to api_v1_materials_url, api_v1_materials_url %> is used.
-</p>
-<p>
-  This API does not return all the materials at once but is available in pages.
-  To access the second page of materials the parameter "?page=2" needs to be
-  added to the URL. To access all the information continue increasing the page
-  number until no results are returned.
-</p>
-
-<h3>Material API</h3>
-<p>
-  To access information about a specific material "/:id" needs to be appended
-  to the above materials URL, where ":id" is the actual ID of a material.
-</p>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="mb-0">Materials API</h3>
+      </div>
+      <div class="card-body">
+        <p>
+          To access information about all materials the URL:
+          <%= link_to api_v1_materials_url, api_v1_materials_url %> is used.
+        </p>
+        <p>
+          This API does not return all the materials at once but is available in pages.
+          To access the second page of materials the parameter "?page=2" needs to be
+          added to the URL. To access all the information continue increasing the page
+          number until no results are returned.
+        </p>
+        <h4>Material API</h4>
+        <p>
+          To access information about a specific material "/:id" needs to be appended
+          to the above materials URL, where ":id" is the actual ID of a material.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
