@@ -1,12 +1,44 @@
-<h2><%= @manufacturer_count %> manufacturers:</h2>
+<h1>Manufacturers (<%= @manufacturer_count %>):</h1>
+
+<div class="btn-toolbar mt-4 mb-4">
+  <div class="btn-group btn-group-sm">
+    <a href="#A" class="btn btn-default">A</a>
+    <a href="#B" class="btn btn-default">B</a>
+    <a href="#C" class="btn btn-default">C</a>
+    <a href="#D" class="btn btn-default">D</a>
+    <a href="#E" class="btn btn-default">E</a>
+    <a href="#F" class="btn btn-default">F</a>
+    <a href="#G" class="btn btn-default">G</a>
+    <a href="#H" class="btn btn-default">H</a>
+    <a href="#I" class="btn btn-default">I</a>
+    <a href="#J" class="btn btn-default">J</a>
+    <a href="#K" class="btn btn-default">K</a>
+    <a href="#L" class="btn btn-default">L</a>
+    <a href="#M" class="btn btn-default">M</a>
+    <a href="#N" class="btn btn-default">N</a>
+    <a href="#O" class="btn btn-default">O</a>
+    <a href="#P" class="btn btn-default">P</a>
+    <a href="#Q" class="btn btn-default">Q</a>
+    <a href="#R" class="btn btn-default">R</a>
+    <a href="#S" class="btn btn-default">S</a>
+    <a href="#T" class="btn btn-default">T</a>
+    <a href="#U" class="btn btn-default">U</a>
+    <a href="#V" class="btn btn-default">V</a>
+    <a href="#W" class="btn btn-default">W</a>
+    <a href="#X" class="btn btn-default">X</a>
+    <a href="#Y" class="btn btn-default">Y</a>
+    <a href="#Z" class="btn btn-default">Z</a>
+  </div>
+</div>
+
 <section class="manufacturer-listing">
   <% @manufacturers.each do |letter, group| %>
-  <div class="card">
+  <div class="card" id="<%= letter %>">
+    <div class="card-header"><%= letter %></div>
     <div class="card-body">
-      <h5 class="card-title"><%= letter %></h5>
       <ul class="list-group">
       <% group.each do |manufacturer| %>
-        <li class="list-group-item">
+        <li class="list-group-item border-none p-0">
           <%= link_to manufacturer.name, materials_path(manufacturer_id: manufacturer.id) %>
         </li>
       <% end %>

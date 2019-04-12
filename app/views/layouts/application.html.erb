@@ -13,9 +13,13 @@
   </head>
 
   <body>
-    <main>
+    <header>
       <%= render 'layouts/nav' %>
-      <%= yield %>
+    </header>
+    <main class="mt-4">
+      <div class="container">
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>
