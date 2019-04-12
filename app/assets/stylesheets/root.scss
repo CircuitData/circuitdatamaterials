@@ -1,0 +1,8 @@
+@import "bootstrap";
+
+.manufacturer-listing {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 250px);
+  column-gap: 10px;
+  row-gap: 10px;
+}

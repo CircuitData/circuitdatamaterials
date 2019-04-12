@@ -1,4 +1,4 @@
-class MaterialSearch < Struct.new(:material_name, :numerical_filter, :min, :max, keyword_init: true)
+class MaterialSearch < Struct.new(:manufacturer_id, :material_name, :numerical_filter, :min, :max, keyword_init: true)
   def has_valid_params?
     !conditions.empty?
   end
@@ -34,6 +34,9 @@ class MaterialSearch < Struct.new(:material_name, :numerical_filter, :min, :max,
     conditions = []
     if material_name.present?
       conditions << table[:name].matches("%#{material_name}%")
+    end
+    if manufacturer_id.present?
+      conditions << table[:manufacturer_id].eq(manufacturer_id)
     end
     conditions + numerical_filter_conditions
   end

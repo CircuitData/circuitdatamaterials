@@ -28,6 +28,7 @@ class Material < ApplicationRecord
   delegate :name, to: :manufacturer, prefix: true, allow_nil: true
 
   scope :with_manufacturer, -> { where.not(manufacturer_id: nil) }
+  scope :generic, -> { where(manufacturer_id: nil) }
 
   def datasheet
     @datasheet ||= Datasheet.new(self)
