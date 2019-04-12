@@ -1,0 +1,17 @@
+<h2><%= @manufacturer_count %> manufacturers:</h2>
+<section class="manufacturer-listing">
+  <% @manufacturers.each do |letter, group| %>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= letter %></h5>
+      <ul class="list-group">
+      <% group.each do |manufacturer| %>
+        <li class="list-group-item">
+          <%= link_to manufacturer.name, materials_path(manufacturer_id: manufacturer.id) %>
+        </li>
+      <% end %>
+      <ul>
+    </div>
+  </div>
+  <% end %>
+</section>
