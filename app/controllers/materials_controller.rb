@@ -1,4 +1,11 @@
 class MaterialsController < ApplicationController
+  def index
+    query = MaterialSearch.new(search_params.to_h)
+    if query.has_valid_params?
+      @results = query.results.limit(50)
+    end
+  end
+
   def show
     @material = Material.find(params[:id])
     @attributes = @material.attributes.except(
@@ -21,5 +28,9 @@ class MaterialsController < ApplicationController
       type: "application/pdf",
       disposition: "inline",
     )
+  end
+
+  def search_params
+    params.permit(:material_name, :numerical_filter, :min, :max)
   end
 end

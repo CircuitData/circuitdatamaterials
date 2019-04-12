@@ -10,6 +10,8 @@ class Material < ApplicationRecord
   IPC_840 = ["T", "H", "TF", "HF"]
   FINISH = ["matte", "glossy", "semi_glossy"]
 
+  NUMERICAL_COLUMN_TYPES = [:decimal, :integer]
+
   belongs_to :manufacturer, optional: true
 
   validates :name, presence: true
@@ -29,6 +31,11 @@ class Material < ApplicationRecord
 
   def datasheet
     @datasheet ||= Datasheet.new(self)
+  end
+
+  def self.numerical_columns
+    columns.select { |c| NUMERICAL_COLUMN_TYPES.include?(c.type) }
+      .map(&:name).sort
   end
 
   private

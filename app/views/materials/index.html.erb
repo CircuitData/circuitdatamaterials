@@ -1,0 +1,51 @@
+<form>
+  <div class="form-group form-inline">
+    <%= label_tag :material_name %>
+    <%= search_field nil, :material_name, value: params[:material_name], class: "form-control" %>
+  </div>
+
+  <div class="form-group form-inline">
+    <%= label_tag :numerical_filter %>
+    <%= select_tag :numerical_filter,
+      options_for_select(Material.numerical_columns, params[:numerical_filter]),
+      prompt: 'Select attribute', class: "form-control" %>
+  </div>
+
+  <div class="form-group form-inline">
+    <%= label_tag :min %>
+    <%= text_field nil, :min, value: params[:min], class: "form-control" %>
+    <%= label_tag :max %>
+    <%= text_field nil, :max, value: params[:max], class: "form-control" %>
+  </div>
+  <%= submit_tag "Search", class: "form-control" %>
+</form>
+
+<% if !@results.nil? && @results.empty? %>
+  <p>No results</p>
+<% elsif @results.present? %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Manufacturer</th>
+      <% if params[:numerical_filter].present? %>
+      <th><%= params[:numerical_filter] %></th>
+      <% end %>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @results.each do |material| %>
+    <tr>
+      <td><%= material.name %></td>
+      <td><%= material.manufacturer_name %></td>
+      <% if params[:numerical_filter].present? %>
+      <td><%= material[params[:numerical_filter]] %></td>
+      <% end %>
+      <td><%= link_to "More", material_path(material) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% end %>
