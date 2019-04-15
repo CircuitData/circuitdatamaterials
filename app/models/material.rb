@@ -87,8 +87,8 @@ class Material < ApplicationRecord
     water_absorption: "%",
     thermal_conductivity: "W/mK",
     # Not units but this is the easiest way to get it into the CSV.
-    dk: "(@ 1GHz)",
-    df: "(@ 1GHz)",
+    dk: "@ 1GHz",
+    df: "@ 1GHz",
   }
 
   NUMERICAL_COLUMN_TYPES = [:decimal, :integer]

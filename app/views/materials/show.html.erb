@@ -22,7 +22,12 @@
   <tbody>
     <% @attributes.each do |attr, value| %>
     <tr>
-      <td><%= attr.humanize %></td>
+      <td>
+        <%= attr.humanize %>
+        <% if Material::UNITS[attr.to_sym] %>
+        (<%= Material::UNITS[attr.to_sym] %>)
+        <% end %>
+      </td>
       <td><%= value %></td>
     </tr>
     <% end %>
