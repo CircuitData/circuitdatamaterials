@@ -54,40 +54,40 @@ RSpec.describe MaterialSearch do
 
     it "returns results matching name" do
       r = results(material_name: "Pizza")
-      expect(r).to match([material_1, material_2])
+      expect(r).to match_array([material_1, material_2])
 
       r = results(material_name: "pizza")
-      expect(r).to match([material_1, material_2])
+      expect(r).to match_array([material_1, material_2])
 
       r = results(material_name: "tasty")
-      expect(r).to match([material_1])
+      expect(r).to match_array([material_1])
     end
 
     it "returns results with correct min value" do
       r = results(numerical_filter: "dk", min: "10")
-      expect(r).to match([material_1, material_2])
+      expect(r).to match_array([material_1, material_2])
 
       r = results(numerical_filter: "dk", min: "20")
-      expect(r).to match([material_2])
+      expect(r).to match_array([material_2])
 
       r = results(numerical_filter: "dk", min: "21")
-      expect(r).to match([])
+      expect(r).to match_array([])
     end
 
     it "returns results with correct min  and max value" do
       r = results(numerical_filter: "dk", min: "10", max: "20")
-      expect(r).to match([material_1, material_2])
+      expect(r).to match_array([material_1, material_2])
 
       r = results(numerical_filter: "dk", min: "20", max: "21")
-      expect(r).to match([material_2])
+      expect(r).to match_array([material_2])
 
       r = results(numerical_filter: "dk", min: "21", max: "22")
-      expect(r).to match([])
+      expect(r).to match_array([])
     end
 
     it "returns results with correct manufacturers" do
       r = results(manufacturer_id: material_1.manufacturer.id)
-      expect(r).to match([material_1])
+      expect(r).to match_array([material_1])
     end
   end
 
