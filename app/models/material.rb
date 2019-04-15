@@ -9,6 +9,39 @@ class Material < ApplicationRecord
   FOIL_ROUGHNESS = ["L", "S", "V"]
   IPC_840 = ["T", "H", "TF", "HF"]
   FINISH = ["matte", "glossy", "semi_glossy"]
+  UNITS = {
+    circuitdata_material_db_id: nil,
+    name: nil,
+    manufacturer: nil,
+    function: nil,
+    group: nil,
+    foil_roughness: nil,
+    cti: nil,
+    electric_strength: nil,
+    finish: nil,
+    flexible: nil,
+    ipc_slash_sheet: nil,
+    ipc_sm_840_class: nil,
+    ipc_standard: nil,
+    link: nil,
+    ul94: nil,
+
+    tg_min: "°C",
+    td_min: "°C",
+    t260: "min",
+    t280: "min",
+    t300: "min",
+    mot: "°C",
+    z_cte: "%",
+    z_cte_before_tg: "ppm/°C",
+    z_cte_after_tg: "ppm/°C",
+    dielectric_breakdown: "kV",
+    water_absorption: "%",
+    thermal_conductivity: "W/mK",
+    # Not units but this is the easiest way to get it into the CSV.
+    dk: "(@ 1GHz)",
+    df: "(@ 1GHz)",
+  }
 
   NUMERICAL_COLUMN_TYPES = [:decimal, :integer]
 

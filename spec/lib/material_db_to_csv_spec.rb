@@ -87,7 +87,8 @@ RSpec.describe MaterialDbToCsv do
     it "generates a csv from the data" do
       lines = subject.to_csv.split("\n")
       expect(lines.first).to start_with("circuitdata_material_db_id")
-      expect(lines.second).to start_with(material.id)
+      expect(lines.second).to start_with(",,,,,°C")
+      expect(lines.third).to start_with(material.id)
     end
   end
 end

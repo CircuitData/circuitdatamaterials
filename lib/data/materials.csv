@@ -1,4 +1,5 @@
 circuitdata_material_db_id,name,manufacturer,function,group,tg_min,td_min,cti,df,dk,t260,t280,t300,dielectric_breakdown,electric_strength,finish,flexible,foil_roughness,ipc_slash_sheet,ipc_sm_840_class,ipc_standard,link,mot,thermal_conductivity,ul94,water_absorption,z_cte_after_tg,z_cte_before_tg,z_cte
+,,,,,°C,°C,,(@ 1GHz),(@ 1GHz),min,min,min,kV,,,,,,,,,°C,W/mK,,%,ppm/°C,ppm/°C,%
 a5eae094-910c-4f92-bfd8-6ca77fb6fdfd,3M9469,3M,dielectric,"","","","","","","","","","","","","","","","","","","","","","","","",""
 bfb65242-fbac-4532-92fe-049344984e1a,3M9660,3M,dielectric,"","","","","","","","","","","","","","","","","","","","","","","","",""
 3f51a808-059d-4777-801f-a982951f8abf,Cobrisol 714,AISMALIBAR,dielectric,CEM-1,95,"","","","","","","","","","",false,"",10,"",4101,http://www.benmayor.com/technosystem/material-base.php?material-base=5&t=CEM%201,"","","","","","",""

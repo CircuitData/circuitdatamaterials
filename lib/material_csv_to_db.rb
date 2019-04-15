@@ -43,7 +43,7 @@ class MaterialCsvToDb
   }
 
   def initialize(csv_string)
-    @csv = CSV.parse(csv_string, headers: true)
+    @csv = CSV.parse(csv_string, headers: true).drop(1) # Drop unit row
   end
 
   def materials
