@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_09_110633) do
+ActiveRecord::Schema.define(version: 2019_04_15_131419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -26,8 +26,6 @@ ActiveRecord::Schema.define(version: 2019_04_09_110633) do
     t.boolean "verified"
     t.string "ul"
     t.string "ul_c"
-    t.string "source"
-    t.string "source_id"
     t.index ["name"], name: "index_manufacturers_on_name", unique: true
   end
 
@@ -41,9 +39,6 @@ ActiveRecord::Schema.define(version: 2019_04_09_110633) do
     t.datetime "updated_at", null: false
     t.boolean "flexible"
     t.string "ul_94"
-    t.string "source"
-    t.string "version"
-    t.string "source_id"
     t.integer "ipc_standard"
     t.decimal "cti"
     t.decimal "df"

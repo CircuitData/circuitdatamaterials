@@ -45,7 +45,7 @@ RSpec.describe ManufacturerCsvToDb do
       mat = Manufacturer.first
 
       attrs = mat.attributes.symbolize_keys.except(
-        :created_at, :updated_at, :source, :source_id
+        :created_at, :updated_at
       )
       expect(attrs).to include(manufacturer_data)
     end
