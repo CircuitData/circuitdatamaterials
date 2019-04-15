@@ -131,7 +131,7 @@ RSpec.describe MaterialCsvToDb do
       let(:csv) {
         <<~CSV
           #{headers}
-          1587901d-254c-47a1-9294-ea16c653b14d,"","","","","","","","","","","",conductive,copper,"","","","",Copper,"","","","","","","","","",""
+          1587901d-254c-47a1-9294-ea16c653b14d,"","",,"","","","","","","","",conductive,copper,"","","","",Copper,"","","","","","","","","",""
         CSV
       }
       it "imports the material" do

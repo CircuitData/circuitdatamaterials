@@ -73,11 +73,12 @@ class MaterialCsvToDb
     integers = INTEGERS.map(&:to_s)
     csv.map do |r|
       hash = r.to_h
-
+      ipc_slash_sheet = convert_array(hash["ipc_slash_sheet"])
+        &.map(&:to_i)
       {
         id: hash["circuitdata_material_db_id"],
         ul_94: hash["ul94"],
-        ipc_slash_sheet: convert_array(hash["ipc_slash_sheet"]).map(&:to_i),
+        ipc_slash_sheet: ipc_slash_sheet,
         manufacturer: find_manufacturer(hash["manufacturer"]),
       }
         .merge(hash.slice(*strings))
@@ -109,6 +110,6 @@ class MaterialCsvToDb
   end
 
   def convert_array(value)
-    value.split("|")
+    value&.split("|")
   end
 end
