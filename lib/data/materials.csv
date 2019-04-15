@@ -183,7 +183,7 @@ d3550865-ae36-4f86-9aba-7dd5a0fadc55,Innox,"",41,"","","","","","",true,"",diele
 fbc62331-7c93-4450-91a0-57a6dcfd3a89,Innox,"",41,"","","","","","",true,"",dielectric,IMS,"",4204,https://drive.google.com/open?id=0B3bHRBkVN9isTXA4ZkVtTWZSbE0,"",MDH-1H-12NJ,"","","","","","","","","",""
 f3b35c48-be68-460f-9ddc-faac39dc62ae,Isola,"",126,"","","",4.0,"","",false,"",dielectric,FR4,"",4101,http://www.isola-group.com/wp-content/uploads/2016/11/185HR-Laminate-and-Prepreg-Data-Sheet-Isola.pdf,"",185HR,"",15.0,"",340,180,"","","",220.0,40.0
 fb970508-a228-4314-a506-0769978d6536,Isola,"",101,"","","",4.3,"","",false,"",dielectric,FR4,"",4101,http://www.isola-group.com/wp-content/uploads/2015/12/250HR-High-Performance-Laminate-and-Prepreg-Data-Sheet-Isola.pdf,"",250HR,"",15.0,"",340,150,"","","",250.0,65.0
-b69f6245-5b96-4b73-9e3f-49403c73ce07,Isola,"",24,"","","","","","",false,"",dielectric,FR4,"",4101,http://www.isola-group.com/wp-content/uploads/2015/12/254-Laminate-and-Prepreg-Data-Sheet-Isola.pdf,"",254.0,"","","",340,150,"","","","",""
+b69f6245-5b96-4b73-9e3f-49403c73ce07,Isola,"",24,"","","","","","",false,"",dielectric,FR4,"",4101,http://www.isola-group.com/wp-content/uploads/2015/12/254-Laminate-and-Prepreg-Data-Sheet-Isola.pdf,"",254,"","","",340,150,"","","","",""
 37a6a2ee-bfb3-43fd-be72-8eaa1142a796,Isola,"",126,"","","",4.04,"","",false,"",dielectric,FR4,"",4101,http://www.isola-group.com/wp-content/uploads/2016/04/370HR-Laminate-and-Prepreg-Data-Sheet-Isola.pdf,"",370HR,"",30.0,"",340,180,"","","",230.0,45.0
 e5d91255-f538-4185-9912-c18454319f19,Isola,"","","","","",3.0,"","",false,"",dielectric,"","","","","",ASTRA MT77,"",60.0,"",360,200,"","","",250.0,50.0
 9cb25f75-9f7c-4222-a4e5-6c1213fc861e,Isola,"",21,"","","",4.6,"","",false,"",dielectric,FR4,"",4101,http://www.isola-group.com/wp-content/uploads/2015/12/DE104-Laminate-and-Prepreg-Data-Sheet-Isola.pdf,"",DE104,"",30.0,"",310,135,"","","",250.0,70.0
@@ -444,6 +444,7 @@ b9e80ba2-66bf-45db-a423-f79ed668b944,Rootlike,"","","","","","","","","","",sold
 7511ce8a-4450-46c0-9db4-771bed0870b2,Shanghai global,"","","","","","","","",false,"",dielectric,"","","","","",GEM-R1,"","","","","","","","","",""
 2f243333-5f72-4358-a1cd-2725c1ecd4ac,Shanghai global (Goldenmax International),"",10,"","","","","","",false,"",dielectric,CEM-1,"",4101,http://www.goldenmax.cn/EN_product.asp,"",GEM-R1,"","","","","","","","","",""
 16e31526-892b-4906-8d6a-16b131af5076,Shanghai Nanya,"",21,"","","","","","",false,"",dielectric,FR4,"",4101,http://www.ccl-china.com/Uploadfiles/2018.2.11_15.56.36_3539.pdf,"",NY1140,"","","","",140,"","","","",""
+59eca80f-4293-4e0a-8159-4c2f913165e2,Shanghai Nanya,"","","","","","","","",false,"",dielectric,FR4,"",4101,"","",NY1170,"","","",340,170,"","","","",""
 a79ff4a1-cfd4-4888-9d01-16469120f6fa,Shanghai Nanya,"",121,"","","","","","",false,"",dielectric,FR4,"",4101,http://www.ccl-china.com/en/product_blank.asp?id=514,"",NY2140,"","","","",140,"","","","",""
 99815fff-5850-460d-bbe7-bdb5afa2367a,Shengyi,"",101,"","","","","","",false,"",dielectric,FR4,"",4101,http://www.syst.com.cn,"",Autolad1,"",20.0,"",348,160,"","","",230.0,37.0
 81c43fba-8a88-4ce1-91f2-ee0acd31ae81,Shengyi,"",101,"","","","","","",false,"",dielectric,FR4,"",4101,http://www.syst.com.cn,"",Autolad3,"",30.0,"",355,180,"","","",210.0,40.0
