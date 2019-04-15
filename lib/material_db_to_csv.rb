@@ -35,13 +35,44 @@ class MaterialDbToCsv
     :ipc_slash_sheet,
     :ul94,
   ]
+  ORDERED_COLUMNS = [
+    :circuitdata_material_db_id,
+    :name,
+    :manufacturer,
+    :function,
+    :group,
+    :tg_min,
+    :td_min,
+    :cti,
+    :df,
+    :dk,
+    :t260,
+    :t280,
+    :t300,
+    :dielectric_breakdown,
+    :electric_strength,
+    :finish,
+    :flexible,
+    :foil_roughness,
+    :ipc_slash_sheet,
+    :ipc_sm_840_class,
+    :ipc_standard,
+    :link,
+    :mot,
+    :thermal_conductivity,
+    :ul94,
+    :water_absorption,
+    :z_cte_after_tg,
+    :z_cte_before_tg,
+    :z_cte,
+  ]
 
   def headers
     COLUMNS
   end
 
   def body
-    @body ||= build_body
+    @body ||= sorted_hashes(build_body)
   end
 
   def to_csv
@@ -59,12 +90,24 @@ class MaterialDbToCsv
   def build_body
     attr_names = SIMPLE_ATTRS.map(&:to_s)
     materials.map do |material|
+      simple_attrs = material.attributes.slice(*attr_names)
       {
         circuitdata_material_db_id: material.id,
         manufacturer: material.manufacturer&.name,
         ul94: material.ul_94,
         ipc_slash_sheet: values(material, "ipc_slash_sheet"),
-      }.merge(material.attributes.slice(*attr_names)).transform_values(&:to_s)
+      }.merge(simple_attrs.symbolize_keys).transform_values(&:to_s)
+    end
+  end
+
+  def sorted_hashes(hashes)
+    hashes.map do |h|
+      # Add the keys to hash in an ordered way so that they come out in the
+      # same way.
+      ORDERED_COLUMNS.reduce({}) do |acc, col|
+        acc[col] = h[col]
+        acc
+      end
     end
   end
 
