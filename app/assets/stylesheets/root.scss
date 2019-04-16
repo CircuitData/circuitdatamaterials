@@ -1,28 +1,48 @@
 @import "bootstrap";
 
+.jumbotron {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.card-summary {
+  .card-header {
+    border-bottom: none;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
 .manufacturer-listing {
   display: grid;
   grid-template-columns: repeat(auto-fill, 250px);
   column-gap: 10px;
   row-gap: 10px;
+  .card-header {
+    border-bottom: none;
+    font-weight: bold;
+  }
 }
 
 .border-none {
   border: none;
 }
 
+.table-striped tbody tr:nth-of-type(odd) {
+  background: #f7f7f7;
+}
+
 .min, .max {
   position: relative;
-  padding-left: 5px;
   display: inline-block;
+  margin-right: 5px;
   span {
     content: '';
     background-repeat: no-repeat;
     position: absolute;
     height: 18px;
     top: 10px;
-    left: 12px;
-    z-index: 10;
+    left: 8px;
     background-color: transparent;
     border: none;
   }
@@ -31,7 +51,7 @@
   }
   input {
     padding-left: 20px;
-    width: 72px !important;
+    width: 80px !important;
   }
 }
 
@@ -49,4 +69,12 @@
          <path d='M7.319,4.573C7.261,4.695 7.169,4.755 7.041,4.755L4.898,4.755L4.898,16.694C4.898,16.783 4.87,16.857 4.812,16.914C4.755,16.971 4.682,17 4.592,17L2.756,17C2.666,17 2.593,16.971 2.536,16.914C2.478,16.857 2.449,16.783 2.449,16.694L2.449,4.755L0.307,4.755C0.173,4.755 0.08,4.695 0.029,4.573C-0.022,4.452 -0.006,4.341 0.077,4.239L3.425,0.565C3.489,0.501 3.562,0.469 3.645,0.469C3.735,0.469 3.811,0.501 3.875,0.565L7.271,4.239C7.354,4.341 7.37,4.452 7.319,4.573Z' style='fill:rgb(69,132,240);'/>
      </g>
    </svg>");
+}
+
+.btn-toolbar {
+  .btn-default {
+    &:hover {
+      color: #007bff;
+    }
+  }
 }

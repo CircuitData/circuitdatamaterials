@@ -1,35 +1,36 @@
-<form class="mb-4">
-  <div class="row">
-    <div class="col-md-5 mb-4">
-      <%= label_tag :material_name %>
-      <%= search_field nil, :material_name, value: params[:material_name], class: "form-control" %>
-    </div>
-  </div>
+<div class="jumbotron">
+  <form class="mb-3">
+    <div class="row">
+      <div class="col-md-5 mb-4">
+        <%= label_tag :material_name %>
+        <%= search_field nil, :material_name, value: params[:material_name], class: "form-control", :autofocus => true %>
+      </div>
 
-  <div class="row">
-    <div class="col-md-3 mb-4">
-      <%= label_tag :numerical_filter %>
-      <%= select_tag :numerical_filter,
-        options_for_select(Material.numerical_columns, params[:numerical_filter]),
-        prompt: 'Select attribute', class: "form-control" %>
-    </div>
-    <div class="col-md-3 mb-4">
-      <div>
-        <%= label_tag :min %> / <%= label_tag :max %>
+      <div class="col-md-3 mb-4">
+        <%= label_tag :numerical_filter %>
+        <%= select_tag :numerical_filter,
+          options_for_select(Material.numerical_columns, params[:numerical_filter]),
+          prompt: 'Select attribute', class: "form-control" %>
       </div>
-      <div class="input-group-prepend min">
-        <span class="input-group-text"></span>
-        <%= text_field nil, :min, value: params[:min], class: "form-control", placeholder: "Min" %>
-      </div>
-      <div class="input-group-prepend max">
-        <span class="input-group-text"></span>
-        <%= text_field nil, :max, value: params[:max], class: "form-control", placeholder: "Max" %>
-      </div>
-    </div>
-  </div>
 
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-</form>
+      <div class="col-md-4 mb-4">
+        <div>
+          <%= label_tag :min %> / <%= label_tag :max %>
+        </div>
+        <div class="input-group-prepend min">
+          <span class="input-group-text"></span>
+          <%= text_field nil, :min, value: params[:min], class: "form-control", placeholder: "Min" %>
+        </div>
+        <div class="input-group-prepend max">
+          <span class="input-group-text"></span>
+          <%= text_field nil, :max, value: params[:max], class: "form-control", placeholder: "Max" %>
+        </div>
+      </div>
+    </div>
+
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  </form>
+</div>
 
 <% if !@results.nil? && @results.empty? %>
   <p>No results</p>
