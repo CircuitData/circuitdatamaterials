@@ -5,6 +5,8 @@ class Api::V1::MaterialsController < ApplicationController
   end
 
   def index
+    return send_csv if request.format == :csv
+
     page = params[:page].present? ? params[:page].to_i : 1
     per_page = params[:per_page].present? ? params[:per_page].to_i : 40
     materials = Material.offset((page - 1) * per_page)
@@ -26,6 +28,14 @@ class Api::V1::MaterialsController < ApplicationController
       filename: sheet.filename,
       type: "application/pdf",
       disposition: "inline",
+    )
+  end
+
+  def send_csv
+    send_data(
+      File.read(Rails.root.join("lib", "data", "materials.csv")),
+      filename: "materials.csv",
+      type: "text/csv",
     )
   end
 end

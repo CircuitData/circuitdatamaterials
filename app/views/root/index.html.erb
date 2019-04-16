@@ -18,7 +18,7 @@
     <h2>Updates</h2>
     <p>To add or correct information in the database:</p>
     <ol>
-      <li>Download the database. It is available as a CSV.</li>
+      <li>Download the database. It is available as a <%= link_to "CSV", api_v1_materials_url(format: :csv), download: true %>.</li>
       <li>Make any changes using Excel or Numbers.</li>
       <li>Send the updated file to <%= link_to "it@elmatica.com", "mailto:it@elmatica.com" %>.</li>
     </ol>
