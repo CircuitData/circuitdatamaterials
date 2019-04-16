@@ -240,7 +240,6 @@ d5f77f32-416a-4a82-bbd4-65fb0da9d600,HF-140/6162,Kingboard,dielectric,FR4,140,34
 8eb563b6-a31e-4f3d-b0a8-585b93690f63,KB-5150,Kingboard,dielectric,CEM-1,"","","","","","","","","","","",false,"",10,"",4101,http://www.kblaminates.com/up/new/KB-5150-5150A-5150&.pdf,"","","","","","",""
 7f508b75-62bf-421a-9cb9-fe71ace18c64,KB-5150H,Kingboard,dielectric,CEM-1,"","","","","","","","","","","",false,"",10,"",4101,http://www.kblaminates.com/up/new/KB-5150-5150A-5150&.pdf,"","","","","","",""
 9f53be40-9874-4159-a19a-6d7dbd5467ff,KB-6164,Kingboard,dielectric,FR4,140,305,"","",4.5,"",3.0,"","","","",false,"",27,"",4101,http://www.kblaminates.com/up/KB-6164.pdf,"","","","",286.0,54.0,""
-9046e8b2-4314-43e6-907f-4eb1ba90a9ee,KB-6165F,Kingboard,dielectric,FR4,150,325,"","",4.8,"",23.5,"","","","",false,"",101,"",4101,http://www.kblaminates.com/up/KB-6165F.pdf,"","","","",238.0,49.0,""
 f64fa16b-98f2-4a72-a381-5b43333e40a2,KB-6167F,Kingboard,dielectric,FR4,170,340,"","",4.8,"",32.3,"","","","",false,"",101,"",4101,http://www.kblaminates.com/up/KB-6167F.pdf,"","","","",208.0,49.0,""
 fbd2c16a-77de-4b40-809d-148a2149fd11,KB-7150,Kingboard,dielectric,FR4,"","","","",4.5,"","","","","","",false,"",27,"",4101,http://www.kblaminates.com/up/KB-7150%20KB-7150C.pdf,"","","","","","",""
 b12b5b56-1c01-4722-82c0-ffe87b192771,KB-7150C,Kingboard,dielectric,FR4,"","","","","","","","","","","",false,"",27,"",4101,http://www.kblaminates.com/up/KB-7150%20KB-7150C.pdf,"","","","","","",""
@@ -262,7 +261,7 @@ d20069e1-3994-4f1e-8d83-66aab267c7fe,KB6160,Kingboard,dielectric,FR4,135,305,"",
 c4cabd1d-976d-4030-ab34-3d5c9b6cea66,KB6160C,Kingboard,dielectric,FR4,135,305,"",0.022,4.6,10.0,"","",69.0,"","",false,"",21,"",4101,"",130.0,"",v-0,0.19,286.0,58.0,69.0
 46717512-bf5b-440b-959d-ff271e4bc1fa,KB6164F,Kingboard,dielectric,FR4,140,325,"","",4.8,"",42.5,"","","","",false,"",101,"",4101,http://www.kblaminates.com/up/KB-6164F.pdf,"","","","",260.0,45.0,""
 4159e7bc-b0d4-4e33-a633-0356e6bbd68f,KB6165,Kingboard,dielectric,FR4,150,335,"","",4.65,"",23.0,"","","","",false,"",124,"",4101,http://www.kblaminates.com/upfile/Glass-epoxy-laminates/KB-6165.pdf,"","","","",287.0,55.0,""
-1680facb-861f-490f-bcee-aae52e63d07a,KB6165F,Kingboard,dielectric,FR4,150,334,3.0,0.017,4.8,60.0,20.52,10.3,60.0,"","",false,"",99,"",4101,"",130.0,"",v-0,0.08,238.0,49.0,60.0
+1680facb-861f-490f-bcee-aae52e63d07a,KB-6165F,Kingboard,dielectric,FR4,150,334,3.0,0.017,4.8,60.0,20.52,10.3,60.0,"","",false,"",99,"",4101,"http://www.kblaminates.com/up/KB-6165F.pdf",130.0,"",v-0,0.08,238.0,49.0,60.0
 d2244e8e-8b70-4c28-b7be-e4e20e981205,KB6165GC,Kingboard,dielectric,FR4,151,384,"",0.017,4.6,"",50.0,50.48,42.8,"","",false,"",126,"",4101,"",130.0,"",v-0,0.19,295.8,52.6,42.8
 ea13455d-b332-4be9-9de7-5b4efa140338,KB6167,Kingboard,dielectric,FR4,175,357,"","",4.65,"",30.0,"","","","",false,"",129,"",4101,http://www.kblaminates.com/upfile/Glass-epoxy-laminates/KB-6167.pdf,"","","","",267.0,46.0,""
 60e0952c-2faf-4baf-b687-50be92027ca0,KB6167F,Kingboard,dielectric,FR4,170,350,3.0,0.017,4.8,60.0,24.83,14.62,60.0,"","",false,"",126,"",4101,"",130.0,"",v-0,0.08,208.0,49.0,60.0
