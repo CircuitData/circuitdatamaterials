@@ -5,9 +5,13 @@ RSpec.describe MaterialCsvToDb do
   let(:headers) {
     "circuitdata_material_db_id,manufacturer,ul94,ipc_slash_sheet,cti,df,dielectric_breakdown,dk,electric_strength,finish,flexible,foil_roughness,function,group,ipc_sm_840_class,ipc_standard,link,mot,name,t260,t280,t300,td_min,tg_min,thermal_conductivity,water_absorption,z_cte,z_cte_after_tg,z_cte_before_tg"
   }
+  let(:units) {
+    ",,,,,,,,,,,,,,,,,,,,,,,,,,,,"
+  }
   let(:csv) {
     <<~CSV
       #{headers}
+      #{units}
       987d89e6-8d31-4b3a-b313-d56a22fb2f71,Big Cheese,hb,1|2,12.0,14.0,16.0,18.0,20.0,glossy,true,V,final_finish,FR2,TF,12,http://example.com/cheesyLink,24.0,Cheese,28.0,30.0,32.0,34,36,38.0,44.0,46.0,48.0,50.0
     CSV
   }
@@ -131,6 +135,7 @@ RSpec.describe MaterialCsvToDb do
       let(:csv) {
         <<~CSV
           #{headers}
+          #{units}
           1587901d-254c-47a1-9294-ea16c653b14d,"","",,"","","","","","","","",conductive,copper,"","","","",Copper,"","","","","","","","","",""
         CSV
       }

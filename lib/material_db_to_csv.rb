@@ -79,6 +79,7 @@ class MaterialDbToCsv
     column_names = body.first.keys
     CSV.generate do |csv|
       csv << column_names
+      csv << units
       body.each do |x|
         csv << x.values
       end
@@ -86,6 +87,12 @@ class MaterialDbToCsv
   end
 
   private
+
+  def units
+    ORDERED_COLUMNS.map do |col|
+      Material::UNITS.fetch(col)
+    end
+  end
 
   def build_body
     attr_names = SIMPLE_ATTRS.map(&:to_s)
