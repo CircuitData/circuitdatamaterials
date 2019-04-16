@@ -19,4 +19,11 @@ RSpec.describe "Homepage" do
       expect(page).to have_content("1 manufacturers")
     end
   end
+
+  it "allows the CSV to be downloaded" do
+    visit "/"
+    click_on("CSV")
+
+    expect(page.body).to eql(File.read(Rails.root.join("lib", "data", "materials.csv")))
+  end
 end
