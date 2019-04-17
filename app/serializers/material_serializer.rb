@@ -30,6 +30,6 @@ class MaterialSerializer < ApplicationSerializer
   end
 
   def version
-    1.0
+    2.0
   end
 end
