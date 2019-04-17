@@ -52,7 +52,7 @@ RSpec.describe "/api/v1/materials" do
       flexible: true,
       function: "final_finish",
       group: "FR2",
-      version: 1.0,
+      version: 2.0,
     })
     expect(mat[:attributes]).to eql(
       ipc_standard: 12,
