@@ -1,8 +1,11 @@
+
 class MaterialsController < ApplicationController
+  include Pagy::Backend
   def index
     query = MaterialSearch.new(search_params.to_h)
+
     if query.has_valid_params?
-      @results = query.results.limit(50)
+      @pagy, @results = pagy(query.results)
     end
   end
 
