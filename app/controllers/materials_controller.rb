@@ -1,6 +1,6 @@
-include Pagy::Backend
 
 class MaterialsController < ApplicationController
+  include Pagy::Backend
   def index
     query = MaterialSearch.new(search_params.to_h)
 
