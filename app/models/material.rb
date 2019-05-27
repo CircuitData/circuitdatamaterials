@@ -120,6 +120,10 @@ class Material < ApplicationRecord
       .map(&:name).sort
   end
 
+  def self.material_function
+    FUNCTIONS.map{|name| [name.humanize(capitalize: true), name]}
+  end
+
   private
 
   def normalize_blank_values
