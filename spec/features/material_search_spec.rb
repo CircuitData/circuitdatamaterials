@@ -28,7 +28,7 @@ RSpec.describe "Searching for a material" do
     click_on "Search"
 
     expect(page).not_to have_content("Cheese")
-    expect(page).not_to have_content("Big Pizza")
+    expect(page).to have_content("Big Pizza")
     expect(page).to have_content("No results")
   end
 
@@ -48,7 +48,7 @@ RSpec.describe "Searching for a material" do
     click_on "Search"
 
     expect(page).to_not have_content("Cheese")
-    expect(page).not_to have_content("Big Pizza")
+    expect(page).to have_content("Big Pizza")
     expect(page).to have_content("No results")
   end
 
