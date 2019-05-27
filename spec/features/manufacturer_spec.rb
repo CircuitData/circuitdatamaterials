@@ -18,4 +18,13 @@ RSpec.describe "Manufacturers" do
 
     expect(page).to have_content("gouda")
   end
+
+  it "makes sure the list of manufacturers is displayed right" do
+    visit "/materials"
+    click_on "Manufacturer"
+    click_on "big ost"
+    click_on "Search"
+
+    expect(page).to have_content("gouda")
+  end
 end
