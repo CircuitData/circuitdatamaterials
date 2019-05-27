@@ -23,7 +23,6 @@ RSpec.describe "Manufacturers" do
     visit "/materials"
     click_on "Manufacturer"
     click_on "big ost"
-    click_on "Search"
 
     expect(page).to have_content("gouda")
   end
