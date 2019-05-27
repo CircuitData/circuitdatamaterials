@@ -4,6 +4,6 @@ class Manufacturer < ApplicationRecord
   validates :name, presence: true
 
   def self.names
-    all.map{|material| [material.name, material.id]}
+    pluck(:name, :id).to_a
   end
 end
