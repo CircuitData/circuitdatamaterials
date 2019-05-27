@@ -5,6 +5,7 @@ RSpec.describe "Searching for a material" do
     create(
       :material,
       name: "Cheese",
+      function: "conductive",
       manufacturer: manufacturer,
       dk: 100,
     )
@@ -30,6 +31,27 @@ RSpec.describe "Searching for a material" do
     expect(page).not_to have_content("Big Pizza")
     expect(page).to have_content("No results")
   end
+
+  scenario "Searching with material function" do
+    visit "/materials"
+    page.select "Conductive", from: "Material function"
+    click_on "Search"
+
+    expect(page).to have_content("Cheese")
+    expect(page).to have_content("Big Pizza")
+    expect(page).to have_link("More")
+  end
+
+  scenario "Searching for non existing material function" do
+    visit "/materials"
+    page.select "Dielectric", from: "Material function"
+    click_on "Search"
+
+    expect(page).to_not have_content("Cheese")
+    expect(page).not_to have_content("Big Pizza")
+    expect(page).to have_content("No results")
+  end
+
 
   scenario "attribute is matched on numerical range" do
     visit "/materials"

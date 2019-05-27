@@ -6,14 +6,21 @@
         <%= search_field nil, :material_name, value: params[:material_name], class: "form-control", :autofocus => true %>
       </div>
 
-      <div class="col-md-3 mb-4">
+      <div class="col-md-2 mb-4">
+        <%= label_tag :material_function %>
+        <%= select_tag :material_function,
+          options_for_select(Material.material_function, params[:material_function]),
+          prompt: 'Select function', class: "form-control" %>
+      </div>
+
+      <div class="col-md-2 mb-4">
         <%= label_tag :numerical_filter %>
         <%= select_tag :numerical_filter,
           options_for_select(Material.numerical_columns, params[:numerical_filter]),
           prompt: 'Select attribute', class: "form-control" %>
       </div>
 
-      <div class="col-md-4 mb-4">
+      <div class="col-md-3 mb-4">
         <div>
           <%= label_tag :min %> / <%= label_tag :max %>
         </div>

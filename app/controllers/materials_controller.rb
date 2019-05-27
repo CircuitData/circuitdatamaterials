@@ -34,6 +34,6 @@ class MaterialsController < ApplicationController
   end
 
   def search_params
-    params.permit(:material_name, :manufacturer_id, :numerical_filter, :min, :max)
+    params.permit(:material_name, :material_function, :manufacturer_id, :numerical_filter, :min, :max)
   end
 end
