@@ -17,9 +17,11 @@ RSpec.describe "Searching for a material" do
     fill_in "Material name", with: "chee"
     click_on "Search"
 
-    expect(page).to have_content("Cheese")
-    expect(page).to have_content("Big Pizza")
-    expect(page).to have_link("More")
+    within(page.find('#results')) do
+        expect(page).to have_content("Cheese")
+        expect(page).to have_content("Big Pizza")
+        expect(page).to have_link("More")
+    end
   end
 
   scenario "Searching with non matching name" do
@@ -27,9 +29,11 @@ RSpec.describe "Searching for a material" do
     fill_in "Material name", with: "chips"
     click_on "Search"
 
-    expect(page).not_to have_content("Cheese")
-    expect(page).to have_content("Big Pizza")
-    expect(page).to have_content("No results")
+    within(page.find('#results')) do
+      expect(page).not_to have_content("Cheese")
+      expect(page).not_to have_content("Big Pizza")
+      expect(page).to have_content("No results")
+    end
   end
 
   scenario "Searching with material function" do
@@ -37,9 +41,11 @@ RSpec.describe "Searching for a material" do
     page.select "Conductive", from: "Material function"
     click_on "Search"
 
-    expect(page).to have_content("Cheese")
-    expect(page).to have_content("Big Pizza")
-    expect(page).to have_link("More")
+    within(page.find('#results')) do
+      expect(page).to have_content("Cheese")
+      expect(page).to have_content("Big Pizza")
+      expect(page).to have_link("More")
+    end
   end
 
   scenario "Searching for non existing material function" do
@@ -47,9 +53,11 @@ RSpec.describe "Searching for a material" do
     page.select "Dielectric", from: "Material function"
     click_on "Search"
 
-    expect(page).to_not have_content("Cheese")
-    expect(page).to have_content("Big Pizza")
-    expect(page).to have_content("No results")
+    within(page.find('#results')) do
+      expect(page).not_to have_content("Cheese")
+      expect(page).not_to have_content("Big Pizza")
+      expect(page).to have_content("No results")
+    end
   end
 
 
