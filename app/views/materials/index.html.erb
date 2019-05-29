@@ -34,15 +34,22 @@
         </div>
       </div>
     </div>
-
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <%= label_tag :manufacturer %>
+        <%= select_tag :manufacturer_id,
+          options_for_select(Manufacturer.names, params[:manufacturer_id]),
+          prompt: 'Select manufacturer', class: "form-control" %>
+      </div>
+    </div>
     <%= submit_tag "Search", class: "btn btn-primary" %>
   </form>
 </div>
 
 <% if !@results.nil? && @results.empty? %>
-  <p>No results</p>
+  <p id="results">No results</p>
 <% elsif @results.present? %>
-<table class="table table-striped">
+<table class="table table-striped" id="results">
   <thead>
     <tr>
       <th>Name</th>
