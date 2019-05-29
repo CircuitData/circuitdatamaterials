@@ -16,14 +16,7 @@ RSpec.describe "Manufacturers" do
     click_on "Manufacturers"
     click_on "big ost"
 
-    expect(page).to have_content("gouda")
-  end
-
-  it "makes sure the list of manufacturers is displayed right" do
-    visit "/materials"
-    click_on "Manufacturer"
-    click_on "big ost"
-
+    expect(page).to have_select("manufacturer_id", :selected => "big ost")
     expect(page).to have_content("gouda")
   end
 end
