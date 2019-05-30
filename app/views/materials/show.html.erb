@@ -20,7 +20,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @attributes.each do |attr, value| %>
+    <% attributes_by_material_function(@material).each do |attr, value| %>
     <tr>
       <td>
         <%= attr.humanize %>
