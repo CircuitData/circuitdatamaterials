@@ -18,8 +18,8 @@ RSpec.describe "Viewing a material" do
   end
 
   scenario "All attributes for all functions are displayed" do
-    default = MaterialsHelper::MATERIAL_ATTRIBUTES["default"]
-    MaterialsHelper::MATERIAL_ATTRIBUTES.except("default").each do |function, attrs|
+    default = MaterialsHelper::DEFAULT_ATTRIBUTES
+    MaterialsHelper::MATERIAL_ATTRIBUTES.each do |function, attrs|
       material = create(
         :material,
         name: "Cheese-"+function,

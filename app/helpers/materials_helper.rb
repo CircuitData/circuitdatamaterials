@@ -1,7 +1,7 @@
 
 module MaterialsHelper
+  DEFAULT_ATTRIBUTES = ["id", "function", "group", "link", "ipc_standard"]
   MATERIAL_ATTRIBUTES = {
-    "default" => ["id", "function", "group", "link", "ipc_standard"],
     "conductive" => ["foil_roughness", "flexible", "thermal_conductivity"],
     "dielectric" => ["flexible", "ul_94", "cti", "df", "dielectric_breakdown",
       "dk", "electric_strength", "mot", "t260", "t280", "t300", "td_min",
@@ -14,6 +14,6 @@ module MaterialsHelper
 
   def attributes_by_material_function(material)
     material.attributes.slice(
-      *MATERIAL_ATTRIBUTES["default"]+MATERIAL_ATTRIBUTES[material.attributes["function"]])
+      *DEFAULT_ATTRIBUTES+MATERIAL_ATTRIBUTES.fetch(material.function))
   end
 end
