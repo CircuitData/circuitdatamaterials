@@ -7,7 +7,7 @@ module MaterialsHelper
       "dk", "mot", "t260", "t280", "t300", "td_min",
       "tg_min", "thermal_conductivity", "water_absorption", "z_cte",
       "z_cte_after_tg", "z_cte_before_tg", "ipc_slash_sheet"],
-      "soldermask" => ["flexible", "thermal_conductivity", "ipc_sm_840_class", "df", "dk", "electric_strength", "ul_94", "cti", "finish"],
+    "soldermask" => ["flexible", "thermal_conductivity", "ipc_sm_840_class", "df", "dk", "electric_strength", "ul_94", "cti", "finish"],
     "stiffener" => [],
     "final_finish" => []
   }
