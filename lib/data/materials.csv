@@ -115,14 +115,14 @@ ff5c0084-a913-4425-ad38-5ef0a085a79b,MC8T,Faradflex,dielectric,"","","","","",24
 77659483-5cb6-4bbe-be45-5d9e9f9d11d0,MC8TM,Faradflex,dielectric,"","","","","",10.5,"","","","","","",false,"","","","",https://www.faradflex.com/high-dk-series/,"","","","","","",""
 d127b530-93fa-4049-970a-ce89c9806270,FSR-8000,Fotochem,soldermask,"","","","","","","","","","","","","","","","","",http://www.unionsoltek.com/en/content_03d.html,"","","","","","",""
 e9ca3863-be66-408e-8a2c-e2fb9a3a744a,GH8001,Gin Hwa,soldermask,"","","","","","","","","","","","","","","","","",http://www.ginhwa.com.tw,"","","","","","",""
-24d5bf23-d84f-4dd5-a8ff-ea3a93e1e968,PSR550B,Goo Chemicals,soldermask,"","","","","","","","","","","","","","","","","",http://www.goo-chem.co.jp/product/pdf/for-electronics-catalog.pdf,"","","","","","",""
-14b2a1ae-1d8a-4bb0-8b53-7eff077e5173,Speed Board C,GORE,dielectric,FR4,"","","","","","","","","","","",false,"",93,"",4101,http://www.gore.com/MungoBlobs/535/886/SPEEDBOARD%20C%20-%20Matl-Prop.pdf,"","","","","","",""
 3f9a2062-03b5-4d0b-b5cb-30cd07df6d0e,GW1400,Go World,dielectric,FR4,140,310,"","","","","","","","","",false,"",21,"",4101,http://www.gd-goworld.com/ccl/cn/products/index.html,"","","","","","",""
 cec42824-ac87-40b3-8756-99fc1a14524c,GW1500,Go World,dielectric,FR4,150,340,"","",4.4,"","","","","","",false,"","","","","","","","","","","",""
 c2ed6c55-cdde-4b8b-8a4e-33181ab50e31,GW2000,Go World,dielectric,FR4,150,355,"","","","","","","","","",false,"",121,"",4101,http://www.gd-goworld.com/ccl/cn/products/index.html,"","","","","","",""
 0e9313ae-e1c8-4c9f-a6a6-3f45d26bd987,GW2100,Go World,dielectric,FR4,140,340,"","","","","","","","","",false,"","","","",http://www.gd-goworld.com/ccl/cn/products/index.html,"","","","","","",""
 5be2fd9b-3b01-43bd-bc56-e6bfe5647e40,GW4011,Go World,dielectric,FR4,135,310,"","",4.6,"","","","","","",false,"",21,"",4101,http://www.gd-goworld.com/ccl/cn/products/index.html,"","","","","","",""
 f6e8b034-f354-4b8a-bfe0-8e2afe7385d9,GW4011T,Go World,dielectric,IMS,"","","","","","","","","","","",false,"","","","",http://www.gd-goworld.com/ccl/cn/products/index.html,"","","","","","",""
+24d5bf23-d84f-4dd5-a8ff-ea3a93e1e968,PSR550B,Goo Chemicals,soldermask,"","","","","","","","","","","","","","","","","",http://www.goo-chem.co.jp/product/pdf/for-electronics-catalog.pdf,"","","","","","",""
+14b2a1ae-1d8a-4bb0-8b53-7eff077e5173,Speed Board C,GORE,dielectric,FR4,"","","","","","","","","","","",false,"",93,"",4101,http://www.gore.com/MungoBlobs/535/886/SPEEDBOARD%20C%20-%20Matl-Prop.pdf,"","","","","","",""
 468ee23f-5603-4618-b4d3-694cb6b1cc8a,GA-150-LL,Grace,dielectric,FR4,152,340,"","","","",20.0,"","","","",false,"",101,"",4101,http://www.graceelectron.com/userfiles/2015/11/24/20151124160619.pdf,"","","","",250.0,45.0,3.3
 2abb2e6e-e4a4-445b-8236-8fd63a1e469b,GA-170-LE,Grace,dielectric,FR4,174,340,"","","","",30.0,"","","","",false,"",126,"",4101,http://www.graceelectron.com/userfiles/2015/11/24/20151124160755.pdf,"","","","",215.0,36.0,2.5
 89027332-64f4-412d-a0af-05bb5f250e78,GA-170-LL,Grace,dielectric,FR4,173,340,"","","","",15.0,"","","","",false,"",126,"",4101,http://www.graceelectron.com/userfiles/2015/11/24/20151124160727.pdf,"","","","",240.0,43.0,2.7
@@ -511,9 +511,9 @@ ea6c4d75-71f0-4d98-a3e8-a997b11f4cc5,Synamic4 (S7439),Shengyi,dielectric,FR4,200
 465b5214-1cac-4cbf-ac41-e2a5255878e1,SM 730-5,Shinemore,dielectric,FR4,"","","","","","","","","","","",false,"",24,"",4101,http://www.shinemore.com.tw/upload/SM-730-5_20170126.pdf,"","","","","","",""
 f4255bac-467f-4999-8f5e-d293f56de4ea,SM730M,Shinemore,dielectric,FR4,"","","","","","","","","","","",false,"",24,"",4101,http://www.shinemore.com.tw/upload/SM-730-4_20170126.pdf,"","","","","","",""
 40333a1e-546c-4ac6-9167-b9047cdaa913,ELC-4765!,Sumitomo,dielectric,FR4,"","","","","","","","","","","",false,"",24,"",4101,https://www.sbhpp.com/products-applications/catalog/item/sumilite-elc-4765,"","","","","","",""
+bce4a1fb-4834-4452-b0b2-8beeee26f894,L-S8600Y,Sun Star,soldermask,"","","","","","","","","","","","","","","","","","","","","","","","",""
 36e2c193-e131-4b07-bbbe-5c5b3acd56a2,XV501T Imagecure,SunChemical,soldermask,"","","","","","","","","","","","","","","","","",http://www.sunchemical.com/products--services/products/printed-circuit-products/soldermask,"","","","","","",""
 8744a34e-0f19-4bc1-850f-5fd9dca0aee3,XV501T Spray,SunChemical,soldermask,"","","","","","","","","","","","","","","","","",http://www.sunchemical.com/products--services/products/printed-circuit-products/soldermask,"","","","","","",""
-bce4a1fb-4834-4452-b0b2-8beeee26f894,L-S8600Y,Sun Star,soldermask,"","","","","","","","","","","","","","","","","","","","","","","","",""
 1e9dcdf1-76de-47ce-9a45-b41aefa7bfab,CER10,Taconic,dielectric,FR4,"","","","","","","","","","","",false,"",24,"",4101,http://www.4taconic.com/uploads/ADD%20Data%20Sheets/1450203721_Cer-10%20Technical%20Data%20Sheet.pdf,"","","","","","",""
 76c43911-684e-4664-9c00-0f1d486a5329,RF-35,Taconic,dielectric,FR4,"","","","","","","","","","","",false,"",24,"",4101,http://www.4taconic.com/uploads/ADD%20Technical%20Data%20Sheets/1470077119_Taconic%20RF-35%20Technical%20Data%20Sheet.pdf,"","","","","","",""
 d5636c3f-4cf7-4a52-8d9a-717d2db8ace4,RF-60,Taconic,dielectric,FR4,"","","","","","","","","","","",false,"",24,"",4101,http://www.4taconic.com/uploads/ADD%20Technical%20Data%20Sheets/1472754505_Taconic%20RF-60A%20Technical%20Data%20Sheet.pdf,"","","","","","",""
