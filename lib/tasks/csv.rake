@@ -1,5 +1,4 @@
 namespace :csv do
-  class InvalidRowError < StandardError; end
   FIELDS = [
     "ipc_standard",
     "ipc_slash_sheet",
