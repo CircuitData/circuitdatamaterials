@@ -1,5 +1,5 @@
 namespace :csv do
-
+  class InvalidRowError < StandardError; end
   FIELDS = [
     "ipc_standard",
     "ipc_slash_sheet",
@@ -18,7 +18,9 @@ namespace :csv do
     "z_cte_after_tg",
     "dielectric_breakdown",
     "water_absorption",
-    "thermal_conductivity"
+    "thermal_conductivity",
+    "electric_strength",
+    "ipc_sm_840_class"
   ]
 
   task :export => :environment do
@@ -60,13 +62,19 @@ namespace :csv do
       end
       puts from_ec["name"]
       from_ec["ipc_slash_sheet"] = from_ec[:ipc_slash_sheet].nil? ? "" : from_ec[:ipc_slash_sheet].join("|")
+      m = Material.find(from_cdp[:circuitdata_material_db_id])
+
       FIELDS.each do |field|
         if from_ec[field].to_s != "" && from_ec[field].to_s != from_cdp[field.to_sym].to_s
           puts "\tUpdating "+field+" from "+from_cdp[field.to_sym].to_s+" to "+from_ec[field].to_s
-        else
-          #puts "Keeping "+field+" cdp: "+from_cdp[field.to_sym].to_s+" EC: "+from_ec[field].to_s
+          if field == "ipc_slash_sheet"
+            m.ipc_slash_sheet = from_ec[field]&.split("|")
+          else
+            m.update({field => from_ec[field]})
+          end
         end
       end
+      m.save!
     end
   end
 end
