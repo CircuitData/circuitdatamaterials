@@ -1,5 +1,5 @@
 namespace :csv do
-    task :export => :environment do
+  task :export => :environment do
     puts MaterialDbToCsv.new.to_csv
   end
 
