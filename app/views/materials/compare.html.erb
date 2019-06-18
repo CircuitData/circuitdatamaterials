@@ -1,0 +1,48 @@
+<div class="jumbotron">
+  <form class="mb-3">
+    <div class="row">
+      <div class="col mb-4">
+        <%= label_tag :material_1_uuid %>
+        <%= text_field nil, :material_1_uuid, value: params[:material_1_uuid], class: "form-control", placeholder: "UUID" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col mb-4">
+        <%= label_tag :material_2_uuid %>
+        <%= text_field nil, :material_2_uuid, value: params[:material_2_uuid], class: "form-control", placeholder: "UUID" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= submit_tag "Compare", class: "btn btn-primary" %>
+      </div>
+    </div>
+  </form>
+</div>
+
+<% if !@material1.nil? && !@material2.nil?%>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Property</th>
+        <th>Material 1</th>
+        <th>Material 2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% attributes_by_material_function(@material1).each do |attr, value1| %>
+      <% value2 = @material2.attributes.fetch(attr) %>
+      <tr>
+        <td>
+          <%= attr.humanize %>
+          <% if Material::UNITS[attr.to_sym] %>
+          (<%= Material::UNITS[attr.to_sym] %>)
+          <% end %>
+        </td>
+        <td><%= styled_value(value1, value2) %></td>
+        <td><%= styled_value(value2, value1) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

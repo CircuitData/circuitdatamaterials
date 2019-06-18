@@ -14,8 +14,10 @@ class MaterialsController < ApplicationController
   end
 
   def compare
-    @material1 = Material.find(params[:material_1_uuid])
-    @material2 = Material.find(params[:material_2_uuid])
+    if Material.exists?(params[:material_1_uuid]) && Material.exists?(params[:material_2_uuid])
+      @material1 = Material.find(params[:material_1_uuid])
+      @material2 = Material.find(params[:material_2_uuid])
+    end
   end
 
   def datasheet
