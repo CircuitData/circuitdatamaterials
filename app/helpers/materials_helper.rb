@@ -16,4 +16,10 @@ module MaterialsHelper
     material.attributes.slice(
       *DEFAULT_ATTRIBUTES+MATERIAL_ATTRIBUTES.fetch(material.function))
   end
+
+  def styled_value(value1, value2)
+    style="color: " + (value1 == value2 ? "green" : "red")
+    data = "<span style='#{style}'>#{value1}</span>"
+    data.html_safe
+  end
 end

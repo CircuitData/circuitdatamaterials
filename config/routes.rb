@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     member do
       get :datasheet
     end
+    collection do
+      get :compare
+    end
   end
   resources :manufacturers, only: [:index, :show]
   root to: "root#index"
