@@ -1,46 +1,44 @@
 <div class="jumbotron">
-  <form class="mb-3">
-    <div class="row">
-      <div class="col mb-4">
-        <%= label_tag :material_1_uuid %>
-        <%= text_field nil, :material_1_uuid, value: params[:material_1_uuid], class: "form-control", placeholder: "UUID" %>
+  <form>
+    <% @materials.each_with_index do |material, index| %>
+    <% value = params["material_#{index}_uuid"] %>
+      <div class="row">
+        <div class="col mb-4">
+          <%= label_tag "material_#{index}_uuid" %>
+          <%= text_field nil, "material_#{index}_uuid", value: value, class: "form-control", placeholder: "UUID" %>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col mb-4">
-        <%= label_tag :material_2_uuid %>
-        <%= text_field nil, :material_2_uuid, value: params[:material_2_uuid], class: "form-control", placeholder: "UUID" %>
-      </div>
-    </div>
+    <% end %>
     <div class="row">
       <div class="col">
         <%= submit_tag "Compare", class: "btn btn-primary" %>
+        <%= submit_tag "Add material", class: "btn btn-primary" %>
+        <%= hidden_field_tag "num_to_compare", @materials.size %>
       </div>
     </div>
   </form>
 </div>
 
-<% if !@material1.nil? && !@material2.nil?%>
+<% @materials = @materials.compact %>
+
+<% if @materials.size  > 0 %>
   <table class="table table-striped">
     <thead>
       <tr>
         <th>Property</th>
-        <th>Material 1</th>
-        <th>Material 2</th>
+        <% @materials.each do |material| %>
+          <th><%= material.name %></th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
-      <% attributes_by_material_function(@material1).each do |attr, value1| %>
-      <% value2 = @material2.attributes.fetch(attr) %>
+      <% attributes_by_material_function(@materials[0]).each do |attr, val| %>
+      <% values = @materials.collect{ |material| material.attributes.fetch(attr)} %>
       <tr>
-        <td>
-          <%= attr.humanize %>
-          <% if Material::UNITS[attr.to_sym] %>
-          (<%= Material::UNITS[attr.to_sym] %>)
-          <% end %>
-        </td>
-        <td><%= styled_value(value1, value2) %></td>
-        <td><%= styled_value(value2, value1) %></td>
+        <td><%= show_attribute(attr) %></td>
+        <% values.each do |value| %>
+          <td><%= styled_value(value, values) %></td>
+        <% end %>
       </tr>
       <% end %>
     </tbody>

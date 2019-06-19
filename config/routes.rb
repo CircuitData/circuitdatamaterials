@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     end
     collection do
       get :compare
+      post :compare
     end
   end
   resources :manufacturers, only: [:index, :show]

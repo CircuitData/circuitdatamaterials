@@ -17,9 +17,17 @@ module MaterialsHelper
       *DEFAULT_ATTRIBUTES+MATERIAL_ATTRIBUTES.fetch(material.function))
   end
 
-  def styled_value(value1, value2)
-    style="color: " + (value1 == value2 ? "green" : "red")
-    data = "<span style='#{style}'>#{value1}</span>"
-    data.html_safe
+  def styled_value(value, values)
+    values_equal = values.uniq.size <= 1
+    style="color: " + (values_equal ? "green" : "red")
+    content_tag(:span, value, {style: style})
+  end
+
+  def show_attribute(attr)
+    data = attr.humanize
+    if Material::UNITS[attr.to_sym]
+      data += "(#{Material::UNITS[attr.to_sym]})"
+    end
+    content_tag(:span, data)
   end
 end
