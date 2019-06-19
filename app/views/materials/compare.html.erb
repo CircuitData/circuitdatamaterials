@@ -4,7 +4,7 @@
     <% value = params["material_#{index}_uuid"] %>
       <div class="row">
         <div class="col mb-4">
-          <%= label_tag "material_#{index}_uuid" %>
+          <%= label_tag "material_#{index+1}_uuid" %>
           <%= text_field nil, "material_#{index}_uuid", value: value, class: "form-control", placeholder: "UUID" %>
         </div>
       </div>
