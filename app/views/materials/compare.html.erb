@@ -1,11 +1,10 @@
 <div class="jumbotron">
   <form>
     <% @materials.each_with_index do |material, index| %>
-    <% value = params["material_#{index}_uuid"] %>
       <div class="row">
         <div class="col mb-4">
-          <%= label_tag "material_#{index+1}_uuid" %>
-          <%= text_field nil, "material_#{index}_uuid", value: value, class: "form-control", placeholder: "UUID" %>
+          <%= label_tag "material #{index}" %>
+          <%= text_field nil, "material_ids[]", value: params[:material_ids][index], class: "form-control", placeholder: "UUID" %>
         </div>
       </div>
     <% end %>
@@ -13,7 +12,6 @@
       <div class="col">
         <%= submit_tag "Compare", class: "btn btn-primary" %>
         <%= submit_tag "Add material", class: "btn btn-primary" %>
-        <%= hidden_field_tag "num_to_compare", @materials.size %>
       </div>
     </div>
   </form>

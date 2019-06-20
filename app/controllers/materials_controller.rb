@@ -14,15 +14,15 @@ class MaterialsController < ApplicationController
   end
 
   def compare
-    num_materials = params[:num_to_compare].to_i || 0
-    if params[:commit] == "Add material"
-      num_materials += 1
+    if params[:material_ids].nil?
+      params[:material_ids] = [nil, nil]
     end
-
+    if params[:commit] == "Add material"
+      params[:material_ids].append(nil)
+    end
     @materials = []
-    (0..num_materials-1).each do |i|
-      uuid =  params["material_#{i}_uuid"]
-      @materials.append(Material.exists?(uuid) ? Material.find(uuid) : nil)
+    params[:material_ids].each do |uuid|
+      @materials.append(Material.find_by(id: uuid))
     end
   end
 
