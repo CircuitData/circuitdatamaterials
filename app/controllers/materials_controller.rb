@@ -14,16 +14,7 @@ class MaterialsController < ApplicationController
   end
 
   def compare
-    if params[:material_ids].nil?
-      params[:material_ids] = [nil, nil]
-    end
-    if params[:commit] == "Add material"
-      params[:material_ids].append(nil)
-    end
-    @materials = []
-    params[:material_ids].each do |uuid|
-      @materials.append(Material.find_by(id: uuid))
-    end
+    @materials = MaterialComparator.new(params).compare
   end
 
   def datasheet

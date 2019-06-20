@@ -3,7 +3,7 @@
     <% @materials.each_with_index do |material, index| %>
       <div class="row">
         <div class="col mb-4">
-          <%= label_tag "material #{index}" %>
+          <%= label_tag "material #{index+1}" %>
           <%= text_field nil, "material_ids[]", value: params[:material_ids][index], class: "form-control", placeholder: "UUID" %>
         </div>
       </div>
