@@ -4,18 +4,15 @@ RSpec.describe "Comparing two materials" do
   let(:material1) {
     create(
       :material,
-      name: "Cheese",
-      manufacturer: manufacturer,
+      name: "Cheese"
     )
   }
   let(:material2) {
     create(
       :material,
-      name: "Bacon",
-      manufacturer: manufacturer,
+      name: "Bacon"
     )
   }
-  let(:manufacturer) { create(:manufacturer, name: "Big Pizza") }
 
   scenario "Name of both materials is displayed" do
     visit "/materials/compare"
