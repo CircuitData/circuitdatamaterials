@@ -12,8 +12,34 @@ module MaterialsHelper
     "final_finish" => []
   }
 
+  def attributes_by_function(function)
+    DEFAULT_ATTRIBUTES+MATERIAL_ATTRIBUTES.fetch(function)
+  end
+
   def attributes_by_material_function(material)
-    material.attributes.slice(
-      *DEFAULT_ATTRIBUTES+MATERIAL_ATTRIBUTES.fetch(material.function))
+    material.attributes.slice(*attributes_by_function(material.function))
+  end
+
+  def material_values(materials)
+    attrs = attributes_by_function(materials[0].function)
+    attrs.map{ |attr| [attr,
+      materials.map{ |material|
+        material.attributes.fetch(attr)
+      }]
+    }.to_h
+  end
+
+  def styled_value(value, values)
+    values_equal = values.uniq.size <= 1
+    style="color: " + (values_equal ? "green" : "red")
+    content_tag(:span, value, {style: style})
+  end
+
+  def show_attribute(attr)
+    data = attr.humanize
+    if Material::UNITS[attr.to_sym]
+      data += "(#{Material::UNITS[attr.to_sym]})"
+    end
+    content_tag(:span, data)
   end
 end

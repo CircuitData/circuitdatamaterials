@@ -13,6 +13,10 @@ class MaterialsController < ApplicationController
     @material = Material.find(params[:id])
   end
 
+  def compare
+    @materials = MaterialComparator.new(params).compare
+  end
+
   def datasheet
     @material = Material.find(params[:id])
     sheet = @material.datasheet
