@@ -25,7 +25,7 @@ class MaterialsController < ApplicationController
   end
 
   def compare
-    @materials = MaterialComparator.new(params).compare
+    @materials = MaterialComparator.new(session[:compare]).compare
   end
 
   def datasheet

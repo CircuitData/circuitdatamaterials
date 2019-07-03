@@ -1,22 +1,3 @@
-<div class="jumbotron">
-  <form>
-    <% @materials.size.times do |index| %>
-      <div class="row">
-        <div class="col mb-4">
-          <%= label_tag "material #{index+1}" %>
-          <%= text_field nil, "material_ids[]", value: params[:material_ids][index], class: "form-control", placeholder: "UUID" %>
-        </div>
-      </div>
-    <% end %>
-    <div class="row">
-      <div class="col">
-        <%= submit_tag "Compare", class: "btn btn-primary", name: "compare" %>
-        <%= submit_tag "Add material", class: "btn btn-primary", name: "add" %>
-      </div>
-    </div>
-  </form>
-</div>
-
 <% @materials = @materials.compact %>
 
 <% if @materials.size  > 0 %>
@@ -30,6 +11,12 @@
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td></td>
+      <% @materials.each do |material| %>
+        <td><%= button_to 'Remove', material, method: "put", class: "btn btn-primary" %></td>
+      <% end %>
+      </tr>
       <% material_values(@materials).each do |attr, values| %>
       <tr>
         <td><%= show_attribute(attr) %></td>
