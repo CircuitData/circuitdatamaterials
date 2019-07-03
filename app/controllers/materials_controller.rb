@@ -21,7 +21,11 @@ class MaterialsController < ApplicationController
     else
       session[:compare].append(params[:id])
     end
-    redirect_to @material
+    if params[:redirect]
+      redirect_to params[:redirect]
+    else
+      redirect_to @material
+    end
   end
 
   def compare

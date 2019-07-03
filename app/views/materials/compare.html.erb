@@ -14,7 +14,10 @@
       <tr>
         <td></td>
       <% @materials.each do |material| %>
-        <td><%= button_to 'Remove', material, method: "put", class: "btn btn-primary" %></td>
+        <td>
+          <%= button_to 'Remove', material, method: "put",
+          class: "btn btn-primary", params: { redirect: "/materials/compare" } %>
+        </td>
       <% end %>
       </tr>
       <% material_values(@materials).each do |attr, values| %>
