@@ -1,5 +1,6 @@
 
 class MaterialsController < ApplicationController
+  protect_from_forgery
   include Pagy::Backend
   def index
     query = MaterialSearch.new(search_params.to_h)
@@ -11,6 +12,16 @@ class MaterialsController < ApplicationController
 
   def show
     @material = Material.find(params[:id])
+  end
+
+  def update
+    @material = Material.find(params[:id])
+    if session[:compare].include?(params[:id])
+      session[:compare].delete(params[:id])
+    else
+      session[:compare].append(params[:id])
+    end
+    redirect_to @material
   end
 
   def compare

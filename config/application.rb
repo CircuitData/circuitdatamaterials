@@ -40,9 +40,5 @@ module Circuitdatamaterials
     end
     # use rack-attack
     config.middleware.use Rack::Attack
-
-    # Disable cookies, we don't use them here
-    config.middleware.delete ActionDispatch::Cookies
-    config.middleware.delete ActionDispatch::Session::CookieStore
   end
 end

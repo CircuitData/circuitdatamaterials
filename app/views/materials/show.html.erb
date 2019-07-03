@@ -5,12 +5,18 @@
 <p>This is a generic material with no specific manufacturer.</p>
 <% end %>
 
-<% if @material.datasheet.exist? %>
-<p><%= link_to "View datasheet", datasheet_material_path(@material), data: { turbolinks: false } %></p>
+<p>
+  <% if @material.datasheet.exist? %>
+    <%= link_to "View datasheet", datasheet_material_path(@material), data: { turbolinks: false } %>
 <% else %>
-<p class="text-muted">No datasheet present.</p>
+  <span class="text-muted">No datasheet present.</span>
 <% end %>
-
+<% if materials_to_compare.include?(params[:id]) %>
+  <%= button_to "Remove from Compare", @material, method: "put", class: "btn btn-primary" %>
+<% else %>
+  <%= button_to "Add To Compare", @material, method: "put", class: "btn btn-primary" %>
+<% end %>
+</p>
 
 <table class="table table-striped">
   <thead>
