@@ -21,15 +21,16 @@ class MaterialsController < ApplicationController
     else
       session[:compare].append(params[:id])
     end
-    if params[:redirect]
-      redirect_to params[:redirect]
-    else
-      redirect_to @material
-    end
+    redirect_to @material
   end
 
   def compare
     @materials = MaterialComparator.new(session[:compare]).compare
+  end
+
+  def remove_from_compare
+    session[:compare].delete(params[:id])
+    redirect_to :action => 'compare'
   end
 
   def datasheet

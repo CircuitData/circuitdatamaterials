@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :materials, only: [:index, :show, :update] do
     member do
       get :datasheet
+      delete :remove_from_compare
     end
     collection do
       get :compare

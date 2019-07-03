@@ -15,8 +15,8 @@
         <td></td>
       <% @materials.each do |material| %>
         <td>
-          <%= button_to 'Remove', material, method: "put",
-          class: "btn btn-primary", params: { redirect: "/materials/compare" } %>
+          <%= button_to 'Remove', {:action => 'remove_from_compare', :id => material.id },
+          method: "delete", class: "btn btn-primary" %>
         </td>
       <% end %>
       </tr>
