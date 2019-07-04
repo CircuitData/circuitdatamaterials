@@ -10,17 +10,18 @@ class MaterialsController < ApplicationController
     end
   end
 
+  def update_compare
+    add_remove_compare
+    redirect_to action: "index", params: JSON.parse(params[:search])
+  end
+
   def show
     @material = Material.find(params[:id])
   end
 
   def update
     @material = Material.find(params[:id])
-    if session[:compare].include?(params[:id])
-      session[:compare].delete(params[:id])
-    else
-      session[:compare].append(params[:id])
-    end
+    add_remove_compare
     redirect_to @material
   end
 
@@ -52,5 +53,13 @@ class MaterialsController < ApplicationController
 
   def search_params
     params.permit(:material_name, :material_function, :manufacturer_id, :numerical_filter, :min, :max)
+  end
+
+  def add_remove_compare
+    if session[:compare].include?(params[:id])
+      session[:compare].delete(params[:id])
+    else
+      session[:compare].append(params[:id])
+    end
   end
 end

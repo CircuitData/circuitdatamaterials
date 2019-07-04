@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     member do
       get :datasheet
       delete :remove_from_compare
+      put :update_compare
     end
     collection do
       get :compare
