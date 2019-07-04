@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery
   rescue_from ActionController::UnpermittedParameters, with: :unpermitted_parameters_rescue
 
   def unpermitted_parameters_rescue(exception)

@@ -11,11 +11,7 @@
 <% else %>
   <span class="text-muted">No datasheet present.</span>
 <% end %>
-<% if materials_to_compare.include?(params[:id]) %>
-  <%= button_to "Remove from Compare", @material, method: "put", class: "btn btn-primary" %>
-<% else %>
-  <%= button_to "Add To Compare", @material, method: "put", class: "btn btn-primary" %>
-<% end %>
+<%= update_compare_button("update", @material.id) %>
 </p>
 
 <table class="table table-striped">
