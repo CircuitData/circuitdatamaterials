@@ -11,7 +11,7 @@ class MaterialsController < ApplicationController
 
   def update_compare
     add_remove_compare
-    redirect_to action: "index", params: JSON.parse(params[:search])
+    redirect_to request.referer
   end
 
   def show

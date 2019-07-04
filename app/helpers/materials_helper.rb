@@ -46,6 +46,6 @@ module MaterialsHelper
   def update_compare_button(action, material_id)
     button_text = materials_to_compare.include?(material_id) ? "Remove from Compare" : "Add To Compare"
     return button_to(button_text, {:action => action, :id => material_id },
-      method: "put", class: "btn btn-primary", params: {"search" => params.to_json})
+      method: "put", class: "btn btn-primary")
   end
 end
