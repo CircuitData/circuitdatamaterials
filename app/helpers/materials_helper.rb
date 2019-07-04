@@ -21,7 +21,7 @@ module MaterialsHelper
   end
 
   def material_values(materials)
-    attrs = attributes_by_function(materials[0].function)
+    attrs = attributes_by_function(materials[0].function)-["id"]
     attrs.map{ |attr| [attr,
       materials.map{ |material|
         material.attributes.fetch(attr)
