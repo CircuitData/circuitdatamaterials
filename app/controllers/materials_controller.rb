@@ -1,6 +1,5 @@
 
 class MaterialsController < ApplicationController
-  protect_from_forgery
   include Pagy::Backend
   def index
     query = MaterialSearch.new(search_params.to_h)
