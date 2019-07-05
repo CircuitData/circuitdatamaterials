@@ -1,6 +1,7 @@
-<% @materials = @materials.compact %>
-
-<% if @materials.size  > 0 %>
+<% if @materials.size == 0 %>
+  <p>No materials added to compare. Add more materials by using the Add/Remove
+    button in the materials search page</p>
+<% else %>
   <table class="table table-striped">
     <thead>
       <tr>

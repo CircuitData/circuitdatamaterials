@@ -11,30 +11,30 @@ class MaterialsController < ApplicationController
 
   def update_compare
     add_remove_compare
-    redirect_to request.referer
+    redirect_back(fallback_location: root_path)
   end
 
   def show
-    @material = Material.find(params[:id])
+    @material = Material.find(material_id)
   end
 
   def update
-    @material = Material.find(params[:id])
+    @material = Material.find(material_id)
     add_remove_compare
     redirect_to @material
   end
 
   def compare
-    @materials = MaterialComparator.new(session[:compare]).compare
+    @materials = MaterialComparator.new(compare_material_ids).compare
   end
 
   def remove_from_compare
-    session[:compare].delete(params[:id])
+    compare_material_ids.delete(material_id)
     redirect_to :action => 'compare'
   end
 
   def datasheet
-    @material = Material.find(params[:id])
+    @material = Material.find(material_id)
     sheet = @material.datasheet
     return send_sheet(sheet) if sheet.exist?
   end
@@ -55,10 +55,18 @@ class MaterialsController < ApplicationController
   end
 
   def add_remove_compare
-    if session[:compare].include?(params[:id])
-      session[:compare].delete(params[:id])
+    if compare_material_ids.include?(material_id)
+      compare_material_ids.delete(material_id)
     else
-      session[:compare].append(params[:id])
+      compare_material_ids.append(material_id)
     end
+  end
+
+  def compare_material_ids
+    session[:compare]
+  end
+
+  def material_id
+    params[:id]
   end
 end
