@@ -29,7 +29,7 @@ class MaterialsController < ApplicationController
   end
 
   def remove_from_compare
-    compare_material_ids.delete(material_id)
+    compare_material_ids_delete(material_id)
     redirect_to :action => 'compare'
   end
 
@@ -56,14 +56,26 @@ class MaterialsController < ApplicationController
 
   def add_remove_compare
     if compare_material_ids.include?(material_id)
-      compare_material_ids.delete(material_id)
+      compare_material_ids_delete(material_id)
     else
-      compare_material_ids.append(material_id)
+      compare_material_ids_append(material_id)
     end
   end
 
+  def compare_material_ids_append(id)
+    compare_material_ids_save(compare_material_ids + [id])
+  end
+
+  def compare_material_ids_delete(id)
+    compare_material_ids_save(compare_material_ids - [id])
+  end
+
+  def compare_material_ids_save(ids_array)
+    cookies[:compare] = ActiveSupport::JSON.encode(ids_array)
+  end
+
   def compare_material_ids
-    session[:compare]
+    ActiveSupport::JSON.decode(cookies[:compare] || "[]")
   end
 
   def material_id
