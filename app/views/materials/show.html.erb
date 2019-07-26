@@ -5,12 +5,14 @@
 <p>This is a generic material with no specific manufacturer.</p>
 <% end %>
 
-<% if @material.datasheet.exist? %>
-<p><%= link_to "View datasheet", datasheet_material_path(@material), data: { turbolinks: false } %></p>
+<p>
+  <% if @material.datasheet.exist? %>
+    <%= link_to "View datasheet", datasheet_material_path(@material), data: { turbolinks: false } %>
 <% else %>
-<p class="text-muted">No datasheet present.</p>
+  <span class="text-muted">No datasheet present.</span>
 <% end %>
-
+<%= update_compare_button("update", @material.id) %>
+</p>
 
 <table class="table table-striped">
   <thead>

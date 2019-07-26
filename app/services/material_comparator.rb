@@ -1,12 +1,6 @@
 class MaterialComparator
-  def initialize(params)
-    if params[:material_ids].nil?
-      params[:material_ids] = [nil, nil]
-    end
-    if params[:commit] == "Add material"
-      params[:material_ids].append(nil)
-    end
-    @uuids = params[:material_ids]
+  def initialize(material_ids)
+    @uuids = material_ids
   end
 
   def compare

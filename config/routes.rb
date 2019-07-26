@@ -5,13 +5,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :materials, only: [:index, :show] do
+  resources :materials, only: [:index, :show, :update] do
     member do
       get :datasheet
+      delete :remove_from_compare
+      put :update_compare
     end
     collection do
       get :compare
-      post :compare
     end
   end
   resources :manufacturers, only: [:index, :show]

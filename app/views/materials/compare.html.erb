@@ -1,25 +1,7 @@
-<div class="jumbotron">
-  <form>
-    <% @materials.size.times do |index| %>
-      <div class="row">
-        <div class="col mb-4">
-          <%= label_tag "material #{index+1}" %>
-          <%= text_field nil, "material_ids[]", value: params[:material_ids][index], class: "form-control", placeholder: "UUID" %>
-        </div>
-      </div>
-    <% end %>
-    <div class="row">
-      <div class="col">
-        <%= submit_tag "Compare", class: "btn btn-primary", name: "compare" %>
-        <%= submit_tag "Add material", class: "btn btn-primary", name: "add" %>
-      </div>
-    </div>
-  </form>
-</div>
-
-<% @materials = @materials.compact %>
-
-<% if @materials.size  > 0 %>
+<% if @materials.size == 0 %>
+  <p>No materials added to compare. Add more materials by using the Add/Remove
+    button in the materials search page</p>
+<% else %>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -30,6 +12,15 @@
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td></td>
+      <% @materials.each do |material| %>
+        <td>
+          <%= button_to 'Remove', {:action => 'remove_from_compare', :id => material.id },
+          method: "delete", class: "btn btn-primary" %>
+        </td>
+      <% end %>
+      </tr>
       <% material_values(@materials).each do |attr, values| %>
       <tr>
         <td><%= show_attribute(attr) %></td>

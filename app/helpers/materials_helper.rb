@@ -21,7 +21,7 @@ module MaterialsHelper
   end
 
   def material_values(materials)
-    attrs = attributes_by_function(materials[0].function)
+    attrs = attributes_by_function(materials[0].function)-["id"]
     attrs.map{ |attr| [attr,
       materials.map{ |material|
         material.attributes.fetch(attr)
@@ -41,5 +41,11 @@ module MaterialsHelper
       data += "(#{Material::UNITS[attr.to_sym]})"
     end
     content_tag(:span, data)
+  end
+
+  def update_compare_button(action, material_id)
+    button_text = materials_to_compare.include?(material_id) ? "Remove from Compare" : "Add To Compare"
+    return button_to(button_text, {:action => action, :id => material_id },
+      method: "put", class: "btn btn-primary")
   end
 end
