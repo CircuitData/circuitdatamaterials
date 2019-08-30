@@ -38,7 +38,5 @@ module Circuitdatamaterials
     config.generators do |g|
       g.orm :active_record, primary_key_type: :uuid
     end
-    # use rack-attack
-    config.middleware.use Rack::Attack
   end
 end

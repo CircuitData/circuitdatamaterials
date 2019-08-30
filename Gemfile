@@ -12,7 +12,6 @@ gem "rest-client"
 gem "will_paginate", "~> 3.1.0"
 gem "api-pagination"
 gem "active_model_serializers", "~> 0.10.2"
-gem "rack-attack"
 gem "circuitdata", github: 'Elmatica/circuit-data-gem'
 gem "active_record_upsert"
 gem "bootstrap", "~> 4.3.1"
