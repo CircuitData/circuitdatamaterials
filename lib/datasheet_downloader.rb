@@ -1,3 +1,5 @@
+require "mimemagic"
+
 class DatasheetDownloader
   def self.start
     new(Material.with_manufacturer).start
@@ -19,10 +21,9 @@ class DatasheetDownloader
     return if material.datasheet.exist? || material.link.nil?
     puts "Processing: #{material.name} #{material.manufacturer_name}"
     response = RestClient.get(material.link)
-    content = response.headers[:content_type]
 
-    if !content.include?("application/pdf") && !(content.include?("application/octet-stream") && response.body.include?("/PDF/Text"))
-      puts "Incorrect content type #{content}"
+    unless valid_content?(response)
+      puts "Incorrect content type #{response.headers[:content_type]}"
       return
     end
 
@@ -31,6 +32,10 @@ class DatasheetDownloader
     puts "Failed downloading: #{material.name} #{material.manufacturer_name} #{e.http_code}"
   rescue => e
     puts "Failed downloading: #{material.name} #{material.manufacturer_name} #{e.message}"
+  end
+
+  def valid_content?(response)
+    MimeMagic.by_magic(response.body) == "application/pdf"
   end
 
   def save_file(material, response)
