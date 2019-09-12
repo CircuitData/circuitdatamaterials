@@ -20,7 +20,11 @@ class DatasheetDownloader
     puts "Processing: #{material.name} #{material.manufacturer_name}"
     response = RestClient.get(material.link)
     content = response.headers[:content_type]
-    return unless content.include?("application/pdf")
+
+    if !content.include?("application/pdf") && !(content.include?("application/octet-stream") && response.body.include?("/PDF/Text"))
+      puts "Incorrect content type #{content}"
+      return
+    end
 
     save_file(material, response)
   rescue RestClient::Exception => e
