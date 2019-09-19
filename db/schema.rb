@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_15_131419) do
+ActiveRecord::Schema.define(version: 2019_09_19_095928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_04_15_131419) do
     t.string "finish"
     t.string "foil_roughness"
     t.string "ipc_sm_840_class"
+    t.boolean "verified", default: false, null: false
     t.index ["manufacturer_id", "name"], name: "index_materials_on_manufacturer_id_and_name", unique: true
     t.index ["manufacturer_id"], name: "index_materials_on_manufacturer_id"
     t.index ["name"], name: "index_materials_on_name", unique: true, where: "(manufacturer_id IS NULL)"
