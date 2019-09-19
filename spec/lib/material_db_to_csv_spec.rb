@@ -38,7 +38,7 @@ RSpec.describe MaterialDbToCsv do
   }
   describe "#headers" do
     it "has the expected number of headers" do
-      expect(subject.headers.count).to eql(29)
+      expect(subject.headers.count).to eql(30)
     end
 
     it "has the cd id is the first header" do
@@ -79,6 +79,7 @@ RSpec.describe MaterialDbToCsv do
         z_cte: "46.0",
         z_cte_after_tg: "48.0",
         z_cte_before_tg: "50.0",
+        verified: "false",
       )
     end
   end

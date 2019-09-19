@@ -36,6 +36,7 @@ class MaterialCsvToDb
   ]
   BOOLEANS = [
     :flexible,
+    :verified,
   ]
   BOOL_MAP = {
     "true" => true,
