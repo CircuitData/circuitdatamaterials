@@ -1,8 +1,8 @@
 require "mimemagic"
 
 class DatasheetDownloader
-  def self.start
-    new(Material.with_manufacturer).start
+  def self.start(scope = Material)
+    new(scope.with_manufacturer).start
   end
 
   def initialize(materials)
