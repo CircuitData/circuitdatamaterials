@@ -73,6 +73,7 @@ class Material < ApplicationRecord
     ipc_standard: nil,
     link: nil,
     ul94: nil,
+    verified: nil,
 
     tg_min: "°C",
     td_min: "°C",
@@ -121,7 +122,7 @@ class Material < ApplicationRecord
   end
 
   def self.material_function
-    FUNCTIONS.map{|name| [name.humanize(capitalize: true), name]}
+    FUNCTIONS.map { |name| [name.humanize(capitalize: true), name] }
   end
 
   private

@@ -28,6 +28,7 @@ class MaterialDbToCsv
     :z_cte,
     :z_cte_after_tg,
     :z_cte_before_tg,
+    :verified,
   ]
 
   COLUMNS = SIMPLE_ATTRS + [
@@ -65,6 +66,7 @@ class MaterialDbToCsv
     :z_cte_after_tg,
     :z_cte_before_tg,
     :z_cte,
+    :verified,
   ]
 
   def headers
