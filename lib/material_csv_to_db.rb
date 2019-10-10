@@ -78,7 +78,7 @@ class MaterialCsvToDb
         &.map(&:to_i)
       {
         id: hash["circuitdata_material_db_id"],
-        ul_94: hash["ul94"],
+        ul_94: hash["ul94"]&.downcase,
         ipc_slash_sheet: ipc_slash_sheet,
         manufacturer: find_manufacturer(hash["manufacturer"]),
       }
