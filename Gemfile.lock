@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Elmatica/circuit-data-gem.git
-  revision: db44d532dd0542682de08e2f2b184a9235731043
+  revision: de37d13b0ec122c70daaeadcf67298917f05ad18
   specs:
     circuitdata (0.9.0)
       activesupport (> 5.1, < 7)
@@ -116,7 +116,7 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    i18n (1.6.0)
+    i18n (1.7.0)
       concurrent-ruby (~> 1.0)
     interception (0.5)
     jquery-rails (4.3.5)
@@ -143,7 +143,7 @@ GEM
     mimemagic (0.3.3)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.11.3)
+    minitest (5.12.2)
     msgpack (1.3.1)
     netrc (0.11.0)
     nio4r (2.5.2)
@@ -269,7 +269,7 @@ GEM
     will_paginate (3.1.8)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.1.10)
+    zeitwerk (2.2.0)
 
 PLATFORMS
   ruby
