@@ -52,6 +52,10 @@ class Material < ApplicationRecord
     "s_hasl",
     "b1_lfhasl",
     "IMS",
+    "PTFE/None",
+    "PTFE/Ceramic",
+    "Hydrocarbon/None",
+    "Hydrocarbon/Ceramic",
   ]
   UL = ["v-0", "v-1", "hb"]
   FOIL_ROUGHNESS = ["L", "S", "V"]
