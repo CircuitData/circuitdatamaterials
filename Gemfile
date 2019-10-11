@@ -9,8 +9,6 @@ gem "puma"
 gem "sass-rails"
 gem "uglifier"
 gem "rest-client"
-gem "will_paginate"
-gem "api-pagination"
 gem "active_model_serializers", "~> 0.10.2"
 gem "circuitdata", github: 'Elmatica/circuit-data-gem'
 gem "active_record_upsert"
