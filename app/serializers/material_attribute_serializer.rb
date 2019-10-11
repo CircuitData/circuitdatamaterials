@@ -23,10 +23,6 @@ class MaterialAttributeSerializer < ApplicationSerializer
     :z_cte_before_tg,
   )
 
-  def cti
-    object.cti&.to_f
-  end
-
   def df
     object.df&.to_f
   end

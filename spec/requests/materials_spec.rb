@@ -56,7 +56,7 @@ RSpec.describe "/api/v1/materials" do
     })
     expect(mat[:attributes]).to eql(
       ipc_standard: 12,
-      cti: 12.0,
+      cti: 12,
       df: 14.0,
       dielectric_breakdown: 16.0,
       dk: 18.0,
