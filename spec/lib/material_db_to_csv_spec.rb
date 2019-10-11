@@ -51,7 +51,7 @@ RSpec.describe MaterialDbToCsv do
       mat = subject.body.first.symbolize_keys
       expect(mat).to eql(
         circuitdata_material_db_id: material.id,
-        cti: "12.0",
+        cti: "12",
         df: "14.0",
         dielectric_breakdown: "16.0",
         dk: "18.0",
