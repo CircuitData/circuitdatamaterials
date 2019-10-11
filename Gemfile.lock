@@ -75,7 +75,6 @@ GEM
       zeitwerk (~> 2.1, >= 2.1.8)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    api-pagination (4.8.2)
     autoprefixer-rails (9.6.1.1)
       execjs
     bindex (0.8.1)
@@ -266,7 +265,6 @@ GEM
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
-    will_paginate (3.1.8)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.2.0)
@@ -277,7 +275,6 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.10.2)
   active_record_upsert
-  api-pagination
   bootsnap
   bootstrap
   byebug
@@ -301,7 +298,6 @@ DEPENDENCIES
   turbolinks
   uglifier
   web-console
-  will_paginate
 
 RUBY VERSION
    ruby 2.6.2p47

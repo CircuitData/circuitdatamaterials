@@ -7,10 +7,7 @@ class Api::V1::MaterialsController < ApplicationController
   def index
     return send_csv if request.format == :csv
 
-    page = params[:page].present? ? params[:page].to_i : 1
-    per_page = params[:per_page].present? ? params[:per_page].to_i : 40
-    materials = Material.offset((page - 1) * per_page)
-      .limit(per_page)
+    _, materials = pagy(Material)
     render json: materials
   end
 

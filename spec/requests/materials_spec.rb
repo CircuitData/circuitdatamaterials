@@ -99,4 +99,12 @@ RSpec.describe "/api/v1/materials" do
       expect(validator.errors).to eql([])
     end
   end
+
+  it "returns an empty array for page numbers higher than available" do
+    get "/api/v1/materials?page=1000"
+
+    expect(response).to have_http_status(200)
+    parsed_data = JSON.parse(response.body, symbolize_names: true)
+    expect(parsed_data).to eql([])
+  end
 end
