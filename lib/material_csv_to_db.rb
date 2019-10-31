@@ -99,7 +99,7 @@ class MaterialCsvToDb
   end
 
   def convert_booleans(attrs)
-    attrs.transform_values { |v| BOOL_MAP[v] }
+    attrs.transform_values { |v| BOOL_MAP[v&.downcase] }
   end
 
   def convert_floats(attrs)
