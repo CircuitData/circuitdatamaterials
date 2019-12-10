@@ -123,8 +123,9 @@ RSpec.describe MaterialCsvToDb do
       end
 
       it "raises and logs the error" do
-        expected_message = "Material 987d89e6-8d31-4b3a-b313-d56a22fb2f71 is invalid: " \
-        "Validation failed: Finish is not included in the list"
+        expected_message = "Material 987d89e6-8d31-4b3a-b313-d56a22fb2f71 " \
+        "Cheese is invalid: Validation failed: Finish is not included in the " \
+        "list"
         expect {
           subject.load_into_db
         }.to raise_error(MaterialCsvToDb::InvalidRowError, expected_message)

@@ -1,6 +1,6 @@
 class Material < ApplicationRecord
   FUNCTIONS = [
-    "conductive", "dielectric", "soldermask", "stiffener", "final_finish",
+    "conductive", "dielectric", "soldermask", "stiffener", "final_finish", "peelable_mask",
   ]
   GROUPS = [
     "FR1",

@@ -7,6 +7,13 @@ bfb65242-fbac-4532-92fe-049344984e1a,3M9660,3M,dielectric,"","","","","","","","
 9f1aa0e1-28bf-4ebb-b6db-0ec0f7a9b5fa,ASH 2.0 2W,Allstar Zs,dielectric,CEM-1,"","",600,"","","","","","","","",false,"",10,"",4101,"","","","","","","","",false
 a8debfd5-38cc-4902-9ed4-32c68565d8d8,ASH 3.0 W,Allstar Zs,dielectric,CEM-1,"","",175,"","","","","","","","",false,"",10,"",4101,"","","","","","","","",false
 f528919d-9d35-440f-9d00-5383e7a2c613,SR-6000 /CA-60,AMC (TW),soldermask,"","","","","","","","","","","","","","","","","",http://www.amcorp.com.tw/en/PDF/SR-6000en.pdf,"","","","","","","",false
+6c445d32-1765-4c9c-a551-6efd87465449,QT-TDS-BK2,Anji,peelable_mask,"","","","","","","","","","","","","","","","","","","","","","","","","",false
+6f7bf49a-999c-4622-ae4f-76b847a66692,QT-TDS-BK3,Anji,peelable_mask,"","","","","","","","","","","","","","","","","","","","","","","","","",false
+4583e9a1-9936-44b7-b94d-9a8963350ada,QT-TDS-BK4,Anji,peelable_mask,"","","","","","","","","","","","","","","","","","","","","","","","","",false
+37411f98-9266-40ed-8126-0d102709026e,QT-TDS-SD2,Anji,peelable_mask,"","","","","","","","","","","","","","","","","","","","","","","","","",false
+7d60cb67-0829-4533-aa9c-5ac155483c2a,QT-TDS-SD3,Anji,peelable_mask,"","","","","","","","","","","","","","","","","","","","","","","","","",false
+9a297d44-980a-40a7-8c44-7c328acdd055,QT-TDS-SD4,Anji,peelable_mask,"","","","","","","","","","","","","","","","","","","","","","","","","",false
+32a85588-9976-4580-a4de-15637562ca49,QT-TDS-TR2,Anji,peelable_mask,"","","","","","","","","","","","","","","","","","","","","","","","","",false
 21a2bb33-999d-44ae-b0ea-7f0ce6dc5e57,25FR (Discontinue 2016),Arlon,dielectric,CEM-1,"","",250,"","","","","","","","",false,"",10,"",4103,https://imageserv11.team-logic.com/mediaLibrary/303/25N25FR.pdf,"","","","","","","",false
 c8e08f9e-c492-417c-a039-7c12d5e49919,25N (Discontinued 2016),Arlon,dielectric,CEM-1,"","",600,"",3.38,"","","","","","",false,"",10,"",4103,https://imageserv11.team-logic.com/mediaLibrary/303/MM_DataSheet_25N_25FR__Ver9_WEB_1.PDF,"","","","","",52.0,"",false
 6b33db06-83ca-4302-abc1-f35f99f7a0bd,33N,Arlon,dielectric,CEM-1,250,363,"","",4.2,"",60.0,"","","","",false,"",10,"",4101,http://www.arlonemd.com/wp-content/uploads/2016/05/33N.pdf,"","","","",158.0,51.0,1.2,false
@@ -60,6 +67,7 @@ ddd53ffc-e40a-42d7-ac05-d1ba34233a43,CS-AL-88/89 AD2,Chin-Shi Electronic Materia
 4c551f52-b413-4fa6-a5a8-6345a27c592f,CS-AL-88/89 AD3,Chin-Shi Electronic Materials TW,dielectric,IMS,"","","","","","","","","","","",false,"","","",4101,http://www.csem.com.tw/en/products.php?id=4,"","","","","","","",false
 c897f81b-dfd5-4e69-977a-44bed7bb33fa,CS-AL-88/89 AD5,Chin-Shi Electronic Materials TW,dielectric,IMS,"","","","","","","","","","","",false,"","","",4101,http://www.csem.com.tw/en/products.php?id=5,"","","","","","","",false
 18c5d2da-538e-4304-b9a8-1bff394955ed,CS-AL-88/89 AD8,Chin-Shi Electronic Materials TW,dielectric,IMS,"","","","","","","","","","","",false,"","","",4101,http://www.csem.com.tw/en/products.php?id=11,"","","","","","","",false
+e9161905-3899-43df-b126-37b8b4fd5a6e,ZSR-150,Chung-Yu,soldermask,"","","","","","","","","","","","","","","","","","","","","","","","","",false
 134ab9c5-8d67-4e03-a102-c36fa9eda74f,LB-1900W,Dongguan Langban,soldermask,"","","","","","","","","","","","","","","","","",http://www.pcb-ink.com/a/zhongwen/chanpinzhongxin/ganguangzuhanchaobaiyou/141.html,"","","","","","","",false
 b47ffb6d-bde8-47f3-a1ef-5835f4a70d0b,EPA-M0-1w,Dongli (HeShan DongLi Electronic),dielectric,IMS,"","","","","","","","","","","",false,"","","",4101,"","","","","","","","",false
 b7055780-b6fc-459c-b4c9-c875bb90eae9,EPA-M1-1.5W,Dongli (HeShan DongLi Electronic),dielectric,IMS,"","","","","","","","","","","",false,"","","",4101,"","","","","","","","",false
