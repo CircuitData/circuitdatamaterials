@@ -58,7 +58,10 @@ class MaterialCsvToDb
       begin
         Material.upsert!(attrs)
       rescue => e
-        raise InvalidRowError, "Material #{attrs[:id]} is invalid: #{e.message}"
+        id = attrs.fetch(:id)
+        name = attrs.fetch("name")
+        msg = "Material #{id} #{name} is invalid: #{e.message}"
+        raise InvalidRowError, msg
       end
     end
   end
