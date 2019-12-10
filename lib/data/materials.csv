@@ -7,6 +7,13 @@ bfb65242-fbac-4532-92fe-049344984e1a,3M9660,3M,dielectric,"","","","","","","","
 9f1aa0e1-28bf-4ebb-b6db-0ec0f7a9b5fa,ASH 2.0 2W,Allstar Zs,dielectric,CEM-1,"","",600,"","","","","","","","",false,"",10,"",4101,"","","","","","","","",false
 a8debfd5-38cc-4902-9ed4-32c68565d8d8,ASH 3.0 W,Allstar Zs,dielectric,CEM-1,"","",175,"","","","","","","","",false,"",10,"",4101,"","","","","","","","",false
 f528919d-9d35-440f-9d00-5383e7a2c613,SR-6000 /CA-60,AMC (TW),soldermask,"","","","","","","","","","","","","","","","","",http://www.amcorp.com.tw/en/PDF/SR-6000en.pdf,"","","","","","","",false
+6c445d32-1765-4c9c-a551-6efd87465449,QT-TDS-BK2,Anji,peelable_mask,"","","","","","","","","","","","","","","","","","","","","","","","","",false
+6f7bf49a-999c-4622-ae4f-76b847a66692,QT-TDS-BK3,Anji,peelable_mask,"","","","","","","","","","","","","","","","","","","","","","","","","",false
+4583e9a1-9936-44b7-b94d-9a8963350ada,QT-TDS-BK4,Anji,peelable_mask,"","","","","","","","","","","","","","","","","","","","","","","","","",false
+37411f98-9266-40ed-8126-0d102709026e,QT-TDS-SD2,Anji,peelable_mask,"","","","","","","","","","","","","","","","","","","","","","","","","",false
+7d60cb67-0829-4533-aa9c-5ac155483c2a,QT-TDS-SD3,Anji,peelable_mask,"","","","","","","","","","","","","","","","","","","","","","","","","",false
+9a297d44-980a-40a7-8c44-7c328acdd055,QT-TDS-SD4,Anji,peelable_mask,"","","","","","","","","","","","","","","","","","","","","","","","","",false
+32a85588-9976-4580-a4de-15637562ca49,QT-TDS-TR2,Anji,peelable_mask,"","","","","","","","","","","","","","","","","","","","","","","","","",false
 21a2bb33-999d-44ae-b0ea-7f0ce6dc5e57,25FR (Discontinue 2016),Arlon,dielectric,CEM-1,"","",250,"","","","","","","","",false,"",10,"",4103,https://imageserv11.team-logic.com/mediaLibrary/303/25N25FR.pdf,"","","","","","","",false
 c8e08f9e-c492-417c-a039-7c12d5e49919,25N (Discontinued 2016),Arlon,dielectric,CEM-1,"","",600,"",3.38,"","","","","","",false,"",10,"",4103,https://imageserv11.team-logic.com/mediaLibrary/303/MM_DataSheet_25N_25FR__Ver9_WEB_1.PDF,"","","","","",52.0,"",false
 6b33db06-83ca-4302-abc1-f35f99f7a0bd,33N,Arlon,dielectric,CEM-1,250,363,"","",4.2,"",60.0,"","","","",false,"",10,"",4101,http://www.arlonemd.com/wp-content/uploads/2016/05/33N.pdf,"","","","",158.0,51.0,1.2,false
@@ -20,6 +27,7 @@ a0880d20-9d61-45bb-956f-e1deb73e07e0,85N,Arlon,dielectric,CEM-1,250,407,"","",4.
 a21b58b5-9f37-4d59-9dc3-f645856a0e83,85NT/RT,Arlon,dielectric,CEM-1,240,"","","",3.8,"","","","","","",false,"",53,"",4101,http://www.arlonemd.com/wp-content/uploads/2016/05/85NT.pdf,"","","","","",80.0,"",false
 4c2960b8-6123-49d9-8b1f-7fa760855a79,92ML,Arlon,dielectric,CEM-1,170,400,"","",5.2,"",15.0,"","","","",false,"",53,"",4101,http://www.cofan-pcb.com/download/material/92ML.pdf,"","","","",175.0,22.0,1.8,false
 b860599a-119b-41bc-aeb2-3ef39e83c86e,AD250C,Arlon,dielectric,CEM-1,"","","","",2.5,"","","","","","",false,"",53,"",4101,https://www.rogerscorp.com/documents/3172/acs/AD250C-Data-Sheet.pdf,"","","","","","","",false
+5ff7738d-4f6c-455e-be6c-0333fdc202d8,AD255A,Arlon,dielectric,PTFE/None,"","","",0.0018,2.55,"","","","","","",false,"","","","",https://www.cirexx.com/wp-content/uploads/AD-Series.pdf,"","","","","","","",true
 b313eb86-fa29-41a6-8901-9499a5c90fab,AD350A,Arlon,dielectric,CEM-1,"","","","",3.5,"","","","","","",false,"",10,"",4103,https://www.rogerscorp.com/documents/3268/acs/AD350A-Data-Sheet.pdf,"","","","","","","",false
 3c0ca416-ffad-480b-9de2-f4cfc061dfdd,Diclad 522,Arlon,dielectric,CEM-1,"","","","",2.4,"","","","","","",false,"",10,"",4101,https://imageserv10.team-logic.com/mediaLibrary/303/Diclad.pdf,"","","","","","","",false
 e089122c-2aca-4c45-8a66-e679c3b89f1c,Diclad 527,Arlon,dielectric,CEM-1,"","","","",2.65,"","","","","","",false,"",10,"",4101,https://imageserv10.team-logic.com/mediaLibrary/303/Diclad.pdf,"","","","","","","",false
@@ -28,6 +36,7 @@ d04b177b-801b-4197-a1ae-f4218ed9133c,Diclad 880,Arlon,dielectric,CEM-1,"","","",
 5a6d32ce-a50a-4083-acf5-682be2053c59,GenClad 280,Arlon,dielectric,CEM-1,"","","","",2.8,"","","","","","",false,"","","",4101,https://imageserv11.team-logic.com/mediaLibrary/303/GenClad.pdf,"","","","","","","",false
 93ec020b-34c7-4843-99b1-ee5e95234053,TC350,Arlon,dielectric,CEM-1,"",567,"","",3.5,"",60.0,"","","","",false,"","","",4101,https://imageserv10.team-logic.com/mediaLibrary/303/TC350.pdf,"","","","","",23.0,1.2,false
 1bb6a841-9953-49d7-90dc-9bbf3a780252,TC600,Arlon,dielectric,CEM-1,"",572,"","",6.15,"",60.0,"","","","",false,"","","",4101,https://imageserv10.team-logic.com/mediaLibrary/303/TC600.pdf,"","","","","",35.0,1.5,false
+63220664-4d15-422f-adf8-6f1abbcf44b9,RS-200,Banquian,soldermask,"","","","","","","","","","","","","","","","","",http://www.jmbq.com.cn/productshow.asp?LangID=0&Clmn=1&cls=0002&ID=33,"","","","","","","",false
 2aa6543e-400e-4b86-970a-a6115f597772,CML/5052,Bergquist,dielectric,IMS,90,"","","",7.0,"","","","","","",false,"","","",4101,http://www.bergquistcompany.com/pdfs/techLibrary/tclad_2013_web_fullguide.pdf,"","","","","","","",false
 33be005c-5896-4702-929d-d8703fb34c15,CML/6061,Bergquist,dielectric,IMS,90,"","","",7.0,"","","","","","",false,"","","",4101,http://www.bergquistcompany.com/pdfs/techLibrary/tclad_2013_web_fullguide.pdf,"","","","","","","",false
 12cf13fa-8380-454c-8298-00f08996d0d5,CML/CU,Bergquist,dielectric,IMS,90,"","","",7.0,"","","","","","",false,"","","",4101,http://www.bergquistcompany.com/pdfs/techLibrary/tclad_2013_web_fullguide.pdf,"","","","","","","",false
@@ -58,6 +67,7 @@ ddd53ffc-e40a-42d7-ac05-d1ba34233a43,CS-AL-88/89 AD2,Chin-Shi Electronic Materia
 4c551f52-b413-4fa6-a5a8-6345a27c592f,CS-AL-88/89 AD3,Chin-Shi Electronic Materials TW,dielectric,IMS,"","","","","","","","","","","",false,"","","",4101,http://www.csem.com.tw/en/products.php?id=4,"","","","","","","",false
 c897f81b-dfd5-4e69-977a-44bed7bb33fa,CS-AL-88/89 AD5,Chin-Shi Electronic Materials TW,dielectric,IMS,"","","","","","","","","","","",false,"","","",4101,http://www.csem.com.tw/en/products.php?id=5,"","","","","","","",false
 18c5d2da-538e-4304-b9a8-1bff394955ed,CS-AL-88/89 AD8,Chin-Shi Electronic Materials TW,dielectric,IMS,"","","","","","","","","","","",false,"","","",4101,http://www.csem.com.tw/en/products.php?id=11,"","","","","","","",false
+e9161905-3899-43df-b126-37b8b4fd5a6e,ZSR-150,Chung-Yu,soldermask,"","","","","","","","","","","","","","","","","","","","","","","","","",false
 134ab9c5-8d67-4e03-a102-c36fa9eda74f,LB-1900W,Dongguan Langban,soldermask,"","","","","","","","","","","","","","","","","",http://www.pcb-ink.com/a/zhongwen/chanpinzhongxin/ganguangzuhanchaobaiyou/141.html,"","","","","","","",false
 b47ffb6d-bde8-47f3-a1ef-5835f4a70d0b,EPA-M0-1w,Dongli (HeShan DongLi Electronic),dielectric,IMS,"","","","","","","","","","","",false,"","","",4101,"","","","","","","","",false
 b7055780-b6fc-459c-b4c9-c875bb90eae9,EPA-M1-1.5W,Dongli (HeShan DongLi Electronic),dielectric,IMS,"","","","","","","","","","","",false,"","","",4101,"","","","","","","","",false
@@ -104,6 +114,7 @@ aad90a39-dcf1-4931-a38b-7665d604f8fc,EM-828,EMC,dielectric,FR4,170,380,"","",3.8
 9bdaf971-0f8d-4eb9-b889-5c2284bb1f93,EM-M1 20,EMC,dielectric,FR4,140,400,"","",5.9,"","","","","","",false,"",130,"",4101,http://www.emctw.com/upload/website/products/EM-M1.pdf,"","","","",90.0,25.0,"",false
 a71ff885-23e3-494d-92df-b0aa605ed246,EM-M1 30,EMC,dielectric,FR4,170,370,"","",5.0,"","","","","","",false,"","","",4101,http://www.emctw.com/upload/website/products/EM-M1.pdf,"","","","",60.0,20.0,"",false
 5ce91b1d-a579-4278-b141-31942cf8d494,EM-MP,EMC,dielectric,FR4,120,370,"","",5.3,"","","","","","",false,"","","",4101,http://www.emctw.com/upload/website/products/EM-MP.pdf,"","","","",150.0,30.0,"",false
+61dce50c-d8ef-4717-b5d3-bd4fe1499a92,EM888K,EMC,dielectric,FR5,210,390,"",0.0047,3.3,"","","","","","",false,"",130,"",4141,https://www.emctw.com/upload/website/item/EM-888K%20Datasheet%2020171121_18061418788.pdf,"","","","","","","",true
 ad8769f0-eb23-4097-9006-3180ef05f479,780 HB,Eternal,soldermask,"","","","","","","","","","","","","","","","","",http://www.eternal-group.com/product/05PM-LPSM(20070701).pdf,"","","","","","","",false
 d00e0580-0e29-4705-b6b6-f3c05fa11e4c,MC12M,Faradflex,dielectric,"","","","","",4.4,"","","","","","",false,"","","","",https://www.faradflex.com/standard-dk/,"","","","","","","",false
 5e734921-5c78-48dc-9331-beaa12d9d486,MC12ST,Faradflex,dielectric,"","","","","",25.1,"","","","","","",false,"","","","",https://www.faradflex.com/high-dk-series/,"","","","","","","",false
@@ -212,7 +223,8 @@ f759816c-c855-404a-807d-628c83b253bb,IS402,Isola,dielectric,FR4,140,320,"","",4.
 b9e3fc78-d356-49e6-8fbf-a9edfe1bddff,IS410BC,Isola,dielectric,FR4,180,350,"","",3.97,"","","","","","",false,"",129,"",4101,http://www.isola-group.com/products/is410-bc/,"","","","",250.0,65.0,3.5,false
 26321389-4040-4930-a55b-882eea94524b,IS415,Isola,dielectric,FR4,200,370,"",0.0131,3.71,60.0,20.0,"",50.0,40.0,"",false,"",98|99|101|129,"",4101,https://www.isola-group.com/wp-content/uploads/data-sheets/is415.pdf,"","",v-0,0.15,240.0,45.0,2.8,false
 29e17299-2301-4113-b8a1-a60478d4622e,IS420,Isola,dielectric,FR4,170,350,"",0.0161,4.17,60.0,15.0,"",50.0,54.0,"",false,"",98|99|101,"",4101,https://www.isola-group.com/wp-content/uploads/data-sheets/is420.pdf,"",0.4,v-0,0.15,230.0,45.0,2.8,false
-72a53500-cd4e-4aa1-a7f3-4105268539bf,IS550H,Isola,dielectric,"",200,400,"","","",60.0,60.0,"",60.0,46.9,"","","",140,"",4101,https://www.isola-group.com/wp-content/uploads/data-sheets/is550h.pdf,"",0.7,v-0,0.25,210.0,38.0,2.2,false
+11c040b6-bddd-414f-b348-49879f302b37,IS500,Isola,dielectric,"","","","","","","","","","","","","","","","","","","","","","","","","",false
+72a53500-cd4e-4aa1-a7f3-4105268539bf,IS550H,Isola,dielectric,FR4,200,400,"","","",60.0,60.0,"",60.0,46.9,"","","",140,"",4101,https://www.isola-group.com/wp-content/uploads/data-sheets/is550h.pdf,"",0.7,v-0,0.25,210.0,38.0,2.2,false
 c5d1f584-261b-4def-bacd-e0b93aa3ef86,IS620i,Isola,dielectric,FR4,225,350,"","",3.59,"",60.0,"","","","",false,"",30,"",4101,http://www.isola-group.com/wp-content/uploads/2015/12/IS620i-High-Performance-Laminate-and-Prepreg-Data-Sheet.pdf,"","","","",230.0,55.0,1.9,false
 18749130-b853-49d7-bdfc-32b87d42b1ee,IS680,Isola,dielectric,"",200,360,"","","",60.0,60.0,"",45.4,45.0,"","","",17,"",4103,https://www.isola-group.com/wp-content/uploads/data-sheets/is680.pdf,"","",v-0,0.1,191.0,44.7,2.9,false
 d2b044af-ff74-435f-9b1a-addd246ea3ae,IS680 3.20,Isola,dielectric,FR4,200,360,"","",3.2,"",60.0,"","","","",false,"",101,"",4101,http://www.isola-group.com/wp-content/uploads/2016/07/IS680-Very-Low%C2%ADloss-Laminate-Material-Data-Sheet-Isola-3.pdf,"","","","",191.0,45.0,2.9,false
@@ -289,7 +301,7 @@ b28475cf-a7f6-4bc6-a5a7-6451af3d472d,AKAFLEX KCL 2-35/25 HT,KREMPEL GmbH,dielect
 cf3fd0ef-df87-48e7-ba3e-23bb175b03fe,AKAFLEX KCL 3-35/50 HT,KREMPEL GmbH,dielectric,FR1,"","",175,0.0021,3.9,"",0.166667,0.166667,6000.0,"","",true,"",2,"",4204,"",150.0,0.12,v-0,4.0,85.0,85.0,"",false
 69963858-710c-48f9-bcaa-b03f60f05e7c,AKAFLEX KDF 0/25/25 HT,KREMPEL GmbH,dielectric,FR1,"","",175,0.0021,3.9,"",0.166667,0.166667,8000.0,"","",true,"",2,"",4203,"",150.0,0.12,v-0,4.0,85.0,85.0,"",false
 12225b92-8844-4173-974a-9c3290d4e510,AKAFLEX KDF 25/25/25 HT,KREMPEL GmbH,dielectric,FR1,"","",175,0.0021,3.9,"",0.166667,0.166667,8000.0,"","",true,"",2,"",4203,"",150.0,0.12,v-0,4.0,85.0,85.0,"",false
-ff3f2f08-6ccd-4135-9208-b0ba33109128,KSM6188/89,Kuangshun,soldermask,"","","","","","","","","","","","","","","","","",http://www.kuangshun.com/English/product_show.asp?id=121,"","","","","","","",false
+ff3f2f08-6ccd-4135-9208-b0ba33109128,KSM6189,Kuangshun,soldermask,"","","","","","","","","","","","","","","","","",http://www.kuangshun.com/English/product_show.asp?id=121,"","","","","","","",false
 0a4abe25-3502-4599-9e85-c394d14d47b2,Tlam ML 1KA,Laird,dielectric,IMS,105,"","","","","","","","","","",false,"","","",4101,https://assets.lairdtech.com/home/brandworld/files/THR-DS-Tlam%20ML%201KA%200410.pdf,"","","","","","","",false
 c3953842-0f69-4c73-bfec-8e28335d149d,Tlam SS 1KA,Laird,dielectric,IMS,105,"","","","","","","","","","",false,"","","",4101,https://assets.lairdtech.com/home/brandworld/files/THR-DS-Tlam%20SS%201KA%201110.pdf,"","","","","","","",false
 fa5e4d17-b049-448d-9314-c1259f520b08,Tlam SS HTD (2.2w),Laird,dielectric,IMS,168,"","","","","","","","","","",false,"","","",4101,https://assets.lairdtech.com/home/brandworld/files/THR-DS-Tlam%20SS%20HTD%200711.pdf,"","","","","","","",false
@@ -313,10 +325,11 @@ a0061c35-4d69-4ba9-a609-accecb7fae6d,TC-Lam 1.3,MSC Polymer,dielectric,IMS,100,"
 21753baf-dd51-4fa7-8237-551464145fe0,NP-140 TL/B,Nanya,dielectric,FR4,140,"","","",4.2,"","","","","","",false,"",21,"",4101,http://www.npc.com.tw/j2npc/enus/proddoc/Firing%20resistance%20multifuntional%20Rigid%20CCL/NP-140%20TL/B?docid=F000002090&pdid=F00000209,"","","","",300.0,60.0,"",false
 940995c0-9fbc-4fc8-ac1c-4b1ce0163804,NP-140M TL/B,Nanya,dielectric,FR4,135,325,"","",4.2,"",5.0,"","","","",false,"",101,"",4101,http://www.npc.com.tw/Electronic_Materials_Div_e/1-2_Copper_Clad_Laminates_2.Products_Info._2-Catalog_Download.htm#00,"","","","",280.0,55.0,"",false
 c759453f-9161-4de9-af42-5d1d4e7bb418,NP-155F R/TL/B,Nanya,dielectric,FR4,150,150,"","",4.2,"",20.0,"","","","",false,"",99,"",4101,http://www.technolam.de/en/products/data-sheets/index.html,"","","","",260.0,50.0,3.5,false
-7b60ac6c-1988-4677-a2bd-69fde38c6f80,NP-170 R/TL/B,Nanya,dielectric,FR4,173,314,"","",4.2,"",3.0,"","","","",false,"",126,"",4101,http://www.npc.com.tw/Electronic_Materials_Div_e/1-2_Copper_Clad_Laminates_2.Products_Info._2-Catalog_Download.htm#00,"","","","",275.0,50.0,"",false
+7b60ac6c-1988-4677-a2bd-69fde38c6f80,NP-170 N,Nanya,dielectric,FR4,170,360,"","",4.2,"",3.0,"","","","",false,"",126,"",4101,https://www.npc.com.tw/j2npc/zhtw/proddoc/%E7%84%A1%E9%B9%B5%E7%B4%A0(%E7%84%A1%E9%89%9B)%E5%9F%BA%E6%9D%BF/NPG-170N_Datasheet?docid=F000002118&pdid=F00000211,"","","","",275.0,50.0,"",false
 23544652-2e43-439d-acad-ce1598d3b9d6,NP-175F R/TL/B,Nanya,dielectric,FR4,175,351,"","",4.2,"",20.0,"","","","",false,"",126,"",4101,http://www.technolam.de/en/products/data-sheets/index.html,"","","","",220.0,50.0,3.0,false
 a96e13a0-9c92-4101-a44f-63e69e7677a1,NP-180 R/TL/B,Nanya,dielectric,FR4,180,359,"","",4.36,"",40.0,"","","","",false,"",126,"",4101,http://www.technolam.de/en/products/data-sheets/index.html,"","","","",255.0,50.0,"",false
 a9112e18-26ff-44b6-b957-a6ff011f784e,NPG-150 R/TL/B,Nanya,dielectric,FR4,150,348,"","",4.3,"",20.0,"","","","",false,"",126,"",4101,http://www.npc.com.tw/Electronic_Materials_Div_e/1-2_Copper_Clad_Laminates_2.Products_Info._2-Catalog_Download.htm#00,"","","","",210.0,35.0,"",false
+6b4fd6e7-eb96-4e9f-b3a9-c869acb014a7,NPG-150N,Nanya,dielectric,FR4,150,350,"","",4.3,"","","","","","",false,"",126,"",4101,https://www.npc.com.tw/j2npc/zhtw/proddoc/%E7%84%A1%E9%B9%B5%E7%B4%A0(%E7%84%A1%E9%89%9B)%E5%9F%BA%E6%9D%BF/NPG-150N_Datasheet?docid=F000002114&pdid=F00000211,"","","","",210.0,35.0,"",true
 62eaf19f-111e-41ad-ba99-da7edc6d5446,NPG-170 R/TL/B,Nanya,dielectric,FR4,170,355,"","",4.3,"",20.0,"","","","",false,"",126,"",4101,http://www.technolam.de/en/products/data-sheets/index.html,"","","","",210.0,35.0,"",false
 7a410b6e-2472-4e3c-a990-1209fd6070b7,NPG-180,Nanya,dielectric,FR4,180,380,"","",4.8,"",60.0,"","","","",false,"",21,"",4101,http://www.npc.com.tw/j2npc/enus/prodcate/Electronic%20Material,"","","","",160.0,32.0,"",false
 6d70670a-190d-46ff-a0d0-a6ba41bbf73c,NPG-180 TL/B,Nanya,dielectric,FR4,210,380,"","",4.8,"",60.0,"","","","",false,"",126,"",4101,http://www.npc.com.tw/Electronic_Materials_Div_e/1-2_Copper_Clad_Laminates_2.Products_Info._2-Catalog_Download.htm#00,"","","","",160.0,323.0,"",false
@@ -427,6 +440,7 @@ c58abc2c-31e2-49b5-b35a-2f99b386ff3e,SD 2491 SD 2491 SG-TSW-R7,Peters,soldermask
 f2937077-1542-4fe7-9ab2-fb6f895207f6,SD 2768 NB,Peters,soldermask,"","","","","","","","","","","","","","","","","",http://www.peters.de/index.php/welcome/downloadfile/110,"","","","","","","",false
 499e7f32-a088-4606-a83a-52f69639e077,SD 2842 HAL,Peters,soldermask,"","","","","","","","","","","","","","","","","",http://www.peters.de/index.php/welcome/downloadfile/163,"","","","","","","",false
 c6ef4b39-6ccd-4fe8-b2d5-d07991db05e9,SD 2843 HAL,Peters,soldermask,"","","","","","","","","","","","","","","","","",http://www.peters.de/index.php/welcome/downloadfile/165,"","","","","","","",false
+c4020426-0dd5-466c-9a55-99f4b28ec773,SD 2955,Peters,soldermask,"","","","","","","","","","","","","","","","","","","","","","","","","",false
 2d5e7bd7-0bfb-4579-a1a6-b5cedb494459,SD 2xxx,Peters,soldermask,"","","","","","","","","","","","","","","","","",http://www.peters.de/index.php/product/elpepcb,"","","","","","","",false
 4afeca96-d436-4795-8527-bca4dc8b5ffb,DF-170,PIC,dielectric,FR4,170,350,"","",4.5,"",15.0,"","","","",false,"",129,"",4101,http://www.piclaminate.com.cn/3-DF170_E.pdf,"","","","",260.0,55.0,3.2,false
 3a648389-f9c6-4452-b940-fa853df119f9,FL-140,PIC,dielectric,FR4,140,320,"","",4.6,"",5.0,"","","","",false,"",101,"",4101,http://www.piclaminate.com.cn/3-FL140_E.pdf,"","","","",250.0,45.0,3.3,false
@@ -491,6 +505,13 @@ c45982fd-e631-4bab-af3e-b50edbedeff4,H-9100 SP17,Rongda,soldermask,"","","","","
 9a7e8b93-f34c-4dbc-9e2a-38810fc368e0,H8100 (all versions),Rongda,soldermask,"","","","","","","","","","","","","","","","","",http://en.szrd.com/product/detail/60,"","","","","","","",false
 6e8384fc-8ee7-423a-a584-dae502c8b7be,H9100 (all versions),Rongda,soldermask,"","","","","","","","","","","","","","","","","",http://en.szrd.com/product/detail/60,"","","","","","","",false
 b9e80ba2-66bf-45db-a423-f79ed668b944,RT-100,Rootlike,soldermask,"","","","",0.02,"","","","","",39.4,"","","","","","","","","","","","","","",false
+bdaa9744-6b75-48c3-80ed-d6470625f9ff,SC-600 W95,Senchuan,soldermask,"","","","","","","","","","","","","","","","","",http://www.senchuanhecheng.com/productshow.asp?/199.html,"","","","","","","",false
+938c44dc-98ae-4e5e-ab0c-4154b4b7ff2c,SC-600E,Senchuan,soldermask,"","","","","","","","","","","","","","","","","",http://www.senchuanhecheng.com/productshow.asp?/199.html,"","","","","","","",false
+769a25a7-204c-465c-8ca7-a6f1f36fe00a,SC-600G,Senchuan,soldermask,"","","","","","","","","","","","","","","","","",http://www.senchuanhecheng.com/productshow.asp?/199.html,"","","","","","","",false
+07dc57fc-5fee-4dad-99f8-3ba36785f377,SC-600GA,Senchuan,soldermask,"","","","","","","","","","","","","","","","","",http://www.senchuanhecheng.com/productshow.asp?/199.html,"","","","","","","",false
+7e9d3228-a9ab-4f0c-9f7f-aa9388a6053b,SC-600GT,Senchuan,soldermask,"","","","","","","","","","","","","","","","","",http://www.senchuanhecheng.com/productshow.asp?/199.html,"","","","","","","",false
+b5ab397f-de4f-464c-9c33-1b20c9c14563,SC-600M,Senchuan,soldermask,"","","","","","","","","","","","","","","","","",http://www.senchuanhecheng.com/productshow.asp?/199.html,"","","","","","","",false
+71a7922f-10d9-4b76-b0a6-cd0a977c3008,SC-600SK,Senchuan,soldermask,"","","","","","","","","","","","","","","","","",http://www.senchuanhecheng.com/productshow.asp?/199.html,"","","","","","","",false
 7511ce8a-4450-46c0-9db4-771bed0870b2,GEM-R1,Shanghai global,dielectric,"","","","","","","","","","","","",false,"","","","","","","","","","","","",false
 2f243333-5f72-4358-a1cd-2725c1ecd4ac,GEM-R1,Shanghai global (Goldenmax International),dielectric,CEM-1,"","","","","","","","","","","",false,"",10,"",4101,http://www.goldenmax.cn/EN_product.asp,"","","","","","","",false
 16e31526-892b-4906-8d6a-16b131af5076,NY1140,Shanghai Nanya,dielectric,FR4,140,"","","","","","","","","","",false,"",21,"",4101,http://www.ccl-china.com/Uploadfiles/2018.2.11_15.56.36_3539.pdf,"","","","","","","",false
@@ -569,6 +590,7 @@ f2714a08-67aa-4041-9ee0-19b9943f4f70,TLX-8,Taconic,dielectric,FR4,"","","","",2.
 9a0c2b65-98c8-40e5-9047-b9380af10b79,FHT,TaiFlex,soldermask,"","","","","","","","","","","","","","","","","",http://www.taiflex.com.tw/html/bus_electron.php,"","","","","","","",false
 ae6b6341-6310-41eb-9256-a99a197d62ca,THKD (HF DS),TaiFlex,dielectric,FR4,"","","","","","","","","","","",true,"",24,"",4201,"","","","","","","","",false
 792f1446-d21a-4544-97ba-8c355af50a1e,THKS (SS HF),TaiFlex,dielectric,FR4,"","","","","","","","","","","",true,"",24,"",4201,"","","","","","","","",false
+2b0f27eb-6b08-4fd2-b11e-b6b4e71f51d2,SR-500 Series,Taiwan S.M Materials Corporation,soldermask,"","","","","","","","","","","","","","","","","","","","","","","","","",false
 ef9181b8-02ff-4bf9-b3ee-aed433be3181,LDI-1000 NK01,Taiyo,soldermask,"","","","","","","","","","","","","","","","","",http://www.taiyoink.co.jp/english/Products/product_lineup.pdf,"","","","","","","",false
 44f7bb0c-c01d-4f78-91b0-a5371ae2f2d5,LDI-1000FKG2,Taiyo,soldermask,"","","","","","","","","","","","","","","","","",http://www.taiyoink.co.jp/english/Products/product_lineup.pdf,"","","","","","","",false
 013ee3f2-2b49-40dd-86b2-d31c8fe2607a,PSR-2000,Taiyo,soldermask,"","","","",0.032,4.5,"","","","","","","","","","","",http://www.taiyoink.co.jp/english/Products/list.html,"","","","","","","",false
@@ -578,6 +600,7 @@ e5db6ad5-ba35-40cb-a0bc-affeccdf45d7,PSR-2000 CE800YE,Taiyo,soldermask,"","","",
 000b2be4-2eda-4b90-898b-11d84567ad4f,PSR-2000 FR603W1,Taiyo,soldermask,"","","","","","","","","","","","","","","","","",http://www.taiyoink.co.jp/english/Products/list.html,"","","","","","","",false
 2e55f953-144d-4b91-989c-e720aa2954e7,PSR-2000 ME8H,Taiyo,soldermask,"","","","",0.036,5.6,"","","","","","","","","","","",http://www.taiyoink.co.jp/english/Products/list.html,"","","","","","","",false
 f55430a7-6a97-4a9d-bd0f-a53d492a1689,PSR-2000BF,Taiyo,soldermask,"","","","","","","","","","","","","","","","","",http://www.taiyoink.co.jp/english/Products/list.html,"","","","","","","",false
+32e121bd-73de-44a2-9407-4359b0f082f1,PSR-2000BK,Taiyo,soldermask,"","","","","","","","","","","","","","","","","","","","","","","","","",false
 925f879a-89da-4753-8e9a-f4c4302e353b,PSR-4000,Taiyo,soldermask,"","","","",0.027,3.9,"","","","",19.7,"","","","","","",http://www.taiyoink.co.jp/english/Products/list.html,"","","","","","","",false
 1ea3503f-c7c8-43af-9da5-324b02cecd47,PSR-4000 AM10,Taiyo,soldermask,"","","","",0.03,4.3,"","","","","","","","","","","",http://www.taiyoink.co.jp/english/Products/list.html,"","","","","","","",false
 69a057c8-9bb9-4813-b85c-c0dac88737fe,PSR-4000 AUS308,Taiyo,soldermask,"","","","",0.038,4.8,"","","","","","","","","","","",https://www.taiyo-hd.co.jp/_cms/wp-content/uploads/2016/02/PSR4000AUS308_CA40AUS308_TD_E.pdf,"","","","","","","",false

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Elmatica/circuit-data-gem.git
-  revision: de37d13b0ec122c70daaeadcf67298917f05ad18
+  revision: 910a1105e8adead48cdf5d7e4f0b3b18dc23a561
   specs:
     circuitdata (0.9.0)
       activesupport (> 5.1, < 7)
