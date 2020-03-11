@@ -47,6 +47,10 @@ jobs:
           command: bin/rails db:schema:load --trace
 
       - run:
+          name: Check code is formatted
+          command: bundle exec rufo . -c
+
+      - run:
           name: Run rspec
           command: |
             bundle exec rspec --profile 10 \
