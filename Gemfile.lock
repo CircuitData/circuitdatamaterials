@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Elmatica/circuit-data-gem.git
-  revision: 910a1105e8adead48cdf5d7e4f0b3b18dc23a561
+  revision: c7145c22a79dde475b4e05b6e1cd5a5c21491c2f
   specs:
     circuitdata (0.9.0)
       activesupport (> 5.1, < 7)
@@ -256,7 +256,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.6)
-    unicode-display_width (1.6.0)
+    unicode-display_width (1.6.1)
     web-console (4.0.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
