@@ -9,7 +9,7 @@ gem "puma"
 gem "sass-rails"
 gem "uglifier"
 gem "rest-client"
-gem "active_model_serializers", "~> 0.10.2"
+gem "active_model_serializers", "~> 0.10.12"
 gem "circuitdata", github: 'Elmatica/circuit-data-gem'
 gem "active_record_upsert"
 gem "bootstrap"
