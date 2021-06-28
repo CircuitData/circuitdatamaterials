@@ -1,5 +1,3 @@
-require "mimemagic"
-
 class DatasheetDownloader
   def self.start(scope = Material)
     new(scope.with_manufacturer).start
@@ -35,7 +33,7 @@ class DatasheetDownloader
   end
 
   def valid_content?(response)
-    MimeMagic.by_magic(response.body) == "application/pdf"
+    Marcel::MimeType.for(response.body) == "application/pdf"
   end
 
   def save_file(material, response)
